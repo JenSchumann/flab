@@ -6,8 +6,41 @@
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular.min.js" charset="utf-8"></script>
     <script src="/js/app.js" charset="utf-8"></script>
   </head>
-  <body ng-controller="FlabController as ctrl">
-    
-    {{ ctrl.flab }}
+  <body ng-controller="BeersController as ctrl">
+
+    <!-- {{ ctrl.flab }} -->
+<h1>Wanna Talk Beer?</h1>
+<h2>Share about a recent beer you tried:</h2>
+    <form ng-submit="ctrl.createBeerPost()">
+
+      {{ctrl.name}}
+      <h5>Name of Beer:</h5>
+      <input type="text" ng-model="ctrl.name" placeholder="Beer Name"/><br>
+
+<h5>Was it a Pale Ale, Saison, Stout, Porter, Wheat, Amber, Wheat, IPA??</h5>
+      <input type="text" ng-model="ctrl.type" placeholder="Type"/><br>
+
+<h5>Was it made of sugar and spice?</h5>
+      <input type="text" ng-model="ctrl.ingredients" placeholder="Ingredients"/><br>
+
+<h5>Alcohol content:</h5>
+      <input type="text" ng-model="ctrl.abv" placeholder="Alcohol Content"/><br>
+
+<h5>How Bitter?</h5>
+      <input type="text" ng-model="ctrl.ibu" placeholder="IBU"/><br>
+
+<h5>What Brewery Makes It?</h5>
+      <input type="text" ng-model="ctrl.brewery" placeholder="Brewery"/><br>
+
+<h5>Where'd You Buy It?</h5>
+      <input type="text" ng-model="ctrl.purchaseLocation" placeholder="Purchase Location"/><br>
+
+<h5>How'd you rate it? (1: puke, 5: 7th heaven)</h5>
+      <input type="text" ng-model="ctrl.userRating" placeholder="Beer Rating"/><br>
+<br>
+      <input type="submit" value="Add Beer Post">
+
+    </form>
+
   </body>
 </html>
