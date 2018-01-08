@@ -1,0 +1,24 @@
+{
+  "name": "flab",
+  "version": "1.0.0",
+  "description": "#### **About:** This is a blog for college football enthusiasts who also like craft beer.  Merritt Schumann II is the founding father of this group and has used his ingenious Excel skills over the years to organize his own approach to a fantasy football league where winners are awarded.... you guessed it... their choice of beer.  Yes; he usually wins.  I plead the 5th regarding how much I help him enjoy the spoils.",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/JenSchumann/flab.git"
+  },
+  "author": "Jen Schumann",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/JenSchumann/flab/issues"
+  },
+  "homepage": "https://github.com/JenSchumann/flab#readme",
+  "dependencies": {
+    "express": "^4.16.2",
+    "mongoose": "^4.13.9"
+  }
+}
