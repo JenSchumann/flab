@@ -6,6 +6,7 @@ const app = express();
 
 //middleware
 app.use(bodyParser.json());
+app.use(express.static('public'));
 
 
 //controllers
