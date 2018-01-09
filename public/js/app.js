@@ -1,6 +1,7 @@
 const app = angular.module('FlabApp', []);
 
 app.controller('FlabController', ['$http', function($http){
+  const controller = this;
   this.flab = '{ Football Loving A**hole Beerdrinkers }';
 
 }]); //end of FlabController
