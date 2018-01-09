@@ -23,7 +23,8 @@ app.controller('BeersController', ['$http', function($http){
           userRating: this.userRating
         }
       }).then(function(response){
-        console.log(response);
+        controller.getBeerPosts();  //render all beerPosts when new one is added
+        // console.log(response);
       }, function(){
         console.log('error');
       });
@@ -40,6 +41,27 @@ app.controller('BeersController', ['$http', function($http){
     });
   };
 
+  this.updateBeerPost = function(beer){
+    $http({
+      method:'PUT',
+      url: 'http://localhost:3000/beers/' + beer._id,
+      data: {
+        beer: newBeer.name,
+        beer: newBeer.type,
+        beer: newBeer.ingredients,
+        beer: newBeer.abv,
+        beer: newBeer.ibu,
+        beer: newBeer.brewery,
+        beer: newBeer.purchaseLocation,
+        beer: newBeer.userRating
+      }
+    }).then(function(response){
+      controller.getBeerPosts();
+    }, function(){
+      console.log('error in updateBeerPost');
+    });
+  }
+
   this.getBeerPosts; //call immediately once controller is instantiated
-  
+
 }]); //end of BeersController

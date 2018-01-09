@@ -3,6 +3,8 @@
   <head>
     <meta charset="utf-8">
     <title></title>
+
+    <link rel="stylesheet" href="./css/main.css">
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular.min.js" charset="utf-8"></script>
     <script src="/js/app.js" charset="utf-8"></script>
   </head>
@@ -42,5 +44,23 @@
 
     </form>
 
+
+<ul>
+  <li
+
+    ng-repeat="beer in ctrl.beers">
+    {{beer.name}}
+    {{beer.type}}
+    {{beer.ingredients}}
+    {{beer.abv}}
+    {{beer.ibu}}
+    {{beer.brewery}}
+    {{beer.purchaseLocation}}
+    {{beer.userRating}}
+
+  ></li>
+</ul>
+
+<!-- need to create button & form to update beer posts: ng-click="ctrl.updateBeerPost(beer)" -->
   </body>
 </html>
