@@ -8,13 +8,33 @@
     <link rel="icon" sizes="16x16 24x24 32x32 48x48 64x64" href="../assets/favicon.ico">
     <link rel="apple-touch-icon" sizes="57x57" href="./assets/favicon.ico">
 
+    <!-- Styles -->
+    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/css/bootstrap.min.css">
+
     <link rel="stylesheet" href="./css/main.css">
+
+    <!-- Scripts -->
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular.min.js" charset="utf-8"></script>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular-route.js" charset="utf-8"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
     <script src="/js/app.js" charset="utf-8"></script>
   </head>
+  
   <body>
     <section ng-controller="FlabController as flab">
-      {{ ctrl.flab }}
+      <header>
+        <div class="jumbotron text-center" id="heading">
+          <div class="container intro-text">
+            <h1 id="title">{ F L A B }</h1>
+            <h2 id="tagline">Football Loving A**hole Beerdrinkers</h2>
+            <h1>{{ ctrl.flab }}</h1>
+          </div>
+        </div>
+      </header>
+
 
       <!-- Beer Section -->
       <section id="beer" ng-include="'./beer.html'"></section>
