@@ -9,3 +9,5 @@ The design of this application is inspired by Girl Gang, which I contributed to 
 
 ### **Future Plans:**
  - [ ] Integrate 3rd Party API from                  http://www.brewerydb.com/developers/docs-endpoint/beer_index
+
+ - [ ] Add Comment/Reply functionality for Users to interact w/each other & content posted
