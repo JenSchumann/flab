@@ -3,7 +3,7 @@
   background-color: #39487f; */
 }
 
-#beer-jumbotron {
+#beer-jumbotron, #football-jumbotron {
   text-align: center;
   justify-content: center;
   /* background-color: white; */
