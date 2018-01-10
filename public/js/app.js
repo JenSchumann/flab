@@ -80,7 +80,7 @@ app.controller('BeersController', ['$http', function($http){
       console.log(controller.currentBeerPost);
 
       // add once user MODEL is fleshed out (w/express-session):
-      $scope.input = '';
+      // $scope.input = '';
       // $scope.checkUser.email !== controller.currentBeerPost.author
       // with a conditional to hide the tab 2 "beerEdit" id using
       // document.getElementById

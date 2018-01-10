@@ -12,7 +12,7 @@ router.get('/', function(req, res){
 
 //show route
 router.get('/:id', (req, res)=> {
-  Beer.find({_id : req.params.id }, function(err, foundBeer){
+  Beers.find({_id : req.params.id }, function(err, foundBeer){
     res.send(foundBeer);
   });
 });
