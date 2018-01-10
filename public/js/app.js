@@ -6,8 +6,21 @@ app.controller('FlabController', ['$http', function($http){
 
 }]); //end of FlabController
 
+
+////////////////////////////////////////////////////////////
+
+//Beer controller
+
+//will add 3rd party API functionality in near future from:
+// http://www.brewerydb.com/developers/docs-endpoint/beer_index
+
+////////////////////////////////////////////////////////////
+
 app.controller('BeersController', ['$http', function($http){
   const controller = this;
+  this.newDisplay = false;
+  this.currentBeerPost = {};
+  this.modal = false;
 
   this.createBeerPost = function(){
       $http({
@@ -31,38 +44,82 @@ app.controller('BeersController', ['$http', function($http){
       });
   }
 
+  this.toggleNew = function(){
+    this.newDisplay = !this.newDisplay;
+    //check if this works:
+    this.reset = function() {
+      this.addForm.reset();
+    }
+  }
+  this.toggleEdit = function(){
+      this.editDisplay = !this.editDisplay;
+    }
+    this.toggleModal = function(){
+      this.modal = !this.modal;
+      console.log('trying to get one beer post accessed through toggleModal');
+    }
+
+  // AJAX/get request for (beer post) index
   this.getBeerPosts = function(){
     $http({
       method:'GET',
-      url: 'http://localhost:3000/beers',
+      url: '/beers',
     }).then(function(response){
-      controller.beers = response.data //value of a successful ajax request
+      controller.allBeerPosts = response.data //value of a successful ajax request
     }, function(){
       console.log('error in getBeerPosts');
     });
-  };
+  }
 
-  this.updateBeerPost = function(beer){
+  this.setCurrentBeerPost = function(id){ //so we can edit it in the next function
+    $http({
+      method: 'GET',
+      url: '/beers/' + id
+    }).then(function(response){
+      controller.currentBeerPost = response.data[0];
+      console.log(controller.currentBeerPost);
+
+      // add once user MODEL is fleshed out (w/express-session):
+      $scope.input = '';
+      // $scope.checkUser.email !== controller.currentBeerPost.author
+      // with a conditional to hide the tab 2 "beerEdit" id using
+      // document.getElementById
+    }, function(error){
+      console.log('error in setCurrentBeerPost');
+    })
+  }
+
+  //ajax call to update beerPost
+  this.updateBeerPost = function(id){
     $http({
       method:'PUT',
-      url: 'http://localhost:3000/beers/' + beer._id,
-      data: {
-        beer: newBeer.name,
-        beer: newBeer.type,
-        beer: newBeer.ingredients,
-        beer: newBeer.abv,
-        beer: newBeer.ibu,
-        beer: newBeer.brewery,
-        beer: newBeer.purchaseLocation,
-        beer: newBeer.userRating
-      }
+      url: '/beers/' + id,
+      data: this.editedBeerPost
     }).then(function(response){
       controller.getBeerPosts();
+      //is this really necessary?:
+      controller.editDisplay = false;
+      controller.currentBeerPost = {};
+      controller.beer = {};
+      controller.editedBeerPost = {};
     }, function(){
       console.log('error in updateBeerPost');
     });
   }
 
-  this.getBeerPosts; //call immediately once controller is instantiated
+  this.deleteBeerPost = function(beer){
+    $http({
+      method: 'DELETE',
+      url: '/beers/' + beer,
+    }).then(function(response){
+      controller.getBeerPosts();
+      controller.modal = false;
+    }, function(err) {
+      console.log('error in deleteBeerPost');
+    }
+  );
+  }
+
+  this.getBeerPosts(); //call immediately once controller is instantiated
 
 }]); //end of BeersController

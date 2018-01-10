@@ -2,3 +2,26 @@
   /* border: 1px solid hotpink;
   background-color: #39487f; */
 }
+
+#beer-jumbotron {
+  text-align: center;
+  justify-content: center;
+  /* background-color: white; */
+}
+
+#mugHome {
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  margin-left: auto;
+  margin-right: auto;
+/* }
+
+#mugHome:hover { */
+  cursor: pointer;
+  animation: 5s linear 0s infinite spin
+ }
+@keyframes spin {
+  from {transform: rotate(0deg);}
+  to   {transform: rotate(360deg);}
+}

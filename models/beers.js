@@ -8,7 +8,8 @@ const beerSchema = mongoose.Schema({
   ibu: Number,
   brewery: String,
   purchaseLocation: String,
-  userRating: Number
+  userRating: Number,
+  author: {type:String, default: ''}
 });
 
 const Beers = mongoose.model('Beer', beerSchema);
