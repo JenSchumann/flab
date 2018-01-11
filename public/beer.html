@@ -46,14 +46,14 @@
           <input type="text" ng-model="beer.userRating" placeholder="Beer Rating"/><br>
           <br>
 
-          <input class="btn btn-warning" type="submit" value="Add Beer Post">
+          <input class="btn btn-warning" type="submit" value="Post">
 
         </form>
 
        </div> <!-- end new display -->
 
-    </div>  <!-- end row -->
-</div>
+    </div>   <!-- end beer-jumbotron -->
+</div> <!-- end row -->
     <!-- Beer Modal -->
     <div ng-if="beer.modal" id="beerModal">
       <div class="modal-dialog" role="document">
@@ -61,17 +61,18 @@
           <div class="modal-header">
 
             <button type="button" ng-click="beer.toggleModal()"class="close" data-dismiss="modal" aria-label="Close">
-              <span aria-hidden="true">&times;</span></button>
+              <span aria-hidden="true">&times;</span>
+            </button>
 
             <h3 class="modal-title">{{beer.currentBeerPost.name}} Post</h3>
-          </div>
+          </div> <!-- end modal-header -->
 
           <div class="modal-body">
             <h3 class="modal-title">{{beer.currentBeerPost.name}} Post</h3>
 
             <div id="beerPostInfo">
               <ul ng-click="beer.toggleModal()">
-
+                  <!-- is having the name again here redundant? -->
                   <li><strong> Beer: </strong>{{beer.currentBeerPost.name}}</li>
                   <li><strong> Style: </strong>{{beer.currentBeerPost.type}}</li>
                   <li><strong> Ingredients </strong>{{beer.currentBeerPost.ingredients}}</li>
@@ -81,8 +82,8 @@
                   <li><strong> Purchase Location: </strong>{{beer.currentBeerPost.purchaseLocation}}</li>
                   <li><strong> Rating: </strong>{{beer.currentBeerPost.userRating}}</li>
 
-                  <!-- update this: -->
-                  <li><strong> Posted by: </strong>{{beer.currentBeerPost.author}}</li>
+                  <!-- update this when user model is fleshed out: -->
+                  <!-- <li><strong> Posted by: </strong>{{beer.currentBeerPost.author}}</li> -->
 
               </ul>
             </div>

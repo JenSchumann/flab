@@ -18,9 +18,10 @@ app.controller('FlabController', ['$http', function($http){
 app.controller('FootballController', ['$http', function($http){
   const controller = this;
   this.obsession = 'College Football is the SUPERIOR Sport';
-  // this.newDisplay = false;
+  this.newDisplay = false;
+  this.modal = false;
   // this.currentFootballPost = {};
-  // this.modal = false;
+
 
   this.createFootballPost = function(){
       $http({
@@ -46,6 +47,10 @@ app.controller('FootballController', ['$http', function($http){
     this.reset = function() {
       this.addForm.reset();
     }
+  }
+  this.toggleModal = function(){
+    this.modal = !this.modal;
+    console.log('toggling to access football post');
   }
 
 

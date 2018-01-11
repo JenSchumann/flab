@@ -16,16 +16,77 @@
           <button class="btn btn-warning" type="submit" ng-click="football.toggleNew(); beer.addForm.reset()">Add Football Post</button>
         </div>
 
-        <!-- Add New Football Post Form -->
+<br><br>
+      <!-- Add New Football Post Form -->
         <div ng-if="football.newDisplay">
 
-          <form ng-submit="football.create()">
+          <form ng-submit="football.createFootballPost()">
 
-              <!-- h5 -->
+              <h5>Post Title:</h5><input type="text" ng-model="football.postTitle" placeholder="Post Title"/><br>
+
+              <!-- add author via user logged in -->
+
+              <h5>Football Podium Chatter:</h5><input type="textarea" ng-model="football.fbPost" placeholder="Football Post"/><br>
+
+              <h5>Football Tag(s):</h5><input type="text"
+              ng-model="football.tag" placeholder="Tag(s)"/><br>
+
+              <h5>If applicable, share URL:</h5><input type="text" ng.model="football.url" placeholder="URL"/><br>
+              <br>
+              <input class="btn btn-warning" type="submit" value="Post">
 
           </form>
 
+        </div> <!-- end new display -->
+
+      </div>  <!-- end football-jumbotron -->
+
+    </div> <!-- end row -->
+
+    <!-- Football Modal -->
+
+    <div ng-if="football.modal" id"footballModal">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+
+            <button type="button" ng-click="football.toggleModal()" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+
+            <h3 class="modal-title">{{football.currentFootballPost.postTitle}}</h>
+          </div> <!-- end modal-header -->
+
+          <div class="modal-body">
+            <h3 class="modal-title">{{football.currentFootballPost.postTitle}}</h3>
+
+            <div id="footballPostInfo">
+              <ul ng-click="football.toggleModal()">
+
+                <!-- add author via user logged in -->
+
+                <li> <strong>Football Podium Chatter:</strong> {{football.currentFootballPost.fbPost}}</li>
+
+                <li> <strong>Football Tag(s):</strong> {{football.currentFootballPost.tag}}</li>
+
+                <li> <span>
+                  <a href="{{football.currentFootballPost.url}}" target="_blank"><strong>Read More Here:</strong> {{football.currentFootballPost.tag}}</a></span></li>
+
+              </ul>
+            </div>
+            <!-- Tabs -->
+
+          </div>
         </div>
+
+      </div>
+
+    </div>
+
+
+
+
+
 
 </div>  <!-- end football-container -->
 
