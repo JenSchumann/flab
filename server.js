@@ -13,10 +13,10 @@ app.use(express.static('public'));
 const beersController = require('./controllers/beers.js');
 app.use('/beers', beersController);
 
-//index route
-app.get('/', function(req, res) {
-  res.render('index.ejs');
-});
+const footballController = require('./controllers/football.js');
+app.use('/football', footballController);
+
+
 
 
 
