@@ -36,8 +36,8 @@ router.put('/:id', function(req, res){
 router.delete('/:id', function(req, res){
   Beers.findByIdAndRemove(req.params.id, function(err, deletedBeer){
     res.json(deletedBeer);
-  })
-})
+  });
+});
 
 
 module.exports = router;
