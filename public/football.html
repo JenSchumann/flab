@@ -16,7 +16,16 @@
           <button class="btn btn-warning" type="submit" ng-click="football.toggleNew(); beer.addForm.reset()">Add Football Post</button>
         </div>
 
+        <!-- Add New Football Post Form -->
+        <div ng-if="football.newDisplay">
 
+          <form ng-submit="football.create()">
+
+              <!-- h5 -->
+
+          </form>
+
+        </div>
 
 </div>  <!-- end football-container -->
 
