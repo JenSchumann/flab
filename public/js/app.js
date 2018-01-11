@@ -6,6 +6,111 @@ app.controller('FlabController', ['$http', function($http){
 
 }]); //end of FlabController
 
+////////////////////////////////////////////////////////////
+
+//Football controller
+
+//researching for possible 3rd party API to integrate... possibly this one:
+// https://github.com/akeaswaran/cfb-scoreboard-api
+
+////////////////////////////////////////////////////////////
+
+app.controller('FootballController', ['$http', function($http){
+  const controller = this;
+  this.obsession = 'College Football is the SUPERIOR Sport';
+  // this.newDisplay = false;
+  // this.currentFootballPost = {};
+  // this.modal = false;
+
+  this.createFootballPost = function(){
+      $http({
+        method: 'POST',
+        url: '/football',
+        data: {
+          postTitle: this.postTitle,
+          author: this.author,
+          fbPost: this.fbPost,
+          tag: this.tag,
+          url: this.url
+        }
+      }).then(function(response){
+        controller.getFootballPosts();  //render all footballPosts when new one is added
+        //console.log(response);
+      }, function(){
+        console.log('error in createFootballPost');
+      });
+  }
+
+  this.toggleNew = function(){
+    this.newDisplay = !this.newDisplay;
+    this.reset = function() {
+      this.addForm.reset();
+    }
+  }
+
+
+  // AJAX/get request for Football Post index
+  this.getFootballPosts = function(){
+    $http({
+      method:'GET',
+      url: '/football',
+    }).then(function(response){
+      controller.allFootballPosts = response.data //value of a successful ajax request
+    }, function(){
+      console.log('error in getFootballPosts');
+    });
+  }
+
+  this.setCurrentFootballPost = function(id){  //grabbing it by id so it can //be edited in next function
+    $http({
+      method: 'GET',
+      url: '/football/' + id
+    }).then(function(response){
+      controller.currentFootballPost = response.data[0];
+      console.log(controller.currentFootballPost);
+
+      // add angular hidden custom directive to check user w/football post // author to determine whether edit functions are visible in html
+
+    }, function(error){
+      console.log('error in setCurrentFootballPost');
+    })
+  }
+
+  //ajax call to update footballPost
+  this.updateFootballPost = function(id){
+    $http({
+      method:'PUT',
+      url: '/football/' + id,
+      data: this.editedFootballPost
+    }).then(function(response){
+      controller.getFootballPosts();
+      controller.editDisplay = false;
+      controller.currentFootballPost = {};
+      controller.football = {};
+      controller.editedFootballPost = {};
+    }, function(){
+      console.log('error in updateBeerPost');
+    });
+  }
+
+  this.deleteFootballPost = function(football){
+    $http({
+      method: 'DELETE',
+      url: '/football/' + football,
+    }).then(function(response){
+      controller.getFootballPosts();
+      controller.modal = false;
+    }, function(err) {
+      console.log('error in deleteFootballPost');
+    }
+  );
+  }
+  this.getFootballPosts();
+
+}]);  //end of FootballController
+
+
+
 
 ////////////////////////////////////////////////////////////
 
@@ -18,6 +123,7 @@ app.controller('FlabController', ['$http', function($http){
 
 app.controller('BeersController', ['$http', function($http){
   const controller = this;
+  this.suds = '..Are proof that God wants us to be happy!'
   this.newDisplay = false;
   this.currentBeerPost = {};
   this.modal = false;
@@ -25,7 +131,7 @@ app.controller('BeersController', ['$http', function($http){
   this.createBeerPost = function(){
       $http({
         method: 'POST',
-        url: 'http://localhost:3000/beers',
+        url: '/beers',
         data: {
           name: this.name,
           type: this.type,
