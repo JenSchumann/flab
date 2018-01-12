@@ -3,6 +3,7 @@ const mongoose = require('mongoose');
 const smackSchema = mongoose.Schema({
   smackTitle: String,
   author: { type:String, default:'' },
+  img: String,
   smackdown: String,
   tag: String
 });

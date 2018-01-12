@@ -129,7 +129,7 @@
     <div class="row" id="display">
       <ul id="football-list">
 
-        <li ng-repeat="footballPost in football.allFootballPosts" ng-click="football.setCurrentFootballPost(footballPost._id)">
+        <li ng-repeat="footballPost in football.allFootballPosts | filter:searchBox" ng-init="limit = 28" ng-click="football.setCurrentFootballPost(footballPost._id)">
           <div class="col-md-4" id="football-item">
             <button class="btn btn-warning" id="football-button" ng-click="football.toggleModal()">
             <img src="./assets/football-24-102853.png"
