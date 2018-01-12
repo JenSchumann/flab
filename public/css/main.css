@@ -3,7 +3,7 @@
   background-color: #39487f; */
 }
 
-#beer-jumbotron, #football-jumbotron {
+#beer-jumbotron, #football-jumbotron, #smack-jumbotron {
   text-align: center;
   justify-content: center;
   /* background-color: white; */
@@ -29,4 +29,19 @@
 li {
 	list-style: none;
   top: 0;
+}
+
+.postButton {
+  width: 14em;
+  height: 6em;
+}
+
+#footer {
+  height: 60px;
+  background-color: black;
+  color: #f2a41f;
+  text-align: center;
+  bottom: 0;
+  margin: 0 auto;
+  position: sticky;
 }

@@ -131,7 +131,7 @@
 
         <li ng-repeat="footballPost in football.allFootballPosts | filter:searchBox" ng-init="limit = 28" ng-click="football.setCurrentFootballPost(footballPost._id)">
           <div class="col-md-4" id="football-item">
-            <button class="btn btn-warning" id="football-button" ng-click="football.toggleModal()">
+            <button class="btn btn-warning postButton" id="football-button" ng-click="football.toggleModal()">
             <img src="./assets/football-24-102853.png"
             alt="FLAB"><br>  {{footballPost.postTitle}}</button>
 

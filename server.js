@@ -16,11 +16,8 @@ app.use('/beers', beersController);
 const footballController = require('./controllers/football.js');
 app.use('/football', footballController);
 
-
-
-
-
-
+const smackController = require('./controllers/smack.js');
+app.use('/smack', smackController);
 
 
 
