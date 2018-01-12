@@ -4,7 +4,7 @@
     <div class="row">
 
       <div class="jumbotron" id="smack-jumbotron">
-        <!-- <img id="smackDizzy" src="./assets/FINDANDIMAGEFORTHISSECTION" alt="FLAB"><br> -->
+        <!-- <img id="smackDizzy" src="./assets/FINDANIMAGEFORTHISSECTION" alt="FLAB"><br> -->
         <h1>Cuz.. A**holes Smack.. Right?</h1>
         <!-- use smack brain & come up with smackalicious tagline -->
         <h2>Ready for a little Roast??</h2><br>
@@ -17,3 +17,25 @@
         </div>
 
 <br><br>
+      <!-- Add New Smack Post Form -->
+      <div ng-if="smack.newDisplay">
+
+        <form ng-submit="smack.createSmackPost()">
+
+<!-- =========================================== -->
+<!-- flesh out the inputs from smack schema -->
+          <h5></h5><input type="text" /><br>
+
+          <!-- add author via user logged in -->
+
+          <h5></h5><input type="text" /><br>
+
+          <h5></h5><input type="text" /><br>
+
+          <h5></h5><input type="text" /><br>
+
+<!-- =========================================== -->
+          <input class="btn btn-warning" type="submit" value="Post">
+        </form>
+
+      </div> <!-- end new display -->
