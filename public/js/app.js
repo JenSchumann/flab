@@ -10,6 +10,8 @@ app.controller('FlabController', ['$http', function($http){
 
 //Football controller
 
+//will scrape game season schedule from ESPN site or
+
 //researching for possible 3rd party API to integrate... possibly this one:
 // https://github.com/akeaswaran/cfb-scoreboard-api
 
@@ -120,8 +122,6 @@ app.controller('FootballController', ['$http', function($http){
 ////////////////////////////////////////////////////////////
 
 //Beer controller
-
-//will scrape game season schedule from ESPN site or
 
 //will add 3rd party API functionality in near future from:
 // http://www.brewerydb.com/developers/docs-endpoint/beer_index
