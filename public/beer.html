@@ -146,7 +146,7 @@
     <ul id="beer-list">
       <li ng-repeat="beerPost in beer.allBeerPosts" ng-click="beer.setCurrentBeerPost(beerPost._id)">
         <div class="col-md-4" id="beer-item">
-          <button class="btn btn-warning" id="beer-button" ng-click="beer.toggleModal()">
+          <button class="btn btn-warning postButton" id="beer-button" ng-click="beer.toggleModal()">
           <img src="./assets/beer-mug-silhouette-24-278747.png" alt="FLAB"><br>{{beerPost.name}}</button>
 
           <!-- add comment glyphicon when functionality is fleshed out -->

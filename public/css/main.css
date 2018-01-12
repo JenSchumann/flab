@@ -31,6 +31,11 @@ li {
   top: 0;
 }
 
+.postButton {
+  width: 14em;
+  height: 6em;
+}
+
 #footer {
   height: 60px;
   background-color: black;
