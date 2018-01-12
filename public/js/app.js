@@ -236,3 +236,47 @@ app.controller('BeersController', ['$http', function($http){
   this.getBeerPosts(); //call immediately once controller is instantiated
 
 }]); //end of BeersController
+
+
+////////////////////////////////////////////////////////////
+
+//Smack controller
+
+//perhaps utilize 3rd party API for random chuck norris smack appearing content from https://github.com/chucknorris-io/chuck-api
+
+////////////////////////////////////////////////////////////
+
+app.controller('SmackController', ['$http', function($http){
+  const controller = this;
+  //string below courtesy of https://api.chucknorris.io/jokes/9HfAFHoJQXGwWpKuFwv4yQ
+  this.rivalry = "Ever notice just how much Chuck Norris' a**hole and your face resemble each other?";
+  // this.newDisplay = false;
+  // this.currentSmackPost = {};
+  // this.modal = false;
+
+  this.createSmackPost = function(){
+      $http({
+        method: 'POST',
+        url: '/smack',
+        data: {
+          smackTitle: this.smackTitle,
+          img: this.img,
+          smackdown: this.smackdown,
+          tag: this.tag
+        }
+      }).then(function(response){
+        controller.getSmackPosts();  //render all smackPosts when new one is added
+        // console.log(response);
+      }, function(){
+        console.log('error in createSmackPost');
+      });
+  }
+
+  this.toggleNew = function(){
+    this.newDisplay = !this.newDisplay;
+    this.reset = function() {
+      this.addForm.reset();
+    }
+  }
+
+}])
