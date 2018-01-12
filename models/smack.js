@@ -12,7 +12,7 @@ const Smack = mongoose.model('Smack', smackSchema)
 
 
 //exports
-module.exports = Football;
+module.exports = Smack;
 
 
 

@@ -242,7 +242,7 @@ app.controller('BeersController', ['$http', function($http){
 
 //Smack controller
 
-//perhaps utilize 3rd party API for random chuck norris smack appearing content from https://github.com/chucknorris-io/chuck-api
+//perhaps utilize 3rd party API for randomly appearing chuck norris smack content from https://github.com/chucknorris-io/chuck-api
 
 ////////////////////////////////////////////////////////////
 
@@ -250,7 +250,7 @@ app.controller('SmackController', ['$http', function($http){
   const controller = this;
   //string below courtesy of https://api.chucknorris.io/jokes/9HfAFHoJQXGwWpKuFwv4yQ
   this.rivalry = "Ever notice just how much Chuck Norris' a**hole and your face resemble each other?";
-  // this.newDisplay = false;
+  this.newDisplay = false;
   // this.currentSmackPost = {};
   // this.modal = false;
 
@@ -278,5 +278,9 @@ app.controller('SmackController', ['$http', function($http){
       this.addForm.reset();
     }
   }
+
+  //still needs the RUD of crud below for smack..
+  //and in case you're wondering: Neo is The One, the one after Chuck Norris.
+
 
 }])
