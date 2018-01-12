@@ -4,7 +4,7 @@
     <div class="row">
 
       <div class="jumbotron" id="football-jumbotron">
-
+        <img id="mugHome" src="./assets/football-152-102853.png" alt="FLAB"><br>
         <h1>Pigskin Slapstick</h1>
         <!-- use the brain cells.. come up w/a better tagline -->
         <h2>Who's the Best?</h2><br>
@@ -69,23 +69,82 @@
 
                 <li> <strong>Football Tag(s):</strong> {{football.currentFootballPost.tag}}</li>
 
-                <li> <span>
-                  <a href="{{football.currentFootballPost.url}}" target="_blank"><strong>Read More Here:</strong> {{football.currentFootballPost.tag}}</a></span></li>
+                <li> <span> <strong>Read More Here:</strong>
+                  <a href="{{football.currentFootballPost.url}}" target="_blank"> {{football.currentFootballPost.url}}</a></span></li>
 
               </ul>
             </div>
             <!-- Tabs -->
+            <ul class="nav nav-tabs">
+              <li class="nav-item">
+                <a class="nav-link-active" href="#footballComment" data-toggle="tab" role="tab">Comments</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="#footballEdit" data-toggle="tab" role="tab">Edit</a>
+              </li>
+            </ul>
 
+            <div class="tab-content">
+              <!-- Tab 1 Content -->
+              <div class="tab-pane fade in show active" id="footballComment" role="tabpanel">
+                <!-- add footballComment form -->
+                <!-- user will have ability to post comments as reply to football posts here -->
+              </div>
+
+              <!-- Tab 2 Content -->
+              <div class="tab-pane fade" id="footballEdit" role="tabpanel">
+              <!-- Edit Form -->
+              <h2>Wanna Update Your Post?</h2>
+
+              <form id="footballForm"
+              ng-submit="football.updateFootballPost(football.currentFootballPost._id)" ng-click="football.addForm.reset()">
+
+                <input type="text" placeholder="{{football.currentFootballPost.postTitle}}"
+                ng-model="football.editedFootballPost.postTitle">
+
+                <input type="textarea" placeholder="{{football.currentFootballPost.fbPost}}"
+                ng-model="football.editedFootballPost.fbPost">
+
+                <input type="text"
+                placeholder="{{football.currentFootballPost.tag}}"
+                ng-model="football.editedFootballPost.tag">
+
+                <input type="text" placeholder="{{football.currentFootballPost.url}}"
+                ng-model="football.editedFootballPost.url">
+
+              </form>
+
+              <button class="btn btn-warning" ng-click="football.deleteFootballPost(football.currentFootballPost._id)">Remove Post</button>
+
+              </div>  <!-- end tab two -->
+            </div>  <!-- end tab content -->
+
+          </div>  <!-- end modal body -->
+
+        </div>  <!-- end modal content -->
+      </div>  <!-- end modal dialog -->
+    </div>  <!-- end footballModal -->
+
+    <!-- All Football Posts -->
+    <div class="row" id="display">
+      <ul id="football-list">
+
+        <li ng-repeat="footballPost in football.allFootballPosts" ng-click="football.setCurrentFootballPost(footballPost._id)">
+          <div class="col-md-4" id="football-item">
+            <button class="btn btn-warning" id="football-button" ng-click="football.toggleModal()">
+            <img src="./assets/football-24-102853.png"
+            alt="FLAB"><br>  {{footballPost.postTitle}}</button>
+
+            <!-- add comment glyphicon when functionality is fleshed out -->
           </div>
-        </div>
 
-      </div>
+        </li><br>
 
+      </ul>
+<br>
     </div>
 
-
-
-
+<br><br>
 
 
 </div>  <!-- end football-container -->
