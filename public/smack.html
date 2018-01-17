@@ -24,15 +24,19 @@
 
 <!-- =========================================== -->
 <!-- flesh out the inputs from smack schema -->
-          <h5></h5><input type="text" /><br>
+          <h5>Smack Title:</h5><input type="text"
+          ng-model="smack.smackTitle" placeholder="Give Your Smack A Name"/><br>
 
           <!-- add author via user logged in -->
 
-          <h5></h5><input type="text" /><br>
+          <h5>Smack Image:</h5><input type="text"
+          ng-model="smack.img" placeholder="Sometimes Smack Needs to be Visual" /><br>
 
-          <h5></h5><input type="text" /><br>
+          <h5>The Smack:</h5><input type="text"
+          ng-model="smack.smackdown" placeholder="All the Smack" /><br>
 
-          <h5></h5><input type="text" /><br>
+          <h5>Tag(s):</h5><input type="text"
+          ng-model="smack.tag" placeholder="Tag the Smack" /><br>
 
 <!-- =========================================== -->
           <input class="btn btn-warning" type="submit" value="Post">
