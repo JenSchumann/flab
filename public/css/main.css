@@ -9,7 +9,11 @@
   /* background-color: white; */
 }
 
-#mugHome, #footballSpinner {
+#smackDizzy {
+  width: 8em;
+  height: 10em;
+}
+#mugHome, #footballSpinner, #smackDizzy {
   margin: 0 auto;
   display: flex;
   align-items: center;
@@ -34,6 +38,11 @@ li {
 .postButton {
   width: 14em;
   height: 6em;
+}
+
+#smackMouthButtonPic {
+  width: 3em;
+  height: 4em;
 }
 
 #footer {

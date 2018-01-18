@@ -5,6 +5,7 @@
 
       <div class="jumbotron" id="smack-jumbotron">
         <!-- <img id="smackDizzy" src="./assets/FINDANIMAGEFORTHISSECTION" alt="FLAB"><br> -->
+        <img id="smackDizzy" src="./assets/talking_mouth.gif" alt="FLAB"><br>
         <h1>Cuz.. A**holes Smack.. Right?</h1>
         <!-- use smack brain & come up with smackalicious tagline -->
         <h2>Ready for a little Roast??</h2><br>
@@ -59,7 +60,7 @@
           </div> <!-- end modal-header -->
 
           <div class="modal-body">
-            <h3 class="modal-title">{{smack.currentSmackPost.smackTitle}} Post</h3>
+            <!-- <h3 class="modal-title">{{smack.currentSmackPost.smackTitle}} Post</h3> -->
 
             <div id="smackPostInfo">
               <ul ng-click="smack.toggleModal()">
@@ -82,6 +83,24 @@
       </div>
     </div>
   </div>   <!-- end smackModal -->
+
+
+  <!-- Get ALL the Smack -->
+  <div class="row" id="display">
+    <ul id="smack-list">
+      <li ng-repeat="smackPost in smack.allSmackPosts" ng-click="smack.setCurrentSmackPost(smackPost._id)">
+        <div class="col-md-4" id="smack-item">
+          <button class="btn btn-warning postButton" id="smack-button" ng-click="smack.toggleModal()">
+          <img id="smackMouthButtonPic" src="./assets/talking_mouth.gif" alt="FLAB"><br>{{smackPost.smackTitle}}</button>
+
+          <!-- add comment glyphicon when functionality is fleshed out -->
+        </div>
+
+      </li>
+
+    </ul>
+
+  </div>
 
 
 

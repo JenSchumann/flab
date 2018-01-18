@@ -318,5 +318,5 @@ app.controller('SmackController', ['$http', function($http){
     })
   }
 
-
+  this.getSmackPosts();
 }]); //end of SmackController
