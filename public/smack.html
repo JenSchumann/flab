@@ -22,8 +22,6 @@
 
         <form ng-submit="smack.createSmackPost()">
 
-<!-- =========================================== -->
-<!-- flesh out the inputs from smack schema -->
           <h5>Smack Title:</h5><input type="text"
           ng-model="smack.smackTitle" placeholder="Give Your Smack A Name"/><br>
 
@@ -37,9 +35,58 @@
 
           <h5>Tag(s):</h5><input type="text"
           ng-model="smack.tag" placeholder="Tag the Smack" /><br>
+          <br>
 
-<!-- =========================================== -->
           <input class="btn btn-warning" type="submit" value="Post">
         </form>
 
       </div> <!-- end new display -->
+    </div>   <!-- end smack-jumbotron -->
+</div> <!-- end row -->
+
+    <!-- Smack Modal -->
+
+    <div ng-if="smack.modal" id="smackModal">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+
+            <button type="button" ng-click="smack.toggleModal()"class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+
+            <h3 class="modal-title">{{smack.currentSmackPost.smackTitle}} Post</h3>
+          </div> <!-- end modal-header -->
+
+          <div class="modal-body">
+            <h3 class="modal-title">{{smack.currentSmackPost.smackTitle}} Post</h3>
+
+            <div id="smackPostInfo">
+              <ul ng-click="smack.toggleModal()">
+
+                  <li><img ng-src="{{smack.currentSmackPost.img}}"/><br/></li>
+                  <li><strong> The Smack: </strong>{{smack.currentSmackPost.smackdown}}</li>
+                  <li><strong> Smack Tag(s): </strong>{{smack.currentSmackPost.tag}}</li>
+
+                  <!-- update this when user model is fleshed out: -->
+                  <!-- <li><strong> Posted by: </strong>{{smack.currentSmackPost.author}}</li> -->
+
+              </ul>
+            </div>
+
+          <!-- Tabs -->
+
+
+
+          </div>  <!-- end modal body -->
+      </div>
+    </div>
+  </div>   <!-- end smackModal -->
+
+
+
+<br><br>
+
+</div>  <!-- end smack-container -->
+
+</div>  <!-- end smackController -->

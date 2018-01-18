@@ -251,8 +251,8 @@ app.controller('SmackController', ['$http', function($http){
   //string below courtesy of https://api.chucknorris.io/jokes/9HfAFHoJQXGwWpKuFwv4yQ
   this.rivalry = "Ever notice just how much Chuck Norris' a**hole and your face resemble each other?";
   this.newDisplay = false;
-  // this.currentSmackPost = {};
-  // this.modal = false;
+  this.currentSmackPost = {};
+  this.modal = false;
 
   this.createSmackPost = function(){
       $http({
@@ -266,7 +266,7 @@ app.controller('SmackController', ['$http', function($http){
         }
       }).then(function(response){
         controller.getSmackPosts();  //render all smackPosts when new one is added
-        // console.log(response);
+        console.log(response);
       }, function(){
         console.log('error in createSmackPost');
       });
@@ -279,8 +279,44 @@ app.controller('SmackController', ['$http', function($http){
     }
   }
 
+  this.toggleModal = function(){
+    this.modal = !this.modal;
+    console.log('trying to get some smack through toggleModal');
+  }
+
+
   //still needs the RUD of crud below for smack..
   //and in case you're wondering: Neo is The One, the one after Chuck Norris.
 
+  // AJAX/get request for (smack post) index
+  this.getSmackPosts = function(){
+    $http({
+      method:'GET',
+      url: '/smack',
+    }).then(function(response){
+      controller.allSmackPosts = response.data //value of a successful ajax request
+    }, function(){
+      console.log('error in getSmackPosts');
+    });
+  }
 
-}])
+  this.setCurrentSmackPost = function(id){ //so we can edit it in the next function
+    $http({
+      method: 'GET',
+      url: '/smack/' + id
+    }).then(function(response){
+      controller.currentSmackPost = response.data[0];
+      console.log(controller.currentSmackPost);
+
+      // add once user MODEL is fleshed out (w/express-session):
+      // $scope.input = '';
+      // $scope.checkUser.email !== controller.currentSmackPost.author
+      // with a conditional to hide the tab 2 "smackEdit" id using
+      // document.getElementById
+    }, function(error){
+      console.log('error in setCurrentSmackPost');
+    })
+  }
+
+
+}]); //end of SmackController
