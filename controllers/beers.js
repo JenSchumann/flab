@@ -1,6 +1,7 @@
 const express = require('express');
 const router = express.Router();
 const Beers = require('../models/beers.js');
+const User = require('../models/user.js')
 
 
 //index route

@@ -3,10 +3,18 @@ const express = require('express');
 const mongoose = require('mongoose');
 const bodyParser = require('body-parser');
 const app = express();
+const session = require('express-session')
+const env = require('dotenv').config()
 
 //middleware
+app.use(bodyParser.urlencoded({extended:false}));
 app.use(bodyParser.json());
 app.use(express.static('public'));
+app.use(session({
+	secret: process.env.SECRET,
+	resave: false,
+	saveUninitialized: false
+}))
 
 
 //controllers
@@ -18,6 +26,9 @@ app.use('/football', footballController);
 
 const smackController = require('./controllers/smack.js');
 app.use('/smack', smackController);
+
+const userController = require('./controllers/users.js');
+app.use('/users', userController);
 
 
 
