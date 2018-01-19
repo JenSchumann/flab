@@ -335,5 +335,19 @@ app.controller('SmackController', ['$http', function($http){
     });
   }
 
+  //ajax call to delete that smack... Chuck Norris invented this w/his fists
+  this.deleteSmackPost = function(smack){
+    $http({
+      method: 'DELETE',
+      url: '/smack/' + smack,
+    }).then(function(response){
+      controller.getSmackPosts();
+      controller.modal = false;
+    }, function(err) {
+      console.log('error in deleteSmackPost');
+    }
+  );
+  }
+
   this.getSmackPosts();
 }]); //end of SmackController
