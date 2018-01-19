@@ -2,7 +2,12 @@ const app = angular.module('FlabApp', []);
 
 app.controller('FlabController', ['$http', function($http){
   const controller = this;
-  this.flab = '{ Football Loving A**hole Beerdrinkers }';
+  this.flabbiness = '{ Football Loving A**hole Beerdrinkers }';
+  this.modal = false;
+  this.toggleModal = function(){
+    this.modal = !this.modal;
+    console.log('cuz everyone wants to know what FLAB is about');
+  }
 
 }]); //end of FlabController
 
@@ -333,6 +338,20 @@ app.controller('SmackController', ['$http', function($http){
     }, function(){
       console.log('error in updateSmackPost');
     });
+  }
+
+  //ajax call to delete that smack... Chuck Norris invented this w/his fists
+  this.deleteSmackPost = function(smack){
+    $http({
+      method: 'DELETE',
+      url: '/smack/' + smack,
+    }).then(function(response){
+      controller.getSmackPosts();
+      controller.modal = false;
+    }, function(err) {
+      console.log('error in deleteSmackPost');
+    }
+  );
   }
 
   this.getSmackPosts();
