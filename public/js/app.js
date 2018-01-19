@@ -2,7 +2,12 @@ const app = angular.module('FlabApp', []);
 
 app.controller('FlabController', ['$http', function($http){
   const controller = this;
-  this.flab = '{ Football Loving A**hole Beerdrinkers }';
+  this.flabbiness = '{ Football Loving A**hole Beerdrinkers }';
+  this.modal = false;
+  this.toggleModal = function(){
+    this.modal = !this.modal;
+    console.log('cuz everyone wants to know what FLAB is about');
+  }
 
 }]); //end of FlabController
 

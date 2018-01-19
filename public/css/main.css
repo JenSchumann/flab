@@ -3,6 +3,10 @@
   background-color: #39487f; */
 }
 
+#title {
+  padding-top: 5%;
+}
+
 #beer-jumbotron, #football-jumbotron, #smack-jumbotron {
   text-align: center;
   justify-content: center;
