@@ -1,6 +1,7 @@
 const express = require('express');
 const router = express.Router();
 const Smack = require('../models/smack.js');
+const User = require('../models/user.js')
 
 
 //index route
