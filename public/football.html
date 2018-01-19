@@ -99,6 +99,10 @@
               <form id="footballForm"
               ng-submit="football.updateFootballPost(football.currentFootballPost._id)" ng-click="football.addForm.reset()">
 
+              <!-- add <p> for each input w/title for user to know what they are updating -->
+
+              <!-- use bootstrap formatting for input groups for better user experience -->
+
                 <input type="text" placeholder="{{football.currentFootballPost.postTitle}}"
                 ng-model="football.editedFootballPost.postTitle">
 
@@ -130,7 +134,7 @@
     <!-- All Football Posts -->
     <div class="row" id="display">
       <ul id="football-list">
-
+        <!-- this searchbox filter probably should go in the jumbotron area -->
         <li ng-repeat="footballPost in football.allFootballPosts | filter:searchBox" ng-init="limit = 28" ng-click="football.setCurrentFootballPost(footballPost._id)">
           <div class="col-md-4" id="football-item">
             <button class="btn btn-warning postButton" id="football-button" ng-click="football.toggleModal()">
