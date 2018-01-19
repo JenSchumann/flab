@@ -278,15 +278,13 @@ app.controller('SmackController', ['$http', function($http){
       this.addForm.reset();
     }
   }
-
+  this.toggleEdit = function(){
+      this.editDisplay = !this.editDisplay;
+  }
   this.toggleModal = function(){
     this.modal = !this.modal;
     console.log('trying to get some smack through toggleModal');
   }
-
-
-  //still needs the RUD of crud below for smack..
-  //and in case you're wondering: Neo is The One, the one after Chuck Norris.
 
   // AJAX/get request for (smack post) index
   this.getSmackPosts = function(){
@@ -300,6 +298,7 @@ app.controller('SmackController', ['$http', function($http){
     });
   }
 
+  //Neo is The One, the one after Chuck Norris.
   this.setCurrentSmackPost = function(id){ //so we can edit it in the next function
     $http({
       method: 'GET',
@@ -316,6 +315,24 @@ app.controller('SmackController', ['$http', function($http){
     }, function(error){
       console.log('error in setCurrentSmackPost');
     })
+  }
+
+  //ajax call to update smackPost... b/c sometimes.... smack needs to be edited..
+  this.updateSmackPost = function(id){
+    $http({
+      method:'PUT',
+      url: '/smack/' + id,
+      data: this.editedSmackPost
+    }).then(function(response){
+      controller.getSmackPosts();
+      //is this really necessary?: ...is smack really necessary?
+      controller.editDisplay = false;
+      controller.currentSmackPost = {};
+      controller.smack = {};
+      controller.editedSmackPost = {};
+    }, function(){
+      console.log('error in updateSmackPost');
+    });
   }
 
   this.getSmackPosts();

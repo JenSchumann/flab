@@ -56,7 +56,7 @@
               <span aria-hidden="true">&times;</span>
             </button>
 
-            <h3 class="modal-title">{{smack.currentSmackPost.smackTitle}} Post</h3>
+            <h3 class="modal-title">Post: {{smack.currentSmackPost.smackTitle}}</h3>
           </div> <!-- end modal-header -->
 
           <div class="modal-body">
@@ -76,12 +76,47 @@
             </div>
 
           <!-- Tabs -->
+          <ul class="nav nav-tabs">
+            <li class="nav-item">
+              <a class="nav-link-active" href="#smackComment" data-toggle="tab" role="tab">Comments</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#smackEdit" data-toggle="tab" role="tab">Edit</a>
+            </li>
+          </ul>
 
+          <div class="tab-content">
+            <!-- Tab 1 Content -->
+            <div class="tab-pane fade in show active" id="smackComment" role="tabpanel">
+              <!-- add smackComment form -->
+              <!-- user will have ability to post comments as reply to smack posts here -->
+            </div>
 
+            <!-- Tab 2 Content -->
+            <div class="tab-pane fade" id="smackEdit" role="tabpanel">
+            <!-- Edit Form -->
+            <h2>Do You Need To Edit Your Smack?</h2>
 
-          </div>  <!-- end modal body -->
-      </div>
-    </div>
+            <form id="smackForm" ng-submit="smack.updateSmackPost(smack.currentSmackPost._id)" ng-click="smack.addForm.reset()">
+
+              <input type="text" placeholder="{{smack.currentSmackPost.smackTitle}}" ng-model="smack.editedSmackPost.smackTitle">
+
+              <input type="text" placeholder="{{smack.currentSmackPost.img}}"  ng-model="smack.editedSmackPost.img">
+
+              <input type="text" placeholder="{{smack.currentSmackPost.smackdown}}" ng-model="smack.editedSmackPost.smackdown">
+
+              <input type="text" placeholder="{{smack.currentSmackPost.tag}}" ng-model="smack.editedSmackPost.tag">
+
+            </form>
+            <button class="btn btn-warning" type="submit" ng-click="smack.updateSmackPost(smack.currentSmackPost._id); smack.toggleModal()">Update</button>
+            <button class="btn btn-warning" ng-click="football.deleteSmackPost(smack.currentSmackPost._id)">Remove Smack</button>
+
+            </div>  <!-- end tab two -->
+          </div>  <!-- end tab content -->
+
+        </div>  <!-- end modal body -->
+      </div>  <!-- end modal content -->
+    </div>  <!-- end modal dialog -->
   </div>   <!-- end smackModal -->
 
 
@@ -96,10 +131,10 @@
           <!-- add comment glyphicon when functionality is fleshed out -->
         </div>
 
-      </li>
+      </li><br>
 
     </ul>
-
+<br>
   </div>
 
 

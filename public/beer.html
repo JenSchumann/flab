@@ -128,6 +128,7 @@
                       <input type="text" placeholder="{{beer.currentBeerPost.userRating}}" ng-model="beer.editedBeerPost.userRating">
 
                     </form>
+                    <button class="btn btn-warning" type="submit" ng-click="beer.updateBeerPost(beer.currentBeerPost._id); beer.toggleModal()">Update</button>
 
 
                   <button class="btn btn-warning" ng-click="beer.deleteBeerPost(beer.currentBeerPost._id)">Remove Post</button>
