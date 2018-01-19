@@ -40,6 +40,10 @@ li {
   height: 6em;
 }
 
+#football-button, #smack-button, #beer-button {
+  margin: 2%;
+}
+
 #smackMouthButtonPic {
   width: 3em;
   height: 4em;
