@@ -80,7 +80,6 @@ app.controller('UserController', ['$http', '$scope', function($http, $scope){
       controller.verifyLogin();
       console.log('verified user is logged in');
 
-
     } else {
       controller.message = response.data
     };
@@ -88,6 +87,7 @@ app.controller('UserController', ['$http', '$scope', function($http, $scope){
       console.log(err);
     });
   };
+
   //ajax call to logout a session
   this.logOut = function(){
     $http({
@@ -99,6 +99,7 @@ app.controller('UserController', ['$http', '$scope', function($http, $scope){
       console.log('user logged out');
     });
   };
+
   //ajax call to show all  the users
   this.getUsers = function(){
     $http({
@@ -111,6 +112,7 @@ app.controller('UserController', ['$http', '$scope', function($http, $scope){
       console.log(err);
     });
   };
+
   this.verifyLogin = function(){
     $http({
       method: 'GET',
@@ -122,6 +124,7 @@ app.controller('UserController', ['$http', '$scope', function($http, $scope){
       console.log(err);
     });
   };
+
   //ajax call to identify a certain user by id
   this.setCurrentUser = function(id){
     $http({
@@ -134,6 +137,7 @@ app.controller('UserController', ['$http', '$scope', function($http, $scope){
       console.log(err);
     });
   };
+
   //this is where the issue is:
   //ajax call to update the user
   this.updateUser = function(id){
@@ -156,6 +160,7 @@ app.controller('UserController', ['$http', '$scope', function($http, $scope){
       // console.log('error in update route');
     });
   };
+  
   //ajax call to delete the user
   this.deleteUser = function(user){
     $http({
