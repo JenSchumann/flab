@@ -24,9 +24,17 @@
   </head>
 
   <body>
+    <section ng-controller="UserController as user">
 
     <!-- Navbar Section -->
     <section id="navbar" ng-include="'./nav.html'"></section>
+
+
+
+
+
+    <!-- Signup/Login Forms Section -->
+    <section id="forms" ng-include="'./forms.html'"></section>
 
 
     <section ng-controller="FlabController as flab">
@@ -65,6 +73,6 @@
 
 
      </section> <!-- end section tag for FlabController -->
-
+</section>
   </body>
 </html>
