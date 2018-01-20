@@ -37,6 +37,13 @@ router.post('/register', (req, res)=>{
   });
 });
 
+//create user profile
+router.post('/', function(req, res){
+  User.create(req.body, function(err, createdUserProfile){
+    res.json(createdUserProfile);
+  });
+});
+
 //login user - post route
 router.post('/login', (req, res)=> {
   User.findOne({ email: req.body.email }, (err, user)=> {

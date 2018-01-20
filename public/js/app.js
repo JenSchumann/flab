@@ -32,8 +32,35 @@ app.controller('UserController', ['$http', '$scope', function($http, $scope){
   this.loggedIn = false;
   this.loginForm = true;
   this.registerForm = false;
+  this.newDisplay = false;
 
+  //create random lines like this w/credit to someecards.com:
+  this.hasBestPicks = "Beating you at fantasy football would probably feel better if I wasn't beating you at everything else in life.";
 
+  this.createdUserProfile = function(){
+    $http({
+      method: 'POST',
+      url: '/users',
+      data: {
+        //schema: this.schema,
+        name: this.name,
+        image: this.image,
+        bio: this.bio
+      }
+    }).then(function(response){
+      controller.getUserProfiles()  //render all userProfiles when new one is added
+      console.log(response);
+    }, function(){
+      console.log('error in createdUserProfile');
+    });
+  }
+
+  this.toggleNew = function(){
+    this.newDisplay = !this.newDisplay;
+    this.reset = function() {
+      this.addForm.reset();
+    }
+  }
   this.toggleModal = function(){
     this.modal = !this.modal;
   };
@@ -116,6 +143,19 @@ app.controller('UserController', ['$http', '$scope', function($http, $scope){
     });
   };
 
+  //ajax call to show all the user profiles
+  this.getUserProfiles = function(){
+    $http({
+      method: 'GET',
+      url: '/users'
+    }).then(function(response){
+      //test this to see if commenting out  controller.allUsers will stop access of allUser in update user edit route
+      controller.allUserProfiles = response.data;
+    }, function(err){
+      console.log('error in getUserProfiles');
+    });
+  };
+
   this.verifyLogin = function(){
     $http({
       method: 'GET',
@@ -179,6 +219,7 @@ app.controller('UserController', ['$http', '$scope', function($http, $scope){
     });
   };
   this.getUsers();
+  this.getUserProfiles();
 
 }]); //end of UserController
 
@@ -198,7 +239,7 @@ app.controller('FootballController', ['$http', function($http){
   this.obsession = 'College Football is the SUPERIOR Sport';
   this.newDisplay = false;
   this.modal = false;
-  // this.currentFootballPost = {};
+  this.currentFootballPost = {};
 
 
   this.createFootballPost = function(){
