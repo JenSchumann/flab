@@ -26,11 +26,18 @@
           <li><a href="#football" style="color: #f2a41f;">FOOTBALL</a></li>
           <li><a href="#beer" style="color: #f2a41f;">BEER</a></li>
           <li><a href="#smack" style="color: #f2a41f;">SMACK</a></li>
-          <li><a href="#">LOGIN</a></li>
+          <!-- <li><a href="#">LOGIN</a></li> -->
 
           <!-- use ng-if to render one or the other depending on login status: -->
-          <li><a href="#" style="color:#f2a41f;">LOGOUT</a></li>
-          <li><a href="#" style="color: #f2a41f;">REGISTER</a></li>
+          <!-- <li><a href="#" style="color:#f2a41f;">LOGOUT</a></li>
+          <li><a href="#" style="color: #f2a41f;">REGISTER</a></li> -->
+          <!-- Signup/Login Forms Section -->
+
+
+          <li ng-if=!user.loggedIn ng-click="user.goToLogin()" ng-click="user.addForm.reset()"><a href="#">LOGIN</a></li>
+          <li ng-if=user.loggedIn ng-click="user.logOut()"><a href="#" style="color:#f2a41f;">LOGOUT</a></li>
+          <li ng-if=!user.loggedIn ng-click="user.goToRegister()"><a href="#" style="color:#f2a41f;">REGISTER</a></li>
+          <li ng-if=user.loggedIn><a href="#" style="color:#f2a41f;">{{user.loginEmail}}</a></li>
 
 
           <!-- add ng-if to print user name in nav bar if they are logged in -->
