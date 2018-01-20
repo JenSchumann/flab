@@ -1,0 +1,77 @@
+<div ng-controller="UserController as user">
+
+  <div class="container" id="user-container">
+    <div class="row">
+
+      <div class="jumbotron" id="user-jumbotron">
+
+        <!-- need a user image -->
+        <!-- perhaps bootstrap carousel of FLAB get together pics -->
+
+
+        <h1>FLABies</h1>
+
+        <h2>The Ultimate Tribe in Humanity</h2>
+        <br><br>
+
+        {{user.hasBestPicks}}
+        <br><br>
+
+        <!-- Create User Profile Button -->
+        <div id="newitem-form" class="col-lg-12">
+          <button class="btn btn-warning" type="submit" ng-click="user.toggleNew(); user.addForm.reset()">Create FLABie Profile</button>
+        </div>
+
+<br><br>
+        <!-- Create User Profile Form -->
+        <div ng-if="user.newDisplay">
+
+            <form ng-submit="user.createdUserProfile()">
+
+              <h5>FLABie Username:</h5><input type="text" ng-model="user.name" placeholder="FLABie Username"/><br>
+
+              <h5>FLABie Profile Picture:</h5><input type="textarea" ng-model="user.image" placeholder="FLABie Profile Picture"/><br>
+
+              <h5>FLABie Bio:</h5><input type="textarea"
+              ng-model="user.bio" placeholder="About Me"/><br>
+
+              <br>
+              <input class="btn btn-warning" type="submit" value="Post">
+
+            </form>
+
+        </div> <!-- end new display -->
+
+      </div>  <!-- end user-jumbotron -->
+
+    </div>  <!-- row -->
+
+
+
+
+        <!-- All User Profiles -->
+        <div class="row" id="display">
+          <ul id="football-list">
+            <!-- this searchbox filter probably should go in the jumbotron area -->
+            <li ng-repeat="userProfile in user.allUserProfiles | filter:searchBox" ng-init="limit = 28" ng-click="user.setCurrentUserProfile(userProfile._id)">
+              <div class="col-md-4" id="user-item">
+                <button class="btn btn-warning postButton" id="user-button" ng-click="user.toggleModal()">
+                <img src="./assets/football-24-102853.png"
+                alt="FLAB"><br>  {{userProfile.name}}</button>
+
+                <!-- add comment glyphicon when functionality is fleshed out -->
+              </div>
+
+            </li><br>
+
+          </ul>
+        <br>
+        </div>
+
+        <br><br>
+
+
+
+  </div>  <!-- end user-container -->
+
+</div>  <!-- end UserController -->
