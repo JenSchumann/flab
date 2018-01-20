@@ -10,10 +10,13 @@ app.controller('FlabController', ['$http', function($http){
   const controller = this;
   this.flabbiness = '{ Football Loving A**hole Beerdrinkers }';
   this.modal = false;
+  this.aboutModal = false;
   this.toggleModal = function(){
     this.modal = !this.modal;
+    this.aboutModal = !this.aboutModal;
     console.log('cuz everyone wants to know what FLAB is about');
   }
+
 
 }]); //end of FlabController
 
@@ -160,7 +163,7 @@ app.controller('UserController', ['$http', '$scope', function($http, $scope){
       // console.log('error in update route');
     });
   };
-  
+
   //ajax call to delete the user
   this.deleteUser = function(user){
     $http({
