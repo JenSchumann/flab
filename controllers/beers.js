@@ -20,23 +20,43 @@ router.get('/:id', (req, res)=> {
 
 //create route
 router.post('/', function(req, res){
-  Beers.create(req.body, function(err, createdBeer){
+  req.body.author = req.session.email;
+  Beers.create(req.body, (err, createdBeer)=>{
+    User.findOneAndUpdate(
+      { email: req.session.email },
+      { $push: {beers: createdBeer}},
+      { safe: true, upsert: true, new: true},
+      (err, model)=>{
+        console.log(err);
+      })
     res.json(createdBeer);
   });
 });
 
 //update route
 router.put('/:id', function(req, res){
-  Beers.findByIdAndUpdate(req.params.id, req.body, {new:true}, function(err, updatedBeer){
-    res.json(updatedBeer);
+  Beers.findByIdAndUpdate(req.params.id, req.body, {new:true}, (err, updatedBeer)=> {
+    User.findOneAndUpdate(
+      { email: req.session.email},
+      { $set: { beers: updatedBeer}},
+      { safe: true, upsert: true, new: true },
+      (err, model)=> {
+        console.log(err);
+      })
+      res.json(updatedBeer)
   });
 });
 
 
 //delete route
 router.delete('/:id', function(req, res){
-  Beers.findByIdAndRemove(req.params.id, function(err, deletedBeer){
-    res.json(deletedBeer);
+  Beers.findByIdAndRemove(req.params.id, (err, deletedBeer)=>{
+    User.findOne({ email: req.session.email}, (err, foundUser)=> {
+      foundUser.beers.id(req.params.id).remove();
+      foundUser.save((err, data)=> {
+        res.json(deletedBeer);
+      })
+    });
   });
 });
 

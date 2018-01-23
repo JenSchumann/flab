@@ -189,8 +189,10 @@ console.log("==========================");
       method: 'GET',
       url: '/users/' + id
     }).then(function(response){
+      // maybe try this:
+      // controller.currentUserProfile.push(user);
 
-
+      // this comes back as undefined in console log
       // controller.currentUserProfile = response.data[0];
       controller.user = response.data[0];
 
@@ -280,7 +282,7 @@ app.controller('FootballController', ['$http', function($http){
         }
       }).then(function(response){
         controller.getFootballPosts();  //render all footballPosts when new one is added
-        //console.log(response);
+        console.log(response);
       }, function(){
         console.log('error in createFootballPost');
       });

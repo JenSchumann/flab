@@ -24,13 +24,12 @@
 
               <h5>Post Title:</h5><input type="text" ng-model="football.postTitle" placeholder="Post Title"/><br>
 
-              <!-- add author via user logged in -->
-
               <h5>Football Podium Chatter:</h5><input type="textarea" ng-model="football.fbPost" placeholder="Football Post"/><br>
 
               <h5>Football Tag(s):</h5><input type="text"
               ng-model="football.tag" placeholder="Tag(s)"/><br>
 
+                <!-- create "link" text for a tag -->
               <h5>If applicable, share URL:</h5><input type="text" ng.model="football.url" placeholder="URL"/><br>
               <br>
               <input class="btn btn-warning" type="submit" value="Post">
@@ -63,6 +62,7 @@
               <ul ng-click="football.toggleModal()">
 
                 <!-- add author via user logged in -->
+                <li> <strong>Posted by FLABie: </strong> {{football.currentFootballPost.author}}</li>
 
                 <li> <strong>Football Podium Chatter:</strong> {{football.currentFootballPost.fbPost}}</li>
 

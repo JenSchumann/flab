@@ -20,22 +20,42 @@ router.get('/:id', (req, res)=>{
 
 //create route
 router.post('/', function(req, res){
-  Football.create(req.body, function(err, createdFootball){
+  req.body.author = req.session.email;
+  Football.create(req.body, (err, createdFootball)=>{
+    User.findOneAndUpdate(
+      { email: req.session.email },
+      { $push: {football: createdFootball}},
+      { safe: true, upsert: true, new: true},
+      (err, model)=>{
+        console.log(err);
+      })
     res.json(createdFootball);
   });
 });
 
 //update route
 router.put('/:id', function(req, res){
-  Football.findByIdAndUpdate(req.params.id, req.body, {new:true}, function(err, updatedFootball){
-    res.json(updatedFootball);
+  Football.findByIdAndUpdate(req.params.id, req.body, {new:true}, (err, updatedFootball)=>{
+    User.findOneAndUpdate(
+      { email: req.session.email},
+      { $set: { football: updatedFootball}},
+      { safe: true, upsert: true, new: true },
+      (err, model)=> {
+        console.log(err);
+      })
+      res.json(updatedFootball)
   });
 });
 
 //delete route
 router.delete('/:id', function(req, res){
-  Football.findByIdAndRemove(req.params.id, function(err, deletedFootball){
-    res.json(deletedFootball);
+  Football.findByIdAndRemove(req.params.id, (err, deletedFootball)=>{
+    User.findOne({ email: req.session.email}, (err, foundUser)=> {
+      foundUser.football.id(req.params.id).remove();
+      foundUser.save((err, data)=> {
+        res.json(deletedFootball);
+      })
+    });
   });
 });
 
