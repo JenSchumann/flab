@@ -33,14 +33,16 @@ app.controller('UserController', ['$http', '$scope', function($http, $scope){
   this.loginForm = true;
   this.registerForm = false;
   this.newDisplay = false;
+  // this.currentUserProfile = {};
+
 
   //create random lines like this w/credit to someecards.com:
   this.hasBestPicks = "Beating you at fantasy football would probably feel better if I wasn't beating you at everything else in life.";
 
-  this.createdUserProfile = function(){
+  this.createUserProfile = function(){
     $http({
       method: 'POST',
-      url: '/users',
+      url: '/createUserProfile',
       data: {
         //schema: this.schema,
         name: this.name,
@@ -48,10 +50,13 @@ app.controller('UserController', ['$http', '$scope', function($http, $scope){
         bio: this.bio
       }
     }).then(function(response){
-      controller.getUserProfiles()  //render all userProfiles when new one is added
+      controller.getUserProfiles();  //render all userProfiles when new one is added
       console.log(response);
+
+console.log("==========================");
+      console.log('createUserProfile just created',this.user.id);
     }, function(){
-      console.log('error in createdUserProfile');
+      console.log('error in createUserProfile');
     });
   }
 
@@ -74,9 +79,7 @@ app.controller('UserController', ['$http', '$scope', function($http, $scope){
       url: '/users/register',
       data: {
         email: this.registeredEmail,
-        password: this.registeredPassword,
-        image: this.registeredImage,
-        bio: this.registeredBio
+        password: this.registeredPassword
       }
     }).then(function(response){
       controller.loggedIn = response.data;
@@ -151,7 +154,7 @@ app.controller('UserController', ['$http', '$scope', function($http, $scope){
     }).then(function(response){
       //test this to see if commenting out  controller.allUsers will stop access of allUser in update user edit route
       controller.allUserProfiles = response.data;
-    }, function(err){
+    }, function(error){
       console.log('error in getUserProfiles');
     });
   };
@@ -180,6 +183,28 @@ app.controller('UserController', ['$http', '$scope', function($http, $scope){
       console.log(err);
     });
   };
+
+  this.setCurrentUserProfile = function(id){  //grabbing it by id so it can //be edited in next function
+    $http({
+      method: 'GET',
+      url: '/users/' + id
+    }).then(function(response){
+
+
+      // controller.currentUserProfile = response.data[0];
+      controller.user = response.data[0];
+
+      $scope.input = '';
+
+      console.log("this is controller.currentUserProfile ", this.user.id);
+
+      // add angular hidden custom directive to check user w/user post // author to determine whether edit functions are visible in html
+
+    }, function(error){
+      console.log('error in setCurrentUserProfile');
+    })
+  }
+
 
   //this is where the issue is:
   //ajax call to update the user
@@ -483,7 +508,9 @@ app.controller('SmackController', ['$http', function($http){
         }
       }).then(function(response){
         controller.getSmackPosts();  //render all smackPosts when new one is added
+        console.log('smack was successfully created');
         console.log(response);
+
       }, function(){
         console.log('error in createSmackPost');
       });
