@@ -33,32 +33,32 @@ app.controller('UserController', ['$http', '$scope', function($http, $scope){
   this.loginForm = true;
   this.registerForm = false;
   this.newDisplay = false;
-  // this.currentUserProfile = {};
+  this.currentUser = {};
 
 
   //create random lines like this w/credit to someecards.com:
-  this.hasBestPicks = "Beating you at fantasy football would probably feel better if I wasn't beating you at everything else in life.";
+  // this.hasBestPicks = "Beating you at fantasy football would probably feel better if I wasn't beating you at everything else in life.";
 
-  this.createUserProfile = function(){
-    $http({
-      method: 'POST',
-      url: '/createUserProfile',
-      data: {
-        //schema: this.schema,
-        name: this.name,
-        image: this.image,
-        bio: this.bio
-      }
-    }).then(function(response){
-      controller.getUserProfiles();  //render all userProfiles when new one is added
-      console.log(response);
-
-console.log("==========================");
-      console.log('createUserProfile just created',this.user.id);
-    }, function(){
-      console.log('error in createUserProfile');
-    });
-  }
+//   this.createUserProfile = function(){
+//     $http({
+//       method: 'POST',
+//       url: '/createUserProfile',
+//       data: {
+//         //schema: this.schema,
+//         name: this.name,
+//         image: this.image,
+//         bio: this.bio
+//       }
+//     }).then(function(response){
+//       controller.getUserProfiles();  //render all userProfiles when new one is added
+//       console.log(response);
+//
+// console.log("==========================");
+//       console.log('createUserProfile just created',this.user.id);
+//     }, function(){
+//       console.log('error in createUserProfile');
+//     });
+//   }
 
   this.toggleNew = function(){
     this.newDisplay = !this.newDisplay;
@@ -147,17 +147,17 @@ console.log("==========================");
   };
 
   //ajax call to show all the user profiles
-  this.getUserProfiles = function(){
-    $http({
-      method: 'GET',
-      url: '/users'
-    }).then(function(response){
+  // this.getUserProfiles = function(){
+  //   $http({
+  //     method: 'GET',
+  //     url: '/users'
+  //   }).then(function(response){
       //test this to see if commenting out  controller.allUsers will stop access of allUser in update user edit route
-      controller.allUserProfiles = response.data;
-    }, function(error){
-      console.log('error in getUserProfiles');
-    });
-  };
+  //     controller.allUserProfiles = response.data;
+  //   }, function(error){
+  //     console.log('error in getUserProfiles');
+  //   });
+  // };
 
   this.verifyLogin = function(){
     $http({
@@ -184,28 +184,28 @@ console.log("==========================");
     });
   };
 
-  this.setCurrentUserProfile = function(id){  //grabbing it by id so it can //be edited in next function
-    $http({
-      method: 'GET',
-      url: '/users/' + id
-    }).then(function(response){
+  // this.setCurrentUserProfile = function(id){  //grabbing it by id so it can //be edited in next function
+    // $http({
+    //   method: 'GET',
+    //   url: '/users/' + id
+    // }).then(function(response){
       // maybe try this:
       // controller.currentUserProfile.push(user);
 
       // this comes back as undefined in console log
       // controller.currentUserProfile = response.data[0];
-      controller.user = response.data[0];
-
-      $scope.input = '';
-
-      console.log("this is controller.currentUserProfile ", this.user.id);
+      // controller.user = response.data[0];
+      //
+      // $scope.input = '';
+      //
+      // console.log("this is controller.currentUserProfile ", this.user.id);
 
       // add angular hidden custom directive to check user w/user post // author to determine whether edit functions are visible in html
 
-    }, function(error){
-      console.log('error in setCurrentUserProfile');
-    })
-  }
+  //   }, function(error){
+  //     console.log('error in setCurrentUserProfile');
+  //   })
+  // }
 
 
   //this is where the issue is:
@@ -246,9 +246,135 @@ console.log("==========================");
     });
   };
   this.getUsers();
-  this.getUserProfiles();
+  // this.getUserProfiles();
 
 }]); //end of UserController
+
+
+////////////////////////////////////////////////////////////
+
+//UserProfile controller
+
+////////////////////////////////////////////////////////////
+
+app.controller('UserProfileController', ['$http', '$scope', function($http, $scope){
+  const controller = this;
+  this.modal = false;
+  this.newDisplay = false;
+  this.currentUserProfile = {};
+
+  //create random lines like this w/credit to someecards.com:
+  this.hasBestPicks = "Beating you at fantasy football would probably feel better if I wasn't beating you at everything else in life.";
+
+  this.createUserProfile = function(){
+    $http({
+      method: 'POST',
+      url: '/userProfiles',
+      data: {
+        //schema: this.schema,
+        name: this.name,
+        image: this.image,
+        bio: this.bio,
+        favoriteTeams: this.favoriteTeams,
+        favoriteBeers: this.favoriteBeers
+      }
+    }).then(function(response){
+      controller.getUserProfiles();  //render all userProfiles when new one is added
+      console.log(response);
+
+console.log("==========================");
+      // console.log('createUserProfile just created',this.user.id);
+    }, function(){
+      console.log('error in createUserProfile');
+    });
+  }
+
+  this.toggleNew = function(){
+    this.newDisplay = !this.newDisplay;
+    this.reset = function() {
+      this.addForm.reset();
+    }
+  }
+  this.toggleModal = function(){
+    this.modal = !this.modal;
+  };
+
+  //ajax call to show all the user profiles
+  this.getUserProfiles = function(){
+    $http({
+      method: 'GET',
+      url: '/userProfiles'
+    }).then(function(response){
+      //test this to see if commenting out  controller.allUsers will stop access of allUser in update user edit route
+      controller.allUserProfiles = response.data;
+    }, function(error){
+      console.log('error in getUserProfiles');
+    });
+  };
+
+  this.setCurrentUserProfile = function(id){  //grabbing it by id so it can //be edited in next function
+    $http({
+      method: 'GET',
+      url: '/userProfiles/' + id
+    }).then(function(response){
+      // maybe try this:
+      // controller.currentUserProfile.push(user);
+
+      // this comes back as undefined in console log
+      controller.currentUserProfile = response.data[0];
+      console.log(controller.currentUserProfile);
+      // controller.user = response.data[0];
+
+
+      // add angular hidden custom directive to check user w/user post // author to determine whether edit functions are visible in html
+
+    }, function(error){
+      console.log('error in setCurrentUserProfile');
+    })
+  }
+
+  //this is where the issue is:
+  //ajax call to update the user
+  this.updateUserProfile = function(id){
+    console.log('works', id.allUsers[4]._id);
+    // console.log("this is update user id", id);
+
+    $http({
+      method: 'PUT',
+      url: '/userProfiles/' + id,
+      data: this.editedUserProfile
+    }).then(function(response){
+      controller.getUserProfiles();
+      controller.editDisplay = false;
+      controller.currentUserProfile = {};
+      controller.user = {};
+      // adding this to see if I can grab user modal input
+      controller.editedUserProfile = {};
+      // controller.editedUser._id = {};
+    }, function(err){
+      console.log(err);
+      console.log('error in update userProfile route');
+    });
+  };
+
+  //ajax call to delete the user
+  this.deleteUserProfile = function(userProfile){
+    $http({
+      method: 'DELETE',
+      url: '/userProfiles/' + userProfile,
+    }).then(function(response){
+      controller.getUserProfiles();
+      controller.modal = false;
+      // controller.logOut();
+    }, function(err){
+      console.log('userProfile delete route error');
+      console.log(err);
+    });
+  };
+  // this.getUsers();
+  this.getUserProfiles();
+
+}]); //end of UserProfileController
 
 ////////////////////////////////////////////////////////////
 

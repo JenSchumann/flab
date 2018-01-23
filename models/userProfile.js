@@ -10,9 +10,6 @@ const userProfileSchema = mongoose.Schema({
   favoriteTeams: String,
   favoriteBeers: String
 
-  beers: [Beer.schema],
-  football: [Football.schema],
-  smack: [Smack.schema]
 });
 
 

@@ -8,12 +8,9 @@ const UserProfile = require('./userProfile.js');
 
 //Schema
 const userSchema = mongoose.Schema({
-  name: String,
+
   email: { type: String, required: true, unique: true },
   password: { type: String, required: true },
-
-  image: { type: String, default: '' },
-  bio: { type: String, default: '' },
 
   beers: [Beer.schema],
   football: [Football.schema],
