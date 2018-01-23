@@ -26,8 +26,6 @@
           <h5>Smack Title:</h5><input type="text"
           ng-model="smack.smackTitle" placeholder="Give Your Smack A Name"/><br>
 
-          <!-- add author via user logged in -->
-
           <h5>Smack Image:</h5><input type="text"
           ng-model="smack.img" placeholder="Sometimes Smack Needs to be Visual" /><br>
 
@@ -52,7 +50,7 @@
         <div class="modal-content">
           <div class="modal-header">
 
-            <button type="button" ng-click="smack.toggleModal()"class="close" data-dismiss="modal" aria-label="Close">
+            <button type="button" ng-click="smack.toggleModal()" class="close" data-dismiss="modal" aria-label="Close">
               <span aria-hidden="true">&times;</span>
             </button>
 
@@ -65,7 +63,11 @@
             <div id="smackPostInfo">
               <ul ng-click="smack.toggleModal()">
 
+
                   <li><img ng-src="{{smack.currentSmackPost.img}}"/><br></li>
+
+                  <li><strong> Posted by FLABie:  </strong> {{smack.currentSmackPost.author}}</li>
+
                   <li><strong> The Smack: </strong>{{smack.currentSmackPost.smackdown}}</li>
                   <li><strong> Smack Tag(s): </strong>{{smack.currentSmackPost.tag}}</li>
 

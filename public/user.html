@@ -57,8 +57,9 @@
               <span aria-hidden="true">&times;</span>
             </button>
 
-
-            <h3 class="modal-title"> {{user.currentUserProfile.name}}</h3>
+<!-- can also try getting user.name -->
+            <h3 class="modal-title"> {{user.user.name}}</h3>
+            <!-- <h3 class="modal-title"> {{user.currentUserProfile.name}}</h3> -->
           </div>  <!-- end modal content -->
 
           <div class="modal-body">
@@ -66,18 +67,22 @@
             <div id="userProfileInfo">
               <ul ng-click="user.toggleModal()">
 
-                <li><img ng-src="{{user.currentUserProfile.image}}"/><br></li>
+                <!-- none of this is showing up in the modal: -->
 
-                <li> <strong>FLABie Bio:</strong> {{user.currentUserProfile.bio}}</li>
+                <!-- <li><img ng-src="{{user.currentUserProfile.image}}"/><br></li>
 
+                <li> <strong>FLABie Bio:</strong> {{user.currentUserProfile.bio}}</li> -->
 
+                <li><img ng-src="{{user.user.image}}"/><br></li>
 
-
-
-
+                <li> <strong>FLABie Bio:</strong> {{user.user.bio}}</li>
 
               </ul>
             </div>  <!-- end userProfileInfo -->
+
+
+
+
           </div>  <!-- end modal body -->
         </div>  <!-- end modal content -->
       </div>  <!-- end modal dialog -->
