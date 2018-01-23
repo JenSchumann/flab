@@ -1,0 +1,124 @@
+<div ng-controller="UserProfileController as userProfile">
+
+  <div class="container" id="userProfile-container">
+    <div class="row">
+
+      <div class="jumbotron" id="userProfile-jumbotron">
+
+        <!-- need a user image -->
+        <!-- perhaps bootstrap carousel of FLAB get together pics -->
+
+
+        <h1>FLABies</h1>
+
+        <h2>The Ultimate Tribe in Humanity</h2>
+        <br><br>
+
+        {{userProfile.hasBestPicks}}
+        <br><br>
+
+        <!-- Create User Profile Button -->
+        <div id="newitem-form" class="col-lg-12">
+          <button class="btn btn-warning" type="submit" ng-click="userProfile.toggleNew(); userProfile.addForm.reset()">Create FLABie Profile</button>
+        </div>
+
+<br><br>
+        <!-- Create User Profile Form -->
+        <div ng-if="userProfile.newDisplay">
+
+            <form ng-submit="userProfile.createUserProfile()">
+
+              <h5>FLABie Display Name:</h5><input type="text" ng-model="userProfile.name" placeholder="FLABie Username"/><br>
+
+              <h5>FLABie Profile Picture:</h5><input type="text" ng-model="userProfile.image" placeholder="FLABie Profile Picture"/><br>
+
+              <h5>FLABie Bio:</h5><input type="textarea"
+              ng-model="userProfile.bio" placeholder="About Me"/><br>
+
+              <h5>FLABie Bio:</h5><input type="text"
+              ng-model="userProfile.favoriteTeams" placeholder="Favorite Team(s)"/><br>
+
+              <h5>FLABie Bio:</h5><input type="text"
+              ng-model="userProfile.favoriteBeers" placeholder="Favorite Beer(s)"/><br>
+
+              <br>
+              <input class="btn btn-warning" type="submit" value="Post" ng-click="userProfile.toggleNew();">
+<!-- added toggle in line above -->
+            </form>
+
+        </div> <!-- end new display -->
+
+      </div>  <!-- end userProfile-jumbotron -->
+
+    </div>  <!-- end row -->
+
+    <!-- UserProfile Modal -->
+
+    <div ng-if="userProfile.modal" id"userProfileModal">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+
+            <button type="button" ng-click="userProfile.toggleModal()" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+
+            <h3 class="modal-title"> {{userProfile.currentUserProfile.name}}</h3>
+          </div>  <!-- end modal content -->
+
+          <div class="modal-body">
+
+            <div id="userProfileInfo">
+              <ul ng-click="userProfile.toggleModal()">
+
+                <li><img ng-src="{{userProfile.currentUserProfile.image}}"/><br></li>
+
+                <li> <strong>FLABie Bio: </strong>  {{userProfile.currentUserProfile.bio}}<br></li>
+
+                <li> <strong>FLABie's Fave Team(s): </strong>  {{userProfile.currentUserProfile.favoriteTeams}}<br></li>
+
+                <li> <strong>FLABie Fave Beer(s): </strong>  {{userProfile.currentUserProfile.favoriteBeers}}<br></li>
+
+
+
+              </ul>
+            </div>  <!-- end userProfileInfo -->
+<!-- Add Tabs here: -->
+
+
+
+          </div>  <!-- end modal body -->
+        </div>  <!-- end modal content -->
+      </div>  <!-- end modal dialog -->
+    </div>   <!-- end userProfileModal -->
+
+
+
+
+        <!-- All User Profiles -->
+        <div class="row" id="display">
+          <ul id="userProfile-list">
+            <!-- this searchbox filter probably should go in the jumbotron area -->
+            <li ng-repeat="userProfile in userProfile.allUserProfiles | filter:searchBox" ng-init="limit = 28" ng-click="userProfile.setCurrentUserProfile(userProfile._id)">
+              <div class="col-md-4" id="user-item">
+                <button class="btn btn-warning postButton" id="userProfile-button" ng-click="userProfile.toggleModal()">
+                  <!-- perhaps have very small profile pic? -->
+                <img src="./assets/football-24-102853.png"
+                alt="FLAB"><br>  {{userProfile.name}}</button>
+
+                <!-- add comment glyphicon when functionality is fleshed out -->
+              </div>
+
+            </li><br>
+
+          </ul>
+        <br>
+        </div>
+
+        <br><br>
+
+
+
+  </div>  <!-- end userProfile-container -->
+
+</div>  <!-- end UserProfileController -->
