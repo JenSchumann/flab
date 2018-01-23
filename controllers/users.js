@@ -37,10 +37,10 @@ router.post('/register', (req, res)=>{
   });
 });
 
-//create user profile
-router.post('/', function(req, res){
-  User.create(req.body, function(err, createdUserProfile){
-    res.json(createdUserProfile);
+//create user profile => changed '/' to '/createUserProfile'
+router.post('/createUserProfile', function(req, res){
+  User.create(req.body, function(err, createUserProfile){
+    res.json(createUserProfile);
   });
 });
 

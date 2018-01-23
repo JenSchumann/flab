@@ -26,7 +26,7 @@
         <!-- Create User Profile Form -->
         <div ng-if="user.newDisplay">
 
-            <form ng-submit="user.createdUserProfile()">
+            <form ng-submit="user.createUserProfile()">
 
               <h5>FLABie Username:</h5><input type="text" ng-model="user.name" placeholder="FLABie Username"/><br>
 
@@ -44,7 +44,44 @@
 
       </div>  <!-- end user-jumbotron -->
 
-    </div>  <!-- row -->
+    </div>  <!-- end row -->
+
+    <!-- User Modal -->
+
+    <div ng-if="user.modal" id"userModal">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+
+            <button type="button" ng-click="user.toggleModal()" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+
+
+            <h3 class="modal-title"> {{user.currentUserProfile.name}}</h3>
+          </div>  <!-- end modal content -->
+
+          <div class="modal-body">
+
+            <div id="userProfileInfo">
+              <ul ng-click="user.toggleModal()">
+
+                <li><img ng-src="{{user.currentUserProfile.image}}"/><br></li>
+
+                <li> <strong>FLABie Bio:</strong> {{user.currentUserProfile.bio}}</li>
+
+
+
+
+
+
+
+              </ul>
+            </div>  <!-- end userProfileInfo -->
+          </div>  <!-- end modal body -->
+        </div>  <!-- end modal content -->
+      </div>  <!-- end modal dialog -->
+    </div>   <!-- end userModal -->
 
 
 
