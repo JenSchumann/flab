@@ -30,6 +30,9 @@ app.use('/smack', smackController);
 const userController = require('./controllers/users.js');
 app.use('/users', userController);
 
+const userProfileController = require('./controllers/userProfiles.js');
+app.use('/userProfiles', userProfileController);
+
 //add FlabController... for nav.html?
 
 

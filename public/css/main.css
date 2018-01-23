@@ -12,7 +12,7 @@
   padding-bottom: 3%;
 }
 
-#beer-jumbotron, #football-jumbotron, #smack-jumbotron, #user-jumbotron {
+#beer-jumbotron, #football-jumbotron, #smack-jumbotron, #user-jumbotron, #userProfile-jumbotron {
   text-align: center;
   justify-content: center;
   /* background-color: white; */
