@@ -3,6 +3,7 @@ const mongoose = require('mongoose');
 const Beer = require('./beers.js');
 const Football = require('./football.js');
 const Smack = require('./smack.js');
+const UserProfile = require('./userProfile.js');
 
 
 //Schema
@@ -16,7 +17,8 @@ const userSchema = mongoose.Schema({
 
   beers: [Beer.schema],
   football: [Football.schema],
-  smack: [Smack.schema]
+  smack: [Smack.schema],
+  userProfile: [UserProfile.schema]
 });
 
 
