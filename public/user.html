@@ -1,30 +1,30 @@
-<div ng-controller="UserController as user">
+<!-- <div ng-controller="UserController as user">
 
   <div class="container" id="user-container">
     <div class="row">
 
-      <div class="jumbotron" id="user-jumbotron">
+      <div class="jumbotron" id="user-jumbotron"> -->
 
         <!-- need a user image -->
         <!-- perhaps bootstrap carousel of FLAB get together pics -->
 
 
-        <h1>FLABies</h1>
+        <!-- <h1>FLABies</h1>
 
         <h2>The Ultimate Tribe in Humanity</h2>
         <br><br>
 
         {{user.hasBestPicks}}
-        <br><br>
+        <br><br> -->
 
         <!-- Create User Profile Button -->
-        <div id="newitem-form" class="col-lg-12">
+        <!-- <div id="newitem-form" class="col-lg-12">
           <button class="btn btn-warning" type="submit" ng-click="user.toggleNew(); user.addForm.reset()">Create FLABie Profile</button>
         </div>
 
-<br><br>
+<br><br> -->
         <!-- Create User Profile Form -->
-        <div ng-if="user.newDisplay">
+        <!-- <div ng-if="user.newDisplay">
 
             <form ng-submit="user.createUserProfile()">
 
@@ -40,32 +40,32 @@
 
             </form>
 
-        </div> <!-- end new display -->
+        </div> <! end new display -->
 
-      </div>  <!-- end user-jumbotron -->
+      <!-- </div>  <! end user-jumbotron -->
 
-    </div>  <!-- end row -->
+    <!-- </div>  <! end row -->
 
     <!-- User Modal -->
 
-    <div ng-if="user.modal" id"userModal">
+    <!-- <div ng-if="user.modal" id"userModal">
       <div class="modal-dialog" role="document">
         <div class="modal-content">
           <div class="modal-header">
 
             <button type="button" ng-click="user.toggleModal()" class="close" data-dismiss="modal" aria-label="Close">
               <span aria-hidden="true">&times;</span>
-            </button>
+            </button> -->
 
 <!-- can also try getting user.name -->
-            <h3 class="modal-title"> {{user.user.name}}</h3>
+            <!-- <h3 class="modal-title"> {{user.user.name}}</h3> -->
             <!-- <h3 class="modal-title"> {{user.currentUserProfile.name}}</h3> -->
-          </div>  <!-- end modal content -->
+          <!-- </div>  <! end modal content -->
 
-          <div class="modal-body">
+          <!-- <div class="modal-body">
 
             <div id="userProfileInfo">
-              <ul ng-click="user.toggleModal()">
+              <ul ng-click="user.toggleModal()"> -->
 
                 <!-- none of this is showing up in the modal: -->
 
@@ -73,36 +73,36 @@
 
                 <li> <strong>FLABie Bio:</strong> {{user.currentUserProfile.bio}}</li> -->
 
-                <li><img ng-src="{{user.user.image}}"/><br></li>
+                <!-- <li><img ng-src="{{user.user.image}}"/><br></li>
 
                 <li> <strong>FLABie Bio:</strong> {{user.user.bio}}</li>
 
-              </ul>
-            </div>  <!-- end userProfileInfo -->
+              </ul> -->
+            <!-- </div>  <! end userProfileInfo -->
 
 
 
 
-          </div>  <!-- end modal body -->
-        </div>  <!-- end modal content -->
-      </div>  <!-- end modal dialog -->
-    </div>   <!-- end userModal -->
+          <!-- </div>  <! end modal body -->
+        <!-- </div>  <!end modal content -->
+      <!-- </div>  <! end modal dialog -->
+    <!-- </div>   <!end userModal -->
 
 
 
 
         <!-- All User Profiles -->
-        <div class="row" id="display">
-          <ul id="football-list">
+        <!-- <div class="row" id="display">
+          <ul id="football-list"> -->
             <!-- this searchbox filter probably should go in the jumbotron area -->
-            <li ng-repeat="userProfile in user.allUserProfiles | filter:searchBox" ng-init="limit = 28" ng-click="user.setCurrentUserProfile(userProfile._id)">
+            <!-- <li ng-repeat="userProfile in user.allUserProfiles | filter:searchBox" ng-init="limit = 28" ng-click="user.setCurrentUserProfile(userProfile._id)">
               <div class="col-md-4" id="user-item">
                 <button class="btn btn-warning postButton" id="user-button" ng-click="user.toggleModal()">
                 <img src="./assets/football-24-102853.png"
-                alt="FLAB"><br>  {{userProfile.name}}</button>
+                alt="FLAB"><br>  {{userProfile.name}}</button> -->
 
                 <!-- add comment glyphicon when functionality is fleshed out -->
-              </div>
+              <!-- </div>
 
             </li><br>
 
@@ -110,10 +110,10 @@
         <br>
         </div>
 
-        <br><br>
+        <br><br> -->
 
 
 
-  </div>  <!-- end user-container -->
+  <!-- </div>  <! end user-container -->
 
-</div>  <!-- end UserController -->
+<!-- </div>  <! end UserController -->

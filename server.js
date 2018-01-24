@@ -30,8 +30,8 @@ app.use('/smack', smackController);
 const userController = require('./controllers/users.js');
 app.use('/users', userController);
 
-const userProfileController = require('./controllers/userProfiles.js');
-app.use('/userProfiles', userProfileController);
+const flabbieController = require('./controllers/flabbie.js');
+app.use('/flabbie', flabbieController);
 
 //add FlabController... for nav.html?
 
