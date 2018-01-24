@@ -78,7 +78,7 @@
             <div id="flabbieProfileInfo">
               <ul ng-click="flabbie.toggleModal()">
 
-                <li><img ng-src="{{flabbie.currentFlabbieProfile.image}}"/><br></li>
+                <li><img class="img-responsive" ng-src="{{flabbie.currentFlabbieProfile.image}}"><br></li>
 
                 <li> <strong>FLABie Bio: </strong>  {{flabbie.currentFlabbieProfile.bio}}<br></li>
 
@@ -116,15 +116,15 @@
 
             <form id="flabbieForm" ng-submit="flabbie.updateFlabbieProfile(flabbie.currentFlabbieProfile._id)" ng-click="flabbie.addForm.reset()">
 
-              <input type="text" placeholder="{{flabbie.currentFlabbieProfile.name}}" ng-model="flabbie.editedFlabbieProfile.name">
+              <h5>FLABie Display Name: </h5><input type="text" placeholder="{{flabbie.currentFlabbieProfile.name}}" ng-model="flabbie.editedFlabbieProfile.name">
 
-              <input type="text" placeholder="{{flabbie.currentFlabbieProfile.image}}"  ng-model="flabbie.editedFlabbieProfile.image">
+              <h5>FLABie Profile Picture: </h5><input type="text" placeholder="{{flabbie.currentFlabbieProfile.image}}"  ng-model="flabbie.editedFlabbieProfile.image">
 
-              <input type="text" placeholder="{{flabbie.currentFlabbieProfile.bio}}" ng-model="flabbie.editedFlabbieProfile.bio">
+              <h5>FLABie Bio: </h5><input type="text" placeholder="{{flabbie.currentFlabbieProfile.bio}}" ng-model="flabbie.editedFlabbieProfile.bio">
 
-              <input type="text" placeholder="{{flabbie.currentFlabbieProfile.favoriteTeams}}" ng-model="flabbie.editedFlabbieProfile.favoriteTeams">
+              <h5>Fave Team(s): </h5><input type="text" placeholder="{{flabbie.currentFlabbieProfile.favoriteTeams}}" ng-model="flabbie.editedFlabbieProfile.favoriteTeams">
 
-              <input type="text" placeholder="{{flabbie.currentFlabbieProfile.favoriteBeers}}" ng-model="flabbie.editedFlabbieProfile.favoriteBeers">
+              <h5>Fave Beer(s): </h5><input type="text" placeholder="{{flabbie.currentFlabbieProfile.favoriteBeers}}" ng-model="flabbie.editedFlabbieProfile.favoriteBeers">
 
             </form>
 
