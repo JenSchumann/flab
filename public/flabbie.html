@@ -1,0 +1,172 @@
+<div ng-controller="FlabbieController as flabbie">
+
+  <div class="container" id="flabbie-container">
+    <div class="row">
+
+      <div class="jumbotron" id="flabbie-jumbotron">
+
+        <!-- need a flabbieProfile image -->
+        <!-- perhaps bootstrap carousel of FLAB get together pics -->
+
+
+        <h1>FLABies</h1>
+
+        <h2>The Ultimate Tribe in Humanity</h2>
+        <br><br>
+
+        {{flabbie.hasBestPicks}}
+        <br><br>
+
+        <!-- Create User Profile Button -->
+        <div id="newitem-form" class="col-lg-12">
+          <button class="btn btn-warning" type="submit" ng-click="flabbie.toggleNew(); flabbie.addForm.reset()">Create FLABie Profile</button>
+        </div>
+
+<br><br>
+        <!-- Create User Profile Form -->
+        <div ng-if="flabbie.newDisplay">
+
+            <form ng-submit="flabbie.createFlabbieProfile()">
+
+              <h5>FLABie Display Name:</h5><input type="text" ng-model="flabbie.name" placeholder="FLABie Username"/><br>
+
+              <h5>FLABie Profile Picture:</h5><input type="text" ng-model="flabbie.image" placeholder="FLABie Profile Picture"/><br>
+
+              <h5>FLABie Bio:</h5><input type="textarea"
+              ng-model="flabbie.bio" placeholder="About Me"/><br>
+
+              <h5>Fave Team(s):</h5><input type="text"
+              ng-model="flabbie.favoriteTeams" placeholder="Favorite Team(s)"/><br>
+
+              <h5>Fave Beer(s):</h5><input type="text"
+              ng-model="flabbie.favoriteBeers" placeholder="Favorite Beer(s)"/><br>
+
+              <br>
+              <input class="btn btn-warning" type="submit" value="Post">
+
+            </form>
+
+        </div> <!-- end new display -->
+
+      </div>  <!-- end flabbie-jumbotron -->
+
+    </div>  <!-- end row -->
+
+    <!-- Flabbie Modal -->
+
+    <div ng-if="flabbie.modal" id"flabbieModal">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+
+            <button type="button" ng-click="flabbie.toggleModal()" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+
+            <h3 class="modal-title">FLABie Name:
+
+               {{flabbie.currentFlabbieProfile.name}}
+
+
+            </h3>
+
+
+          </div>  <!-- end modal header -->
+
+          <div class="modal-body">
+
+            <div id="flabbieProfileInfo">
+              <ul ng-click="flabbie.toggleModal()">
+
+                <li><img ng-src="{{flabbie.currentFlabbieProfile.image}}"/><br></li>
+
+                <li> <strong>FLABie Bio: </strong>  {{flabbie.currentFlabbieProfile.bio}}<br></li>
+
+                <li> <strong>FLABie's Fave Team(s): </strong>  {{flabbie.currentFlabbieProfile.favoriteTeams}}<br></li>
+
+                <li> <strong>FLABie Fave Beer(s): </strong>  {{flabbie.currentFlabbieProfile.favoriteBeers}}<br></li>
+
+
+
+              </ul>
+            </div>  <!-- end flabbieInfo -->
+
+          <!-- Tabs -->
+
+          <ul class="nav nav-tabs">
+            <li class="nav-item">
+              <a class="nav-link-active" href="#flabbieComment" data-toggle="tab" role="tab">Comments</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#flabbieEdit" data-toggle="tab" role="tab">Edit</a>
+            </li>
+          </ul>
+
+          <div class="tab-content">
+            <!-- Tab 1 Content -->
+            <div class="tab-pane fade in show active" id="flabbieComment" role="tabpanel">
+              <!-- add flabbieComment form -->
+              <!-- flabbie will have ability to post comments as reply to flabbie here -->
+            </div>
+
+            <!-- Tab 2 Content -->
+            <div class="tab-pane fade" id="flabbieEdit" role="tabpanel">
+            <!-- Edit Form -->
+            <h2>Do You Need To Edit Your Profile?</h2>
+
+            <form id="flabbieForm" ng-submit="flabbie.updateFlabbieProfile(flabbie.currentFlabbieProfile._id)" ng-click="flabbie.addForm.reset()">
+
+              <input type="text" placeholder="{{flabbie.currentFlabbieProfile.name}}" ng-model="flabbie.editedFlabbieProfile.name">
+
+              <input type="text" placeholder="{{flabbie.currentFlabbieProfile.image}}"  ng-model="flabbie.editedFlabbieProfile.image">
+
+              <input type="text" placeholder="{{flabbie.currentFlabbieProfile.bio}}" ng-model="flabbie.editedFlabbieProfile.bio">
+
+              <input type="text" placeholder="{{flabbie.currentFlabbieProfile.favoriteTeams}}" ng-model="flabbie.editedFlabbieProfile.favoriteTeams">
+
+              <input type="text" placeholder="{{flabbie.currentFlabbieProfile.favoriteBeers}}" ng-model="flabbie.editedFlabbieProfile.favoriteBeers">
+
+            </form>
+
+            <button class="btn btn-warning" type="submit" ng-click="flabbie.updateFlabbieProfile(flabbie.currentFlabbieProfile._id); flabbie.toggleModal()">Update</button>
+            <button class="btn btn-warning" ng-click="flabbie.deleteFlabbieProfile(flabbie.currentFlabbieProfile._id)">Remove Profile</button>
+
+              </div>  <!-- end tab two -->
+            </div>  <!-- end tab content -->
+
+          </div>  <!-- end modal body -->
+        </div>  <!-- end modal content -->
+      </div>  <!-- end modal dialog -->
+    </div>   <!-- end flabbieModal -->
+
+
+
+
+        <!-- All Flabbie Profiles -->
+        <div class="row" id="display">
+          <ul id="flabbie-list">
+            <!-- this searchbox filter probably should go in the jumbotron area -->
+
+            <li ng-repeat="flabbieProfile in flabbie.allFlabbieProfiles | filter:searchBox" ng-init="limit = 28" ng-click="flabbie.setCurrentFlabbieProfile(flabbieProfile._id)">
+              <div class="col-md-4" id="flabbie-item">
+                <button ng-click="flabbie.toggleModal()" class="btn btn-warning postButton" id="flabbie-button" >
+                  <!-- perhaps have very small profile pic? -->
+                <img src="./assets/football-24-102853.png"
+                alt="FLAB"><br>  {{flabbieProfile.name}}</button>
+
+                <!-- add comment glyphicon when functionality is fleshed out -->
+              </div>
+
+            </li><br>
+
+          </ul>
+        <br>
+        </div>
+
+        <br><br>
+
+
+
+  </div>  <!-- end flabbie-container -->
+
+</div>  <!-- end FlabbieController -->

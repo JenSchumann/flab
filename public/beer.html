@@ -147,7 +147,7 @@
   <!-- All Beer Posts -->
   <div class="row" id="display">
     <ul id="beer-list">
-      <li ng-repeat="beerPost in beer.allBeerPosts" ng-click="beer.setCurrentBeerPost(beerPost._id)">
+      <li ng-repeat="beerPost in beer.allBeerPosts | filter:searchBox" ng-init="limit = 28" ng-click="beer.setCurrentBeerPost(beerPost._id)">
         <div class="col-md-4" id="beer-item">
           <button class="btn btn-warning postButton" id="beer-button" ng-click="beer.toggleModal()">
           <img src="./assets/beer-mug-silhouette-24-278747.png" alt="FLAB"><br>{{beerPost.name}}</button>

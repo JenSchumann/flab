@@ -12,7 +12,7 @@
   padding-bottom: 3%;
 }
 
-#beer-jumbotron, #football-jumbotron, #smack-jumbotron, #user-jumbotron, #userProfile-jumbotron {
+#beer-jumbotron, #football-jumbotron, #smack-jumbotron, #user-jumbotron, #flabbie-jumbotron {
   text-align: center;
   justify-content: center;
   /* background-color: white; */
@@ -49,7 +49,7 @@ li {
   height: 6em;
 }
 
-#football-button, #smack-button, #beer-button {
+#football-button, #smack-button, #beer-button, #flabbie {
   margin: 2%;
 }
 

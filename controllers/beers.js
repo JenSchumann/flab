@@ -34,7 +34,7 @@ router.post('/', function(req, res){
 });
 
 //update route
-router.put('/:id', function(req, res){
+router.put('/:id', (req, res)=>{
   Beers.findByIdAndUpdate(req.params.id, req.body, {new:true}, (err, updatedBeer)=> {
     User.findOneAndUpdate(
       { email: req.session.email},
@@ -49,7 +49,7 @@ router.put('/:id', function(req, res){
 
 
 //delete route
-router.delete('/:id', function(req, res){
+router.delete('/:id', (req, res)=>{
   Beers.findByIdAndRemove(req.params.id, (err, deletedBeer)=>{
     User.findOne({ email: req.session.email}, (err, foundUser)=> {
       foundUser.beers.id(req.params.id).remove();

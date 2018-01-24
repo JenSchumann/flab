@@ -38,11 +38,11 @@ router.post('/register', (req, res)=>{
 });
 
 //create user profile => changed '/' to '/createUserProfile'
-router.post('/createUserProfile', function(req, res){
-  User.create(req.body, function(err, createUserProfile){
-    res.json(createUserProfile);
-  });
-});
+// router.post('/createUserProfile', function(req, res){
+//   User.create(req.body, function(err, createUserProfile){
+//     res.json(createUserProfile);
+//   });
+// });
 
 //login user - post route
 router.post('/login', (req, res)=> {

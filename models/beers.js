@@ -12,6 +12,6 @@ const beerSchema = mongoose.Schema({
   author: {type:String, default: ''}
 });
 
-const Beers = mongoose.model('Beer', beerSchema);
+const Beers = mongoose.model('Beers', beerSchema);
 
 module.exports = Beers;

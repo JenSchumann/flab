@@ -257,21 +257,22 @@ app.controller('UserController', ['$http', '$scope', function($http, $scope){
 
 ////////////////////////////////////////////////////////////
 
-app.controller('UserProfileController', ['$http', '$scope', function($http, $scope){
+app.controller('FlabbieController', ['$http', function($http){
   const controller = this;
   this.modal = false;
   this.newDisplay = false;
-  this.currentUserProfile = {};
+  this.currentFlabbieProfile = {};
+
 
   //create random lines like this w/credit to someecards.com:
   this.hasBestPicks = "Beating you at fantasy football would probably feel better if I wasn't beating you at everything else in life.";
 
-  this.createUserProfile = function(){
+  this.createFlabbieProfile = function(){
+    console.log('create user profile being accessed');
     $http({
       method: 'POST',
-      url: '/userProfiles',
+      url: '/flabbie',
       data: {
-        //schema: this.schema,
         name: this.name,
         image: this.image,
         bio: this.bio,
@@ -279,17 +280,18 @@ app.controller('UserProfileController', ['$http', '$scope', function($http, $sco
         favoriteBeers: this.favoriteBeers
       }
     }).then(function(response){
-      controller.getUserProfiles();  //render all userProfiles when new one is added
+      controller.newDisplay = false;
+      controller.getFlabbieProfiles();  //render all FlabbieProfiles when new one is added
+      console.log('FlabbieProfile was successfully created');
       console.log(response);
-
-console.log("==========================");
-      // console.log('createUserProfile just created',this.user.id);
-    }, function(){
-      console.log('error in createUserProfile');
+    }, function(err){
+      console.log(err);
+      console.log('error in createdFlabbieProfile');
     });
   }
 
   this.toggleNew = function(){
+    console.log('toggle new FlabbieProfile being accessed');
     this.newDisplay = !this.newDisplay;
     this.reset = function() {
       this.addForm.reset();
@@ -297,84 +299,78 @@ console.log("==========================");
   }
   this.toggleModal = function(){
     this.modal = !this.modal;
+    console.log('trying to get FlabbieProfile through toggleFlabbieProfileModal');
   };
 
   //ajax call to show all the user profiles
-  this.getUserProfiles = function(){
+  this.getFlabbieProfiles = function(){
+    console.log('getting FlabbieProfiles');
     $http({
       method: 'GET',
-      url: '/userProfiles'
+      url: '/flabbie',
     }).then(function(response){
-      //test this to see if commenting out  controller.allUsers will stop access of allUser in update user edit route
-      controller.allUserProfiles = response.data;
+      controller.allFlabbieProfiles = response.data;
+      console.log(response);
     }, function(error){
-      console.log('error in getUserProfiles');
+      console.log('error in getFlabbieProfiles');
+      console.log(err);
     });
   };
 
-  this.setCurrentUserProfile = function(id){  //grabbing it by id so it can //be edited in next function
+  this.setCurrentFlabbieProfile = function(id){  //grabbing it by id so it can //be edited in next function
     $http({
       method: 'GET',
-      url: '/userProfiles/' + id
+        url: '/flabbie/' + id
     }).then(function(response){
-      // maybe try this:
-      // controller.currentUserProfile.push(user);
-
-      // this comes back as undefined in console log
-      controller.currentUserProfile = response.data[0];
-      console.log(controller.currentUserProfile);
-      // controller.user = response.data[0];
-
+      //ISSUE IS HERE
+        controller.currentFlabbieProfile = response.data[0];
+        console.log(controller.currentFlabbieProfile);
+        console.log(response);
 
       // add angular hidden custom directive to check user w/user post // author to determine whether edit functions are visible in html
 
     }, function(error){
-      console.log('error in setCurrentUserProfile');
+      console.log(error);
+      console.log('error in setCurrentFlabbieProfile');
     })
   }
 
   //this is where the issue is:
   //ajax call to update the user
-  this.updateUserProfile = function(id){
-    console.log('works', id.allUsers[4]._id);
-    // console.log("this is update user id", id);
-
+  this.updateFlabbieProfile = function(id){
     $http({
       method: 'PUT',
-      url: '/userProfiles/' + id,
-      data: this.editedUserProfile
+      url: '/flabbie/' + id,
+      data: this.editedFlabbieProfile
     }).then(function(response){
-      controller.getUserProfiles();
+      controller.getFlabbieProfiles();
       controller.editDisplay = false;
-      controller.currentUserProfile = {};
-      controller.user = {};
-      // adding this to see if I can grab user modal input
-      controller.editedUserProfile = {};
-      // controller.editedUser._id = {};
+      controller.currentFlabbieProfile = {};
+      controller.flabbie = {};
+      controller.editedFlabbieProfile = {};
+      // controller.editedFlabbie._id = {};
     }, function(err){
       console.log(err);
-      console.log('error in update userProfile route');
+      console.log('error in update FlabbieProfile route');
     });
   };
 
   //ajax call to delete the user
-  this.deleteUserProfile = function(userProfile){
+  this.deleteFlabbieProfile = function(flabbie){
     $http({
       method: 'DELETE',
-      url: '/userProfiles/' + userProfile,
+      url: '/flabbie/' + flabbie,
     }).then(function(response){
-      controller.getUserProfiles();
+      controller.getFlabbieProfiles();
       controller.modal = false;
-      // controller.logOut();
     }, function(err){
-      console.log('userProfile delete route error');
+      console.log('FlabbieProfile delete route error');
       console.log(err);
     });
   };
-  // this.getUsers();
-  this.getUserProfiles();
+  this.getFlabbieProfiles();
 
-}]); //end of UserProfileController
+}]); //end of FlabbieProfileController
 
 ////////////////////////////////////////////////////////////
 
@@ -433,7 +429,7 @@ app.controller('FootballController', ['$http', function($http){
       url: '/football',
     }).then(function(response){
       controller.allFootballPosts = response.data //value of a successful ajax request
-    }, function(){
+    }, function(error){
       console.log('error in getFootballPosts');
     });
   }
@@ -517,7 +513,8 @@ app.controller('BeersController', ['$http', function($http){
           ibu: this.ibu,
           brewery: this.brewery,
           purchaseLocation: this.purchaseLocation,
-          userRating: this.userRating
+          userRating: this.userRating,
+          author: this.author
         }
       }).then(function(response){
         controller.getBeerPosts();  //render all beerPosts when new one is added
@@ -549,6 +546,7 @@ app.controller('BeersController', ['$http', function($http){
       url: '/beers',
     }).then(function(response){
       controller.allBeerPosts = response.data //value of a successful ajax request
+      console.log(response);
     }, function(){
       console.log('error in getBeerPosts');
     });
@@ -635,6 +633,7 @@ app.controller('SmackController', ['$http', function($http){
           tag: this.tag
         }
       }).then(function(response){
+        controller.newDisplay = false;
         controller.getSmackPosts();  //render all smackPosts when new one is added
         console.log('smack was successfully created');
         console.log(response);

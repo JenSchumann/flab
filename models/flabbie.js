@@ -3,7 +3,7 @@ const mongoose = require('mongoose');
 
 
 //Schema
-const userProfileSchema = mongoose.Schema({
+const flabbieSchema = mongoose.Schema({
   name: String,
   image: { type: String, default: '' },
   bio: { type: String, default: '' },
@@ -13,8 +13,8 @@ const userProfileSchema = mongoose.Schema({
 });
 
 
-const UserProfile = mongoose.model('UserProfile', userProfileSchema);
+const Flabbie = mongoose.model('Flabbie', flabbieSchema);
 
 
 //export
-module.exports = UserProfile;
+module.exports = Flabbie;
