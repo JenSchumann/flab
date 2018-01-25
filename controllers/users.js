@@ -17,7 +17,7 @@ router.get('/verifyLogin', (req, res)=> {
       res.json(user)
     });
   } else {
-          req.session.message = "email or password are incorrect";
+          req.session.message = "Username or Password are incorrect";
           res.json(req.session.message)
   };
 });
@@ -47,11 +47,11 @@ router.post('/login', (req, res)=> {
         req.session.logged = true;
         res.json(req.session.logged);
       } else {
-        req.session.message = "Incorrect Email &/or Password";
+        req.session.message = "Incorrect Username &/or Password";
         res.json(req.session.message);
       }
     } else {
-      req.session.message = "Incorrect Email &/or Password";
+      req.session.message = "Incorrect Username &/or Password";
       res.json(req.session.message);
     }
   });
