@@ -439,7 +439,7 @@ app.controller('FootballController', ['$http', '$scope', function($http, $scope)
 
 ////////////////////////////////////////////////////////////
 
-app.controller('BeersController', ['$http', function($http){
+app.controller('BeersController', ['$http', '$scope', function($http, $scope){
   const controller = this;
   this.suds = '..Are proof that God wants us to be happy!'
   this.newDisplay = false;
@@ -505,12 +505,11 @@ app.controller('BeersController', ['$http', function($http){
     }).then(function(response){
       controller.currentBeerPost = response.data[0];
       console.log(controller.currentBeerPost);
-
-      // add once user MODEL is fleshed out (w/express-session):
-      // $scope.input = '';
-      // $scope.checkUser.email !== controller.currentBeerPost.author
-      // with a conditional to hide the tab 2 "beerEdit" id using
-      // document.getElementById
+      $scope.input = '';
+      if($scope.verifyFlab.username !== controller.currentBeerPost.author)
+      {
+        document.getElementById("beerItem").style.visibility = "hidden";
+      }
     }, function(error){
       console.log('error in setCurrentBeerPost');
     })
