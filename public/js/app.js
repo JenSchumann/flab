@@ -559,7 +559,7 @@ app.controller('BeersController', ['$http', '$scope', function($http, $scope){
 
 ////////////////////////////////////////////////////////////
 
-app.controller('SmackController', ['$http', function($http){
+app.controller('SmackController', ['$http', '$scope', function($http, $scope){
   const controller = this;
   //string below courtesy of https://api.chucknorris.io/jokes/9HfAFHoJQXGwWpKuFwv4yQ
   this.rivalry = "Ever notice just how much Chuck Norris' a**hole and your face resemble each other?";
@@ -622,12 +622,11 @@ app.controller('SmackController', ['$http', function($http){
     }).then(function(response){
       controller.currentSmackPost = response.data[0];
       console.log(controller.currentSmackPost);
-
-      // add once user MODEL is fleshed out (w/express-session):
-      // $scope.input = '';
-      // $scope.checkUser.email !== controller.currentSmackPost.author
-      // with a conditional to hide the tab 2 "smackEdit" id using
-      // document.getElementById
+      $scope.input = '';
+      if($scope.verifyFlab.username !== controller.currentSmackPost.author)
+      {
+        document.getElementById("smackItem").style.visibility = "hidden";
+      }
     }, function(error){
       console.log('error in setCurrentSmackPost');
     })
