@@ -264,7 +264,6 @@ app.controller('FlabbieController', ['$http', '$scope', function($http, $scope){
       method: 'GET',
         url: '/flabbie/' + id
     }).then(function(response){
-      //ISSUE IS HERE
         controller.currentFlabbieProfile = response.data[0];
         console.log(controller.currentFlabbieProfile);
         console.log(response);
@@ -325,7 +324,7 @@ app.controller('FlabbieController', ['$http', '$scope', function($http, $scope){
 
 ////////////////////////////////////////////////////////////
 
-app.controller('FootballController', ['$http', function($http){
+app.controller('FootballController', ['$http', '$scope', function($http, $scope){
   const controller = this;
   this.obsession = 'College Football is the SUPERIOR Sport';
   this.newDisplay = false;
@@ -384,8 +383,11 @@ app.controller('FootballController', ['$http', function($http){
     }).then(function(response){
       controller.currentFootballPost = response.data[0];
       console.log(controller.currentFootballPost);
-
-      // add angular hidden custom directive to check user w/football post // author to determine whether edit functions are visible in html
+      $scope.input = '';
+      if($scope.verifyFlab.username !== controller.currentFootballPost.author)
+      {
+        document.getElementById("footballItem").style.visibility = "hidden";
+      }
 
     }, function(error){
       console.log('error in setCurrentFootballPost');
