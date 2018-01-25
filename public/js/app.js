@@ -198,7 +198,7 @@ app.controller('UserController', ['$http', '$scope', function($http, $scope){
 
 ////////////////////////////////////////////////////////////
 
-app.controller('FlabbieController', ['$http', function($http){
+app.controller('FlabbieController', ['$http', '$scope', function($http, $scope){
   const controller = this;
   this.modal = false;
   this.newDisplay = false;
@@ -268,9 +268,10 @@ app.controller('FlabbieController', ['$http', function($http){
         controller.currentFlabbieProfile = response.data[0];
         console.log(controller.currentFlabbieProfile);
         console.log(response);
-
-      // add angular hidden custom directive to check user w/user post // author to determine whether edit functions are visible in html
-
+        $scope.input = '';
+        if($scope.verifyFlab.username !== controller.currentFlabbieProfile.author) {
+          document.getElementById("flabItem").style.visibility = "hidden";
+        }
     }, function(error){
       console.log(error);
       console.log('error in setCurrentFlabbieProfile');
@@ -297,10 +298,10 @@ app.controller('FlabbieController', ['$http', function($http){
   };
 
   //ajax call to delete the user
-  this.deleteFlabbieProfile = function(flabbie){
+  this.deleteFlabbieProfile = function(id){
     $http({
       method: 'DELETE',
-      url: '/flabbie/' + flabbie,
+      url: '/flabbie/' + id,
     }).then(function(response){
       controller.getFlabbieProfiles();
       controller.modal = false;
@@ -408,10 +409,10 @@ app.controller('FootballController', ['$http', function($http){
     });
   }
 
-  this.deleteFootballPost = function(football){
+  this.deleteFootballPost = function(id){
     $http({
       method: 'DELETE',
-      url: '/football/' + football,
+      url: '/football/' + id,
     }).then(function(response){
       controller.getFootballPosts();
       controller.modal = false;
@@ -650,10 +651,10 @@ app.controller('SmackController', ['$http', function($http){
   }
 
   //ajax call to delete that smack... Chuck Norris invented this w/his fists
-  this.deleteSmackPost = function(smack){
+  this.deleteSmackPost = function(id){
     $http({
       method: 'DELETE',
-      url: '/smack/' + smack,
+      url: '/smack/' + id,
     }).then(function(response){
       controller.getSmackPosts();
       controller.modal = false;
