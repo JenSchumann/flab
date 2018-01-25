@@ -36,30 +36,6 @@ app.controller('UserController', ['$http', '$scope', function($http, $scope){
   this.currentUser = {};
 
 
-  //create random lines like this w/credit to someecards.com:
-  // this.hasBestPicks = "Beating you at fantasy football would probably feel better if I wasn't beating you at everything else in life.";
-
-//   this.createUserProfile = function(){
-//     $http({
-//       method: 'POST',
-//       url: '/createUserProfile',
-//       data: {
-//         //schema: this.schema,
-//         name: this.name,
-//         image: this.image,
-//         bio: this.bio
-//       }
-//     }).then(function(response){
-//       controller.getUserProfiles();  //render all userProfiles when new one is added
-//       console.log(response);
-//
-// console.log("==========================");
-//       console.log('createUserProfile just created',this.user.id);
-//     }, function(){
-//       console.log('error in createUserProfile');
-//     });
-//   }
-
   this.toggleNew = function(){
     this.newDisplay = !this.newDisplay;
     this.reset = function() {
@@ -73,12 +49,12 @@ app.controller('UserController', ['$http', '$scope', function($http, $scope){
     this.registerForm = !this.registerForm;
     this.loginForm = !this.loginForm;
   };
-  this.register = function(email, password){
+  this.register = function(email, username){
     $http({
       method: 'POST',
       url: '/users/register',
       data: {
-        email: this.registeredEmail,
+        username: this.registeredUsername,
         password: this.registeredPassword
       }
     }).then(function(response){
@@ -98,12 +74,12 @@ app.controller('UserController', ['$http', '$scope', function($http, $scope){
     this.registerForm = false;
   };
   //ajax call to login
-  this.login = function(email, password){
+  this.login = function(username, password){
     $http({
       method: 'POST',
       url: '/users/login',
       data: {
-        email: this.loginEmail,
+        username: this.loginUsername,
         password: this.loginPassword
       }
     }).then(function(response){
@@ -129,6 +105,7 @@ app.controller('UserController', ['$http', '$scope', function($http, $scope){
     }).then(function(response){
       controller.loggedIn = response.data;
       controller.loginForm = true;
+      controller.username = {};
       console.log('user logged out');
     });
   };
@@ -145,19 +122,6 @@ app.controller('UserController', ['$http', '$scope', function($http, $scope){
       console.log(err);
     });
   };
-
-  //ajax call to show all the user profiles
-  // this.getUserProfiles = function(){
-  //   $http({
-  //     method: 'GET',
-  //     url: '/users'
-  //   }).then(function(response){
-      //test this to see if commenting out  controller.allUsers will stop access of allUser in update user edit route
-  //     controller.allUserProfiles = response.data;
-  //   }, function(error){
-  //     console.log('error in getUserProfiles');
-  //   });
-  // };
 
   this.verifyLogin = function(){
     $http({
@@ -183,29 +147,6 @@ app.controller('UserController', ['$http', '$scope', function($http, $scope){
       console.log(err);
     });
   };
-
-  // this.setCurrentUserProfile = function(id){  //grabbing it by id so it can //be edited in next function
-    // $http({
-    //   method: 'GET',
-    //   url: '/users/' + id
-    // }).then(function(response){
-      // maybe try this:
-      // controller.currentUserProfile.push(user);
-
-      // this comes back as undefined in console log
-      // controller.currentUserProfile = response.data[0];
-      // controller.user = response.data[0];
-      //
-      // $scope.input = '';
-      //
-      // console.log("this is controller.currentUserProfile ", this.user.id);
-
-      // add angular hidden custom directive to check user w/user post // author to determine whether edit functions are visible in html
-
-  //   }, function(error){
-  //     console.log('error in setCurrentUserProfile');
-  //   })
-  // }
 
 
   //this is where the issue is:
@@ -253,7 +194,7 @@ app.controller('UserController', ['$http', '$scope', function($http, $scope){
 
 ////////////////////////////////////////////////////////////
 
-//UserProfile controller
+//FlabbieProfile controller
 
 ////////////////////////////////////////////////////////////
 
@@ -273,7 +214,8 @@ app.controller('FlabbieController', ['$http', function($http){
       method: 'POST',
       url: '/flabbie',
       data: {
-        name: this.name,
+        author: this.author,
+        email: this.email,
         image: this.image,
         bio: this.bio,
         favoriteTeams: this.favoriteTeams,
@@ -335,7 +277,6 @@ app.controller('FlabbieController', ['$http', function($http){
     })
   }
 
-  //this is where the issue is:
   //ajax call to update the user
   this.updateFlabbieProfile = function(id){
     $http({
@@ -403,6 +344,7 @@ app.controller('FootballController', ['$http', function($http){
           url: this.url
         }
       }).then(function(response){
+        controller.newDisplay = false;
         controller.getFootballPosts();  //render all footballPosts when new one is added
         console.log(response);
       }, function(){
@@ -517,6 +459,7 @@ app.controller('BeersController', ['$http', function($http){
           author: this.author
         }
       }).then(function(response){
+        controller.newDisplay = false;
         controller.getBeerPosts();  //render all beerPosts when new one is added
         // console.log(response);
       }, function(){

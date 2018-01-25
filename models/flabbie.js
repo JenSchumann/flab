@@ -4,7 +4,8 @@ const mongoose = require('mongoose');
 
 //Schema
 const flabbieSchema = mongoose.Schema({
-  name: String,
+  author: {type:String, default: ''},
+  email: { type: String, required: true, unique: true },
   image: { type: String, default: '' },
   bio: { type: String, default: '' },
   favoriteTeams: String,

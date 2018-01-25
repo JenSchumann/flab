@@ -13,7 +13,7 @@ router.get('/', (req, res)=> {
 //login verification route
 router.get('/verifyLogin', (req, res)=> {
   if(req.session.logged) {
-    User.findOne({ email: req.session.email}, (err, user)=> {
+    User.findOne({ username: req.session.username}, (err, user)=> {
       res.json(user)
     });
   } else {
@@ -27,30 +27,23 @@ router.post('/register', (req, res)=>{
   const password = req.body.password;
   const passwordHash = bcrypt.hashSync(password, bcrypt.genSaltSync(10));
   const userDbEntry = {};
-  userDbEntry.email = req.body.email;
+  userDbEntry.username = req.body.username;
   userDbEntry.password = passwordHash;
   User.create(userDbEntry, (err, user)=> {
     req.session.message = '';
-    req.session.email = user.email;
+    req.session.username = user.username;
     req.session.logged = true;
     res.json(req.session.logged);
   });
 });
 
-//create user profile => changed '/' to '/createUserProfile'
-// router.post('/createUserProfile', function(req, res){
-//   User.create(req.body, function(err, createUserProfile){
-//     res.json(createUserProfile);
-//   });
-// });
-
 //login user - post route
 router.post('/login', (req, res)=> {
-  User.findOne({ email: req.body.email }, (err, user)=> {
+  User.findOne({ username: req.body.username }, (err, user)=> {
     if(user){
       if(bcrypt.compareSync(req.body.password, user.password)){
         req.session.message = '';
-        req.session.email = req.body.email;
+        req.session.username = req.body.username;
         req.session.logged = true;
         res.json(req.session.logged);
       } else {
@@ -84,7 +77,7 @@ router.get('/:id', (req, res)=> {
 //edit route
 router.get('/verifyLogin', (req, res)=> {
   if(req.session.logged){
-    User.findOne({ email: req.session.email }, (err, user)=> {
+    User.findOne({ username: req.session.username }, (err, user)=> {
       res.json(updatedUser);
     });
   } else {

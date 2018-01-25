@@ -20,10 +20,10 @@ router.get('/:id', (req, res)=> {
 
 //create route
 router.post('/', function(req, res){
-  req.body.author = req.session.email;
+  req.body.author = req.session.username;
   Flabbie.create(req.body, (err, createdFlabbie)=>{
     User.findOneAndUpdate(
-      { email: req.session.email },
+      { username: req.session.username },
       { $push: {flabbie: createdFlabbie}},
       { safe: true, upsert: true, new: true},
       (err, model)=>{
@@ -37,7 +37,7 @@ router.post('/', function(req, res){
 router.put('/:id', function(req, res){
   Flabbie.findByIdAndUpdate(req.params.id, req.body, {new:true}, (err, updatedFlabbie)=> {
     User.findOneAndUpdate(
-      { email: req.session.email},
+      { username: req.session.username},
       { $set: { Flabbie: updatedFlabbie}},
       { safe: true, upsert: true, new: true },
       (err, model)=> {
@@ -51,7 +51,7 @@ router.put('/:id', function(req, res){
 //delete route
 router.delete('/:id', function(req, res){
   Flabbie.findByIdAndRemove(req.params.id, (err, deletedFlabbie)=>{
-    User.findOne({ email: req.session.email}, (err, foundUser)=> {
+    User.findOne({ username: req.session.username}, (err, foundUser)=> {
       foundUser.Flabbie.id(req.params.id).remove();
       foundUser.save((err, data)=> {
         res.json(deletedFlabbie);

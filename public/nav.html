@@ -9,22 +9,22 @@
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
       </button>
-    </div>
 
-<!-- <section ng-controller="FlabController as flab"> -->
       <a class="navbar-brand" ng-hide=user.loggedIn href="#aboutModal" ng-click="flab.toggleModal()"  style="color: #f2a41f;">
       { FLAB }</a>
 
+    </div>
 
-      <!-- </section> -->
+
+
 
 
 
       <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-        <ul class="nav navbar-nav navbar-right">
+        <ul class="nav navbar-nav navbar-left">
 
           <li class="dropdown">
-          <span><a href="#" ng-if=user.loggedIn class="navbar-brand dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="color: #f2a41f;"><i class="fa fa-user-o" aria-hidden="true">  </i>      {{user.loginEmail}} <span class="caret"></span></a>
+          <span><a href="#" ng-if=user.loggedIn class="navbar-brand dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="color: #f2a41f;"><i class="fa fa-user-o" aria-hidden="true">  </i>      {{user.loginUsername}} <span class="caret"></span></a>
           <ul class="dropdown-menu">
             <li role="separator" class="divider"></li>
             <li><a href="#flabbie" style="color: #f2a41f;">Create Profile</a></li>

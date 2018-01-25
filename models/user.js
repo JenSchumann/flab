@@ -9,7 +9,7 @@ const Flabbie = require('./flabbie.js');
 //Schema
 const userSchema = mongoose.Schema({
 
-  email: { type: String, required: true, unique: true },
+  username: { type: String, required: true, unique: true },
   password: { type: String, required: true },
 
   beers: [Beer.schema],
