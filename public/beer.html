@@ -66,16 +66,16 @@
               <span aria-hidden="true">&times;</span>
             </button>
 
-            <h3 class="modal-title">{{beer.currentBeerPost.name}} Post</h3>
+            <h3 class="modal-title">Beer:  {{beer.currentBeerPost.name}}</h3>
           </div> <!-- end modal-header -->
 
           <div class="modal-body">
-            <h3 class="modal-title">{{beer.currentBeerPost.name}} Post</h3>
+            <!-- <h3 class="modal-title">{{beer.currentBeerPost.name}} Post</h3> -->
 
             <div id="beerPostInfo">
               <ul ng-click="beer.toggleModal()">
                   <!-- is having the name again here redundant? -->
-                  <li><strong> Beer: </strong>{{beer.currentBeerPost.name}}</li>
+                  <!-- <li><strong> Beer: </strong>{{beer.currentBeerPost.name}}</li> -->
                   <li><strong> Style: </strong>{{beer.currentBeerPost.type}}</li>
                   <li><strong> Ingredients: </strong>{{beer.currentBeerPost.ingredients}}</li>
                   <li><strong> ABV: </strong>{{beer.currentBeerPost.abv}}</li>

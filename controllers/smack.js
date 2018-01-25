@@ -20,10 +20,10 @@ router.get('/:id', (req, res)=> {
 
 //create route
 router.post('/', function(req, res){
-  req.body.author = req.session.email;
+  req.body.author = req.session.username;
   Smack.create(req.body, (err, createdSmack)=>{
     User.findOneAndUpdate(
-      { email: req.session.email },
+      { username: req.session.username },
       { $push: {smack: createdSmack}},
       { safe: true, upsert: true, new: true},
       (err, model)=>{
@@ -37,7 +37,7 @@ router.post('/', function(req, res){
 router.put('/:id', function(req, res){
   Smack.findByIdAndUpdate(req.params.id, req.body, {new:true}, (err, updatedSmack)=>{
     User.findOneAndUpdate(
-      { email: req.session.email},
+      { username: req.session.username},
       { $set: { smack: updatedSmack}},
       { safe: true, upsert: true, new: true },
       (err, model)=> {
@@ -50,7 +50,7 @@ router.put('/:id', function(req, res){
 //delete route
 router.delete('/:id', function(req, res){
   Smack.findByIdAndRemove(req.params.id, (err, deletedSmack)=>{
-    User.findOne({ email: req.session.email}, (err, foundUser)=> {
+    User.findOne({ username: req.session.username}, (err, foundUser)=> {
       foundUser.smack.id(req.params.id).remove();
       foundUser.save((err, data)=> {
         res.json(deletedSmack);
