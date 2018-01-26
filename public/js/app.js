@@ -428,8 +428,6 @@ app.controller('FootballController', ['$http', '$scope', function($http, $scope)
 }]);  //end of FootballController
 
 
-
-
 ////////////////////////////////////////////////////////////
 
 //Beer controller
@@ -445,6 +443,7 @@ app.controller('BeersController', ['$http', '$scope', function($http, $scope){
   this.newDisplay = false;
   this.currentBeerPost = {};
   this.modal = false;
+  this.commentedBeer = {};
 
   this.createBeerPost = function(){
       $http({
@@ -480,10 +479,29 @@ app.controller('BeersController', ['$http', '$scope', function($http, $scope){
   this.toggleEdit = function(){
       this.editDisplay = !this.editDisplay;
     }
-    this.toggleModal = function(){
-      this.modal = !this.modal;
-      console.log('trying to get one beer post accessed through toggleModal');
-    }
+  this.toggleModal = function(){
+    this.modal = !this.modal;
+    console.log('trying to get one beer post accessed through toggleModal');
+  }
+  this.toggleComment = function(){
+    this.commentDisplay = !this.commentDisplay;
+  }
+  this.addComment = function(id){
+    $http({
+      method: 'PUT',
+      url: '/beers/comment/' + id,
+      data: this.commentedBeer
+    }).then(function(response){
+      controller.commentDisplay = false;
+      controller.commentedGif = {};
+      //add custom directive to show who the author of the comment is?
+      controller.getBeerPosts();
+    }, function(err){
+      console.log(err);
+      console.log('err in addComment');
+    })
+  }
+
 
   // AJAX/get request for (beer post) index
   this.getBeerPosts = function(){

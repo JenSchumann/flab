@@ -67,46 +67,71 @@
             </button>
 
             <h3 class="modal-title">Beer:  {{beer.currentBeerPost.name}}</h3>
+
+
+
           </div> <!-- end modal-header -->
+          <!-- Tabs -->
+              <ul class="nav nav-tabs">
+                <li class="nav-item">
+              <a class="nav-link-active" href="#originalBeerPost" data-toggle="tab" role="tab">Post</a>
+              </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="#beerComment" data-toggle="tab" role="tab">Comments</a>
+                </li>
+                <li class="nav-item" id="beerItem">
+                  <a class="nav-link" href="#beerEdit" data-toggle="tab" role="tab">Edit</a>
+                </li>
+              </ul>
 
           <div class="modal-body">
-            <!-- <h3 class="modal-title">{{beer.currentBeerPost.name}} Post</h3> -->
-
-            <div id="beerPostInfo">
-              <ul ng-click="beer.toggleModal()">
-                  <!-- is having the name again here redundant? -->
-                  <!-- <li><strong> Beer: </strong>{{beer.currentBeerPost.name}}</li> -->
-                  <li><strong> Style: </strong>{{beer.currentBeerPost.type}}</li>
-                  <li><strong> Ingredients: </strong>{{beer.currentBeerPost.ingredients}}</li>
-                  <li><strong> ABV: </strong>{{beer.currentBeerPost.abv}}</li>
-                  <li><strong> IBU: </strong>{{beer.currentBeerPost.ibu}}</li>
-                  <li><strong> Original Brewery: </strong>{{beer.currentBeerPost.brewery}}</li>
-                  <li><strong> Purchase Location: </strong>{{beer.currentBeerPost.purchaseLocation}}</li>
-                  <li><strong> Rating: </strong>{{beer.currentBeerPost.userRating}}</li>
-
-
-                  <li><strong> Posted by FLABie:  </strong> {{beer.currentBeerPost.author}}</li>
-
-
-
-              </ul>
-            </div>
-            <!-- Tabs -->
-                <ul class="nav nav-tabs">
-                  <li class="nav-item">
-                    <a class="nav-link-active" href="#beerComment" data-toggle="tab" role="tab">Comments</a>
-                  </li>
-                  <li class="nav-item" id="beerItem">
-                    <a class="nav-link" href="#beerEdit" data-toggle="tab" role="tab">Edit</a>
-                  </li>
-                </ul>
 
                 <div class="tab-content">
-                  <!-- Tab 1 Content -->
-                  <div class="tab-pane fade in show active" id="beerComment" role="tabpanel">
-                    <!-- add beerComment form -->
-                    <!-- user will have ability to post comments as reply to beer posts here -->
+
+                  <!-- originalBeerPost Tab (1) -->
+                  <div class="tab-pane active" id="originalBeerPost" role="tabpanel">
+                    <!-- <div id="beerPostInfo"> -->
+                      <ul>
+                          <li><strong> Style: </strong>{{beer.currentBeerPost.type}}</li>
+                          <li><strong> Ingredients: </strong>{{beer.currentBeerPost.ingredients}}</li>
+                          <li><strong> ABV: </strong>{{beer.currentBeerPost.abv}}</li>
+                          <li><strong> IBU: </strong>{{beer.currentBeerPost.ibu}}</li>
+                          <li><strong> Original Brewery: </strong>{{beer.currentBeerPost.brewery}}</li>
+                          <li><strong> Purchase Location: </strong>{{beer.currentBeerPost.purchaseLocation}}</li>
+                          <li><strong> Rating: </strong>{{beer.currentBeerPost.userRating}}</li>
+                          <li><strong> Posted by FLABie:  </strong> {{beer.currentBeerPost.author}}</li>
+                      </ul>
+                    <!-- </div> -->
+
                   </div>
+                  <!-- Tab 1 Content -->
+                  <div class="tab-pane fade" id="beerComment" role="tabpanel">
+                    <!--  All Comments -->
+                    <ul id="comment-list">
+                      <li ng-repeat="comments in beer.currentBeerPost.comments track by $index">
+                        <div class="col-md-10" id="comment-item">
+                          <p>{{comments}}<p>
+                            <!-- add who authored the comment: -->
+                            <p>Posted by: </p>
+                          <br>
+                        </div>
+                      </li>
+                    </ul>
+                    <!-- New Comment Form RE BeerPosts -->
+                    <h2>Post a Comment</h2>
+                    <form id="commentForm" ng-submit="beer.addComment(beer.currentBeerPost._id); beer.toggleModal()">
+
+
+                  <div class="form-group">
+                    <textarea class="form-control" type="text" id="comments" ng-model="beer.commentedBeer.comments">Share Your 2 Cents: </textarea>
+                    <button class="btn btn-warning" type="submit">Confirm</button>
+                  </div>
+
+                </form>
+
+                </div>
+
+
 
                   <!-- Tab 2 Content -->
                   <div class="tab-pane fade" id="beerEdit" role="tabpanel">

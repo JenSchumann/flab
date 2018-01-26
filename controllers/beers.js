@@ -33,6 +33,13 @@ router.post('/', function(req, res){
   });
 });
 
+// new comment route
+router.put('/comment/:id', (req, res)=>{
+  Beers.findByIdAndUpdate(req.params.id, {$push: {comments: req.body.comments}}, (err, updatedBeer) => {
+    res.json(updatedBeer);
+  });
+});
+
 //update route
 router.put('/:id', (req, res)=>{
   Beers.findByIdAndUpdate(req.params.id, req.body, {new:true}, (err, updatedBeer)=> {
