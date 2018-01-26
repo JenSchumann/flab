@@ -62,6 +62,10 @@ li {
   height: 4em;
 }
 
+#beerComment {
+  padding-top: .25%;
+}
+
 #footer {
   height: 60px;
   background-color: black;

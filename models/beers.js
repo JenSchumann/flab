@@ -9,7 +9,8 @@ const beerSchema = mongoose.Schema({
   brewery: String,
   purchaseLocation: String,
   userRating: Number,
-  author: {type:String, default: ''}
+  author: {type:String, default: ''},
+  comments: [{ type: String }]
 });
 
 const Beers = mongoose.model('Beers', beerSchema);
