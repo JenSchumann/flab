@@ -33,6 +33,13 @@ router.post('/', function(req, res){
   });
 });
 
+//new comment route
+router.put('/comment/:id', (req, res)=>{
+  Flabbie.findByIdAndUpdate(req.params.id, {$push: {comments: req.body.comments}}, (err, updatedFlabbie) => {
+    res.json(updatedFlabbie);
+  });
+});
+
 //update route
 router.put('/:id', function(req, res){
   Flabbie.findByIdAndUpdate(req.params.id, req.body, {new:true}, (err, updatedFlabbie)=> {

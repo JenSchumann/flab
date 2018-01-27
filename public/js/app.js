@@ -203,6 +203,7 @@ app.controller('FlabbieController', ['$http', '$scope', function($http, $scope){
   this.modal = false;
   this.newDisplay = false;
   this.currentFlabbieProfile = {};
+  this.commentedFlabbie = {};
 
 
   //create random lines like this w/credit to someecards.com:
@@ -243,7 +244,23 @@ app.controller('FlabbieController', ['$http', '$scope', function($http, $scope){
     this.modal = !this.modal;
     console.log('trying to get FlabbieProfile through toggleFlabbieProfileModal');
   };
-
+  this.toggleComment = function(){
+    this.commentDisplay = !this.commentDisplay;
+  }
+  this.addComment = function(id){
+    $http({
+      method: 'PUT',
+      url: '/flabbie/comment/' + id,
+      data: this.commentedFlabbie
+    }).then(function(response){
+      controller.commentDisplay = false;
+      controller.commentedFlabbie = {};
+      controller.getFlabbieProfiles();
+    }, function(err){
+      console.log(err);
+      console.log('err in flabbie addComment');
+    })
+  }
   //ajax call to show all the user profiles
   this.getFlabbieProfiles = function(){
     console.log('getting FlabbieProfiles');
@@ -493,7 +510,7 @@ app.controller('BeersController', ['$http', '$scope', function($http, $scope){
       data: this.commentedBeer
     }).then(function(response){
       controller.commentDisplay = false;
-      controller.commentedGif = {};
+      controller.commentedBeer = {};
       //add custom directive to show who the author of the comment is?
       controller.getBeerPosts();
     }, function(err){
@@ -501,7 +518,6 @@ app.controller('BeersController', ['$http', '$scope', function($http, $scope){
       console.log('err in addComment');
     })
   }
-
 
   // AJAX/get request for (beer post) index
   this.getBeerPosts = function(){

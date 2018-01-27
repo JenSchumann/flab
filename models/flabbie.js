@@ -9,7 +9,8 @@ const flabbieSchema = mongoose.Schema({
   image: { type: String, default: '' },
   bio: { type: String, default: '' },
   favoriteTeams: String,
-  favoriteBeers: String
+  favoriteBeers: String,
+  comments: [{ type: String }]
 
 });
 
