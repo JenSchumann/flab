@@ -15,8 +15,6 @@
         <div id="newitem-form" class="col-lg-12">
           <button class="btn btn-warning" type="submit" ng-click="beer.toggleNew(); beer.addForm.reset()">Add Beer Post</button>
         </div>
-      <!-- </div> -->
-
 
 <br><br>
       <!-- Add New Beer Post Form -->
@@ -56,6 +54,7 @@
 
     </div>   <!-- end beer-jumbotron -->
 </div> <!-- end row -->
+
     <!-- Beer Modal -->
     <div ng-if="beer.modal" id="beerModal">
       <div class="modal-dialog" role="document">
@@ -71,11 +70,12 @@
 
 
           </div> <!-- end modal-header -->
+
           <!-- Tabs -->
               <ul class="nav nav-tabs">
                 <li class="nav-item">
-              <a class="nav-link-active" href="#originalBeerPost" data-toggle="tab" role="tab">Post</a>
-              </li>
+                  <a class="nav-link-active" href="#originalBeerPost" data-toggle="tab" role="tab">Post</a>
+                </li>
                 <li class="nav-item">
                   <a class="nav-link" href="#beerComment" data-toggle="tab" role="tab">Comments</a>
                 </li>
@@ -110,9 +110,10 @@
                     <ul id="comment-list">
                       <li ng-repeat="comments in beer.currentBeerPost.comments track by $index">
                         <div class="col-md-10" id="comment-item">
-                          <p>{{comments}}<p>
+                          <p>{{comments}}</p>
                             <!-- add who authored the comment: -->
-                            <p>Posted by: </p>
+                            <!-- SEE IF THIS WORKS
+                            <p>Posted by: {{beer.commentedBeer.author}}</p> -->
                           <br>
                         </div>
                       </li>
