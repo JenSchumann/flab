@@ -187,7 +187,6 @@ app.controller('UserController', ['$http', '$scope', function($http, $scope){
     });
   };
   this.getUsers();
-  // this.getUserProfiles();
 
 }]); //end of UserController
 
@@ -334,10 +333,7 @@ app.controller('FlabbieController', ['$http', '$scope', function($http, $scope){
 
 //Football controller
 
-//will scrape game season schedule from ESPN site or
-
-//researching for possible 3rd party API to integrate... possibly this one:
-// https://github.com/akeaswaran/cfb-scoreboard-api
+//will scrape game season schedule from ESPN site or utilize ESPN API
 
 ////////////////////////////////////////////////////////////
 
@@ -347,7 +343,7 @@ app.controller('FootballController', ['$http', '$scope', function($http, $scope)
   this.newDisplay = false;
   this.modal = false;
   this.currentFootballPost = {};
-
+  this.commentedFootball = {};
 
   this.createFootballPost = function(){
       $http({
@@ -378,6 +374,24 @@ app.controller('FootballController', ['$http', '$scope', function($http, $scope)
   this.toggleModal = function(){
     this.modal = !this.modal;
     console.log('toggling to access football post');
+  }
+  this.toggleComment = function(){
+    this.commentDisplay = !this.commentDisplay;
+  }
+  this.addComment = function(id){
+    $http({
+      method: 'PUT',
+      url: '/football/comment/' + id,
+      data: this.commentedFootball
+    }).then(function(response){
+      controller.commentDisplay = false;
+      controller.commentedFootball = {};
+      //also get the author of the Comments
+      controller.getFootballPosts();
+    }, function(err){
+      console.log(err);
+      console.log('err in addComment in football');
+    })
   }
 
 

@@ -56,12 +56,27 @@
             <h3 class="modal-title">{{football.currentFootballPost.postTitle}}</h3>
           </div> <!-- end modal-header -->
 
+          <!-- Tabs -->
+          <ul class="nav nav-tabs">
+            <li class="nav-item">
+              <a class="nav-link-active" href="#originalFootballPost" data-toggle="tab" role="tab">Post</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#footballComment" data-toggle="tab" role="tab">Comments</a>
+            </li>
+            <li class="nav-item" id="footballItem">
+              <a class="nav-link" href="#footballEdit" data-toggle="tab" role="tab">Edit</a>
+            </li>
+          </ul>
+
           <div class="modal-body">
 
-            <div id="footballPostInfo">
-              <ul ng-click="football.toggleModal()">
+            <div class="tab-content">
 
-                <!-- add author via user logged in -->
+            <!-- originalFootballPost Tab (1) -->
+            <div class="tab-pane active" id="originalFootballPost" role="tabpanel">
+              <ul>
+
                 <li> <strong>Posted by FLABie: </strong> {{football.currentFootballPost.author}}</li>
 
                 <li> <strong>Football Podium Chatter:</strong> {{football.currentFootballPost.fbPost}}</li>
@@ -73,22 +88,33 @@
 
               </ul>
             </div>
-            <!-- Tabs -->
-            <ul class="nav nav-tabs">
-              <li class="nav-item">
-                <a class="nav-link-active" href="#footballComment" data-toggle="tab" role="tab">Comments</a>
-              </li>
-              <li class="nav-item" id="footballItem">
-                <a class="nav-link" href="#footballEdit" data-toggle="tab" role="tab">Edit</a>
-              </li>
-            </ul>
 
-            <div class="tab-content">
               <!-- Tab 1 Content -->
-              <div class="tab-pane fade in show active" id="footballComment" role="tabpanel">
-                <!-- add footballComment form -->
-                <!-- user will have ability to post comments as reply to football posts here -->
-              </div>
+              <div class="tab-pane fade" id="footballComment" role="tabpanel">
+                <!--  All Comments -->
+                <ul id="comment-list">
+                  <li ng-repeat="comments in football.currentFootballPost.comments track by $index">
+                    <div id="comment-item">
+                      <p>{{comments}}</p>
+                        <!-- add who authored the comment: -->
+
+
+                    </div>
+                  </li>
+                </ul>
+                <hr>
+                <!-- New Comment Form RE FootballPosts -->
+                <h2>Post a Comment</h2>
+                <form id="commentForm" ng-submit="football.addComment(football.currentFootballPost._id); football.toggleModal()">
+
+
+                  <div class="form-group">
+                    <textarea class="form-control" type="text" id="comments" ng-model="football.commentedFootball.comments"></textarea><br>
+                    <button class="btn btn-warning" type="submit">Confirm</button>
+                  </div>
+
+                </form>
+            </div>
 
               <!-- Tab 2 Content -->
               <div class="tab-pane fade" id="footballEdit" role="tabpanel">

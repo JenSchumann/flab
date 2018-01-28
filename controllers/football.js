@@ -33,6 +33,13 @@ router.post('/', function(req, res){
   });
 });
 
+// new comment route
+router.put('/comment/:id', (req, res)=>{
+  Football.findByIdAndUpdate(req.params.id, {$push: {comments: req.body.comments}}, (err, updatedFootball) =>{
+    res.json(updatedFootball);
+  });
+});
+
 //update route
 router.put('/:id', function(req, res){
   Football.findByIdAndUpdate(req.params.id, req.body, {new:true}, (err, updatedFootball)=>{
