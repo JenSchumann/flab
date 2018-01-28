@@ -2,10 +2,11 @@ const mongoose = require('mongoose');
 
 const smackSchema = mongoose.Schema({
   smackTitle: String,
-  author: { type:String, default:'' },
+  author: { type:String, default: '' },
   img: String,
   smackdown: String,
-  tag: String
+  tag: String,
+  comments: [{ type: String }]
 });
 
 const Smack = mongoose.model('Smack', smackSchema)
