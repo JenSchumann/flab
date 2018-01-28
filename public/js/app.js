@@ -614,6 +614,7 @@ app.controller('SmackController', ['$http', '$scope', function($http, $scope){
   this.newDisplay = false;
   this.currentSmackPost = {};
   this.modal = false;
+  this.commentedSmack = {};
 
   this.createSmackPost = function(){
       $http({
@@ -648,6 +649,23 @@ app.controller('SmackController', ['$http', '$scope', function($http, $scope){
   this.toggleModal = function(){
     this.modal = !this.modal;
     console.log('trying to get some smack through toggleModal');
+  }
+  this.toggleComment = function(){
+    this.commentDisplay = !this.commentDisplay;
+  }
+  this.addComment = function(id){
+    $http({
+      method: 'PUT',
+      url: '/smack/comment/' + id,
+      data: this.commentedSmack
+    }).then(function(response){
+      controller.commentDisplay = false;
+      controller.commentedSmack = {};
+      controller.getSmackPosts();
+    }, function(err){
+      console.log(err);
+      console.log('err in addComment for smack');
+    })
   }
 
   // AJAX/get request for (smack post) index

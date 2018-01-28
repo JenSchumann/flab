@@ -57,13 +57,27 @@
             <h3 class="modal-title">Post: {{smack.currentSmackPost.smackTitle}}</h3>
           </div> <!-- end modal-header -->
 
+          <!-- Tabs -->
+          <ul class="nav nav-tabs">
+            <li class="nav-item">
+              <a class="nav-link-active" href="#originalSmackPost" data-toggle="tab" role="tab">Comments</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#smackComment" data-toggle="tab" role="tab">Comments</a>
+            </li>
+            <li class="nav-item" id="smackItem">
+              <a class="nav-link" href="#smackEdit" data-toggle="tab" role="tab">Edit</a>
+            </li>
+          </ul>
+
           <div class="modal-body">
-            <!-- <h3 class="modal-title">{{smack.currentSmackPost.smackTitle}} Post</h3> -->
 
-            <div id="smackPostInfo">
-              <ul ng-click="smack.toggleModal()">
+            <div class="tab-content">
 
+              <!-- originalSmackPost Tab (1) -->
+              <div class="tab-pane active" id="originalSmackPost" role="tabpanel">
 
+              <ul>
                   <li><img ng-src="{{smack.currentSmackPost.img}}"/><br></li>
 
                   <li><strong> Posted by FLABie:  </strong> {{smack.currentSmackPost.author}}</li>
@@ -74,21 +88,33 @@
               </ul>
             </div>
 
-          <!-- Tabs -->
-          <ul class="nav nav-tabs">
-            <li class="nav-item">
-              <a class="nav-link-active" href="#smackComment" data-toggle="tab" role="tab">Comments</a>
-            </li>
-            <li class="nav-item" id="smackItem">
-              <a class="nav-link" href="#smackEdit" data-toggle="tab" role="tab">Edit</a>
-            </li>
-          </ul>
 
-          <div class="tab-content">
-            <!-- Tab 1 Content -->
-            <div class="tab-pane fade in show active" id="smackComment" role="tabpanel">
-              <!-- add smackComment form -->
-              <!-- user will have ability to post comments as reply to smack posts here -->
+
+
+            <!-- Tab 2 Content -->
+            <div class="tab-pane fade" id="smackComment" role="tabpanel">
+              <!--  All Comments -->
+              <ul id="comment-list">
+                <li ng-repeat="comments in smack.currentSmackPost.comments track by $index">
+                  <div id="comment-item">
+                    <p>{{comments}}</p>
+                      <!-- add who authored the comment: -->
+
+                  </div>
+                </li>
+              </ul>
+              <hr>
+              <!-- New Comment Form RE SmackPosts -->
+              <h2>Post a Comment</h2>
+              <form id="commentForm" ng-submit="smack.addComment(smack.currentSmackPost._id); smack.toggleModal()">
+
+
+                <div class="form-group">
+                  <textarea class="form-control" type="text" id="comments" ng-model="smack.commentedSmack.comments"></textarea><br>
+                  <button class="btn btn-warning" type="submit">Confirm</button>
+                </div>
+
+              </form>
             </div>
 
             <!-- Tab 2 Content -->
