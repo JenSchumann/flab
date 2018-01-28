@@ -2,10 +2,11 @@ const mongoose = require('mongoose');
 
 const footballSchema = mongoose.Schema({
   postTitle: String,
-  author: { type:String, default:'' },
+  author: { type:String, default: '' },
   fbPost: String,
   tag: String,
-  url: String
+  url: String,
+  comments: [{ type: String }]
 });
 
 const Football = mongoose.model('Football', footballSchema)

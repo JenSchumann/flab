@@ -109,22 +109,23 @@
                     <!--  All Comments -->
                     <ul id="comment-list">
                       <li ng-repeat="comments in beer.currentBeerPost.comments track by $index">
-                        <div class="col-md-10" id="comment-item">
+                        <div id="comment-item">
                           <p>{{comments}}</p>
                             <!-- add who authored the comment: -->
-                            <!-- SEE IF THIS WORKS
-                            <p>Posted by: {{beer.commentedBeer.author}}</p> -->
-                          <br>
+                             <!-- SEE IF THIS WORKS -->
+                            <!-- <p>Posted by: {{beer.commentedBeer.author}}</p> -->
+
                         </div>
                       </li>
                     </ul>
+                    <hr>
                     <!-- New Comment Form RE BeerPosts -->
                     <h2>Post a Comment</h2>
                     <form id="commentForm" ng-submit="beer.addComment(beer.currentBeerPost._id); beer.toggleModal()">
 
 
                   <div class="form-group">
-                    <textarea class="form-control" type="text" id="comments" ng-model="beer.commentedBeer.comments">Share Your 2 Cents: </textarea>
+                    <textarea class="form-control" type="text" id="comments" ng-model="beer.commentedBeer.comments"></textarea><br>
                     <button class="btn btn-warning" type="submit">Confirm</button>
                   </div>
 
