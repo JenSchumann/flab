@@ -476,6 +476,47 @@ app.controller('BeersController', ['$http', '$scope', function($http, $scope){
   this.modal = false;
   this.commentedBeer = {};
 
+  this.getBeer = function(){
+    console.log('getBeer called');
+      $http({
+        method: 'GET',
+        url: '/beers'
+      }).then(
+        function(response){
+          console.log(response, " this is response");
+          controller.message = response.data.beer + response.data.name
+        },
+        function(err){
+          console.log(err);
+          console.log('err in getBeer');
+        }
+      );
+  }
+
+  this.postBeer = function() {
+    console.log('postBeer called');
+    const data = {
+      name: controller.query
+    }
+
+  console.log(controller.query, 'post')
+    $http({
+      method: 'POST',
+      url: '/beers',
+      data: data
+
+    }).then(
+      function(response){
+        console.log(response, ' this is response from postBeer');
+        controller.message = response.data.beer + " is " + response.data.name
+      },
+      function(err){
+        console.log(err);
+        console.log('err in postBeer');
+      }
+    );
+  }
+
   this.createBeerPost = function(){
       $http({
         method: 'POST',

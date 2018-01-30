@@ -2,12 +2,14 @@ const mongoose = require('mongoose');
 
 const beerSchema = mongoose.Schema({
   name: String,
-  type: String,
-  ingredients: String,
-  abv: String,
-  ibu: Number,
+  style: String,
+  description: String,
+  // ingredients: String,
+  // abv: String,
+  // ibu: Number,
   brewery: String,
-  purchaseLocation: String,
+  labels: String,
+  // purchaseLocation: String,
   userRating: Number,
   author: {type:String, default: ''},
   comments: [{ type: String }]
