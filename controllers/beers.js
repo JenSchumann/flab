@@ -1,15 +1,28 @@
 const express = require('express');
 const router = express.Router();
 const Beers = require('../models/beers.js');
-const User = require('../models/user.js')
+const User = require('../models/user.js');
+const getBeer = require('../bin/beer.js');
 
+
+//index route to 3rd party API (BreweryDB)
+router.get('/', (req, res) =>{
+  getBeer(res, 'fat tire')
+})
+
+//
+router.post('/', (req, res) =>{
+  console.log(req.body.name, 'req.body')
+
+  getBeer(res, req.body.name)
+})
 
 //index route
-router.get('/', function(req, res){
-  Beers.find({}, function(err, foundBeers){
-    res.json(foundBeers);
-  });
-});
+// router.get('/', function(req, res){
+//   Beers.find({}, function(err, foundBeers){
+//     res.json(foundBeers);
+//   });
+// });
 
 //show route
 router.get('/:id', (req, res)=> {

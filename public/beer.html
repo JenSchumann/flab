@@ -13,180 +13,31 @@
 
         <!-- Add Beer Post Button -->
         <div id="newitem-form" class="col-lg-12">
-          <button class="btn btn-warning" type="submit" ng-click="beer.toggleNew(); beer.addForm.reset()">Add Beer Post</button>
+          <button class="btn btn-warning" type="submit" ng-click="beer.getBeer(); ">Get Beers</button>
         </div>
 
 <br><br>
-      <!-- Add New Beer Post Form -->
-      <div ng-if="beer.newDisplay">
+<div class="row" id="display">
+  <ul id="beer-list">
+    <!-- took this out right after .allBeerPosts on the following line: | filter:searchBox" ng-init="limit = 28" -->
+    <li ng-repeat="beer in beer.allBeers"  ng-click="beer.postBeer(beer._id)">
+      <div class="col-md-4" id="beer-item">
+        <button class="btn btn-warning postButton" id="beer-button" ng-click="beer.toggleModal()">
+        <img src="./assets/beer-mug-silhouette-24-278747.png" alt="FLAB"><br>{{beer.name}}</button>
 
-        <form ng-submit="beer.createBeerPost()">
-
-          <h5>Name of Beer:</h5><input type="text" ng-model="beer.name" placeholder="Beer Name"/><br>
-
-          <h5>Was it a Pale Ale, Saison, Stout, Porter, Wheat, Amber, Wheat, IPA??</h5>
-          <input type="text" ng-model="beer.type" placeholder="Type"/><br>
-
-          <h5>Was it made of sugar and spice?</h5>
-          <input type="text" ng-model="beer.ingredients" placeholder="Ingredients"/><br>
-
-          <h5>Alcohol content:</h5>
-          <input type="text" ng-model="beer.abv" placeholder="Alcohol Content"/><br>
-
-          <h5>How Bitter?</h5>
-          <input type="text" ng-model="beer.ibu" placeholder="IBU"/><br>
-
-          <h5>What Brewery Makes It?</h5>
-          <input type="text" ng-model="beer.brewery" placeholder="Brewery"/><br>
-
-          <h5>Where'd You Buy It?</h5>
-          <input type="text" ng-model="beer.purchaseLocation" placeholder="Purchase Location"/><br>
-
-          <h5>How'd you rate it? (1: puke, 5: 7th heaven)</h5>
-          <input type="text" ng-model="beer.userRating" placeholder="Beer Rating"/><br>
-          <br>
-
-          <input class="btn btn-warning" type="submit" value="Post">
-
-        </form>
-
-       </div> <!-- end new display -->
-
-    </div>   <!-- end beer-jumbotron -->
-</div> <!-- end row -->
-
-    <!-- Beer Modal -->
-    <div ng-if="beer.modal" id="beerModal">
-      <div class="modal-dialog" role="document">
-        <div class="modal-content">
-          <div class="modal-header">
-
-            <button type="button" ng-click="beer.toggleModal()"class="close" data-dismiss="modal" aria-label="Close">
-              <span aria-hidden="true">&times;</span>
-            </button>
-
-            <h3 class="modal-title">Beer:  {{beer.currentBeerPost.name}}</h3>
-          </div> <!-- end modal-header -->
-
-          <!-- Tabs -->
-              <ul class="nav nav-tabs">
-                <li class="nav-item">
-                  <a class="nav-link-active" href="#originalBeerPost" data-toggle="tab" role="tab">Post</a>
-                </li>
-                <li class="nav-item">
-                  <a class="nav-link" href="#beerComment" data-toggle="tab" role="tab">Comments</a>
-                </li>
-                <li class="nav-item" id="beerItem">
-                  <a class="nav-link" href="#beerEdit" data-toggle="tab" role="tab">Edit</a>
-                </li>
-              </ul>
-
-          <div class="modal-body">
-
-                <div class="tab-content">
-
-                  <!-- originalBeerPost Tab (1) -->
-                  <div class="tab-pane active" id="originalBeerPost" role="tabpanel">
-                    <!-- <div id="beerPostInfo"> -->
-                      <ul>
-                          <li><strong> Style: </strong>{{beer.currentBeerPost.type}}</li>
-                          <li><strong> Ingredients: </strong>{{beer.currentBeerPost.ingredients}}</li>
-                          <li><strong> ABV: </strong>{{beer.currentBeerPost.abv}}</li>
-                          <li><strong> IBU: </strong>{{beer.currentBeerPost.ibu}}</li>
-                          <li><strong> Original Brewery: </strong>{{beer.currentBeerPost.brewery}}</li>
-                          <li><strong> Purchase Location: </strong>{{beer.currentBeerPost.purchaseLocation}}</li>
-                          <li><strong> Rating: </strong>{{beer.currentBeerPost.userRating}}</li>
-                          <li><strong> Posted by FLABie:  </strong> {{beer.currentBeerPost.author}}</li>
-                      </ul>
-                    <!-- </div> -->
-
-                  </div>
-                  <!-- Tab 1 Content -->
-                  <div class="tab-pane fade" id="beerComment" role="tabpanel">
-                    <!--  All Comments -->
-                    <ul id="comment-list">
-                      <li ng-repeat="comments in beer.currentBeerPost.comments track by $index">
-                        <div id="comment-item">
-                          <p>{{comments}}</p>
-                            <!-- add who authored the comment: -->
-                             <!-- SEE IF THIS WORKS -->
-                            <!-- <p>Posted by: {{beer.commentedBeer.author}}</p> -->
-
-                        </div>
-                      </li>
-                    </ul>
-                    <hr>
-                    <!-- New Comment Form RE BeerPosts -->
-                    <h2>Post a Comment</h2>
-                    <form id="commentForm" ng-submit="beer.addComment(beer.currentBeerPost._id); beer.toggleModal()">
-
-
-                  <div class="form-group">
-                    <textarea class="form-control" type="text" id="comments" ng-model="beer.commentedBeer.comments"></textarea><br>
-                    <button class="btn btn-warning" type="submit">Confirm</button>
-                  </div>
-
-                </form>
-
-                </div>
-
-
-
-                  <!-- Tab 2 Content -->
-                  <div class="tab-pane fade" id="beerEdit" role="tabpanel">
-                  <!-- Edit Form -->
-                  <h2>Wanna Update Your Post?</h2>
-
-                    <form id="beerForm" ng-submit="beer.updateBeerPost(beer.currentBeerPost._id)" ng-click="beer.addForm.reset()">
-
-                      <input type="text" placeholder="{{beer.currentBeerPost.name}}" ng-model="beer.editedBeerPost.name">
-
-                      <input type="text" placeholder="{{beer.currentBeerPost.type}}" ng-model="beer.editedBeerPost.type">
-
-                      <input type="text" placeholder="{{beer.currentBeerPost.ingredients}}" ng-model="beer.editedBeerPost.ingredients">
-
-                      <input type="text" placeholder="{{beer.currentBeerPost.abv}}" ng-model="beer.editedBeerPost.abv">
-
-                      <input type="text" placeholder="{{beer.currentBeerPost.ibu}}" ng-model="beer.editedBeerPost.ibu">
-
-                      <input type="text" placeholder="{{beer.currentBeerPost.purchaseLocation}}" ng-model="beer.editedBeerPost.purchaseLocation">
-
-                      <input type="text" placeholder="{{beer.currentBeerPost.userRating}}" ng-model="beer.editedBeerPost.userRating">
-
-                    </form>
-                    <button class="btn btn-warning" type="submit" ng-click="beer.updateBeerPost(beer.currentBeerPost._id); beer.toggleModal()">Update</button>
-
-
-                  <button class="btn btn-warning" ng-click="beer.deleteBeerPost(beer.currentBeerPost._id)">Remove Post</button>
-          </div> <!-- end tab two -->
-
-          </div>  <!-- end tab content -->
-
-        </div>  <!-- end modal body -->
+        <!-- add comment glyphicon when functionality is fleshed out -->
       </div>
-    </div>
-  </div>   <!-- end beerModal -->
 
+    </li>
 
-  <!-- All Beer Posts -->
-  <div class="row" id="display">
-    <ul id="beer-list">
-      <li ng-repeat="beerPost in beer.allBeerPosts | filter:searchBox" ng-init="limit = 28" ng-click="beer.setCurrentBeerPost(beerPost._id)">
-        <div class="col-md-4" id="beer-item">
-          <button class="btn btn-warning postButton" id="beer-button" ng-click="beer.toggleModal()">
-          <img src="./assets/beer-mug-silhouette-24-278747.png" alt="FLAB"><br>{{beerPost.name}}</button>
+  </ul>
 
-          <!-- add comment glyphicon when functionality is fleshed out -->
-        </div>
-
-      </li>
-
-    </ul>
-
+</div>
   </div>
 
 <br><br>
 
+</div>
 </div>  <!-- end beer-container -->
 
 </div>  <!-- end beerController -->
