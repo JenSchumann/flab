@@ -475,23 +475,37 @@ app.controller('BeersController', ['$http', '$scope', function($http, $scope){
   this.currentBeerPost = {};
   this.modal = false;
   this.commentedBeer = {};
+  this.dbBeer = [];
 
   this.getBeer = function(){
     console.log('getBeer called');
       $http({
         method: 'GET',
-        url: '/beers'
+        url: '/beers/getBeer',
+        data: {
+          name: this.beerName
+        }
       }).then(
         function(response){
+          for(let i = 0; i < (response.data).length; i++){
           console.log(response, " this is response");
-          controller.message = response.data.beer + response.data.name
-        },
-        function(err){
+          response.data[i].name,
+          response.data[i].styleId,
+          response.data[i].description,
+          response.data[i].year,
+          response.data[i].withBreweries,
+          response.data[i].foodPairings
+        }
+
+        controller.dbBeer = response.data;
+      },
+        function(err) {
           console.log(err);
           console.log('err in getBeer');
         }
-      );
+      )
   }
+
 
   this.postBeer = function() {
     console.log('postBeer called');

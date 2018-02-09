@@ -3,8 +3,8 @@ const express = require('express');
 const mongoose = require('mongoose');
 const bodyParser = require('body-parser');
 const app = express();
-const session = require('express-session')
-const env = require('dotenv').config()
+const session = require('express-session');
+const env = require('dotenv').config();
 
 //middleware
 app.use(bodyParser.urlencoded({extended:false}));
