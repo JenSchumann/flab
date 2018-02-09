@@ -484,6 +484,12 @@ app.controller('BeersController', ['$http', '$scope', function($http, $scope){
         url: '/beers/getBeer',
         data: {
           name: this.beerName
+          // name: this.beerName,
+          // styleId: this.beerStyleId,
+          // description: this.beerDescription,
+          // year: this.beerYear,
+          // withBreweries: this.beerWithBreweries,
+          // foodPairings: this.beerFoodPairings          
         }
       }).then(
         function(response){
