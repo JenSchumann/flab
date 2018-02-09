@@ -17,6 +17,13 @@ router.post('/', (req, res) =>{
   getBeer(res, req.body.name)
 })
 
+//check to see if this is working
+router.post('/getBeer', (req, res) => {
+  console.log('req.body: ', req.body);
+  getBeer(res, 'beer', req.body);
+});
+
+
 //index route
 // router.get('/', function(req, res){
 //   Beers.find({}, function(err, foundBeers){
