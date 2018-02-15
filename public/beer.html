@@ -13,27 +13,69 @@
 
         <!-- Add Beer Post Button -->
         <div id="newitem-form" class="col-lg-12">
-          <button class="btn btn-warning" type="submit" ng-click="beer.getBeer(); ">Get Beers</button>
+          <button class="btn btn-warning" type="submit" ng-click="beer.getBeerSearch(); ">Get Beers</button>
         </div>
 
 <br><br>
-<div class="row" id="display">
-  <ul id="beer-list">
+
+<!-- BreweryDB API response. -->
+      <div class="row">
+        <div class="col-sm-6">&nbsp;</div>
+        <div class="col-sm-6">
+          <div class="searchBg">
+            <h3>Search for info about beer by name:</h3>
+            <form ng-submit="ctrl.getBeer()">
+              <div class="searchBox">Beer: <input type="text" placeholder="Name of Beer" ng-model="beer.getBeer">
+              <input class="searchBtn" type="submit" value="Search"></div>
+            </form>
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-sm-4">&nbsp;</div>
+        <div class="col-sm-8">
+          <div class="beerInfo threeColumns">
+            <ul>
+              <li class="listLi" ng-repeat="dbBeer in beer.dbBeers track by $index">
+                <div class="beerInfoByName">
+                <h5 class="dbBeerName">{{ dbBeer.name }}</h5>
+                <h6>Style: {{ dbBeer.styleId}}<br/>
+                Description: {{ dbBeer.description}}<br/>
+                Year Originated: {{ dbBeer.year}}<br/>
+                Founding Brewery: {{ dbBeer.withBreweries}}<br/>
+                Foodpairings: {{ dbBeer.foodPairings }}</h6>
+                </div>
+
+              </li>
+            </ul>
+
+                </div>
+              </div>
+
+        </div>
+
+
+
+
+
+
+<!-- <div class="row" id="display">
+  <ul id="beer-list"> -->
     <!-- took this out right after .allBeerPosts on the following line: | filter:searchBox" ng-init="limit = 28" -->
-    <li ng-repeat="beer in beer.allBeers"  ng-click="beer.postBeer(beer._id)">
+    <!-- <li ng-repeat="beer in beer.allBeers"  ng-click="beer.postBeer(beer._id)">
       <div class="col-md-4" id="beer-item">
         <button class="btn btn-warning postButton" id="beer-button" ng-click="beer.toggleModal()">
-        <img src="./assets/beer-mug-silhouette-24-278747.png" alt="FLAB"><br>{{beer.name}}</button>
+        <img src="./assets/beer-mug-silhouette-24-278747.png" alt="FLAB"><br>{{beer.name}}</button> -->
 
         <!-- add comment glyphicon when functionality is fleshed out -->
-      </div>
+      <!-- </div>
 
     </li>
 
   </ul>
 
-</div>
-  </div>
+</div> -->
+</div> <!-- end jumbotron -->
 
 <br><br>
 
