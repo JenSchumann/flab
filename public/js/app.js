@@ -478,7 +478,7 @@ app.controller('BeersController', ['$http', '$scope', function($http, $scope){
   this.dbBeer = [];
 
   this.getBeer = function(){
-    console.log('getBeer called');
+    // console.log('getBeer called');
       $http({
         method: 'GET',
         url: '/beers/getBeer',
@@ -489,7 +489,7 @@ app.controller('BeersController', ['$http', '$scope', function($http, $scope){
           // description: this.beerDescription,
           // year: this.beerYear,
           // withBreweries: this.beerWithBreweries,
-          // foodPairings: this.beerFoodPairings          
+          // foodPairings: this.beerFoodPairings
         }
       }).then(
         function(response){

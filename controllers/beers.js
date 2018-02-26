@@ -2,7 +2,7 @@ const express = require('express');
 const router = express.Router();
 const Beers = require('../models/beers.js');
 const User = require('../models/user.js');
-const getBeer = require('../bin/beer.js');
+const getBreweryDBResponse = require('../bin/beer.js');
 
 
 //index route to 3rd party API (BreweryDB)
@@ -87,5 +87,11 @@ router.delete('/:id', (req, res)=>{
   });
 });
 
+//  BreweryDB Response route ==========================================
+
+router.post('/getBreweryDBResponse', (req, res) => {
+  console.log('req.body: ', req.body);
+  getBreweryDBResponse(res, 'beers', req.body);
+});
 
 module.exports = router;
