@@ -24,9 +24,9 @@
         <div class="col-sm-6">
           <div class="searchBg">
             <h3>Search for info about beer by name:</h3>
-            <form ng-submit="ctrl.getBeer()">
-              <div class="searchBox">Beer: <input type="text" placeholder="Name of Beer" ng-model="beer.getBeer">
-              <input class="searchBtn" type="submit" value="Search"></div>
+            <form ng-submit="beer.getBeer()">
+              <div class="searchBox">Beer: <input type="text"  placeholder="Name of Beer">
+              <input class="searchBtn" type="submit" value="Search" ng-submit="beer.getBeer(dbBeer)"></div>
             </form>
           </div>
         </div>
