@@ -477,6 +477,33 @@ app.controller('BeersController', ['$http', '$scope', function($http, $scope){
   this.commentedBeer = {};
   this.dbBeer = [];
 
+  this.getBreweryDBResponse = function(){
+    $http({
+      method: 'POST',
+      url: '/beers/getBreweryDBResponse',
+      data: {
+        name: this.name
+      }
+    }).then(
+      function(response){
+        console.log('getBreweryDBResponse talking');
+        for(let i = 0; i < (response.data).length; i++){
+          response.data[i].name,
+          response.data[i].description,
+          response.data[i].foodPairings,
+          response.data[i].styleId,
+          response.data[i].labels,
+          response.data[i].year
+        }
+        controller.breweryDBBeers = response.data;
+        
+      },
+      function(error){
+        console.log(error);
+      }
+    )
+  }
+
   this.getBeer = function(){
     // console.log('getBeer called');
       $http({
