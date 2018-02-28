@@ -496,7 +496,7 @@ app.controller('BeersController', ['$http', '$scope', function($http, $scope){
           response.data[i].year
         }
         controller.breweryDBBeers = response.data;
-        
+
       },
       function(error){
         console.log(error);
@@ -504,65 +504,64 @@ app.controller('BeersController', ['$http', '$scope', function($http, $scope){
     )
   }
 
-  this.getBeer = function(){
+  this.getBeers = function(){
     // console.log('getBeer called');
       $http({
         method: 'GET',
-        url: '/beers/getBeer',
-        data: {
-          name: this.beerName
-          // name: this.beerName,
-          // styleId: this.beerStyleId,
-          // description: this.beerDescription,
-          // year: this.beerYear,
-          // withBreweries: this.beerWithBreweries,
-          // foodPairings: this.beerFoodPairings
-        }
+        url: '/beers',
       }).then(
         function(response){
-          for(let i = 0; i < (response.data).length; i++){
-          console.log(response, " this is response");
-          response.data[i].name,
-          response.data[i].styleId,
-          response.data[i].description,
-          response.data[i].year,
-          response.data[i].withBreweries,
-          response.data[i].foodPairings
-        }
+                controller.beers=response.data
+              },
+              function(error){
 
-        controller.dbBeer = response.data;
-      },
-        function(err) {
-          console.log(err);
-          console.log('err in getBeer');
-        }
-      )
-  }
+              }
+  )
+}
+
+  //         for(let i = 0; i < (response.data).length; i++){
+  //         console.log(response, " this is response");
+  //         response.data[i].name,
+  //         response.data[i].styleId,
+  //         response.data[i].description,
+  //         response.data[i].year,
+  //         response.data[i].withBreweries,
+  //         response.data[i].foodPairings
+  //       }
+  //
+  //       controller.dbBeer = response.data;
+  //     },
+  //       function(err) {
+  //         console.log(err);
+  //         console.log('err in getBeer');
+  //       }
+  //     )
+  // }
 
 
-  this.postBeer = function() {
-    console.log('postBeer called');
-    const data = {
-      name: controller.query
-    }
-
-  console.log(controller.query, 'post')
-    $http({
-      method: 'POST',
-      url: '/beers',
-      data: data
-
-    }).then(
-      function(response){
-        console.log(response, ' this is response from postBeer');
-        controller.message = response.data.beer + " is " + response.data.name
-      },
-      function(err){
-        console.log(err);
-        console.log('err in postBeer');
-      }
-    );
-  }
+  // this.postBeer = function() {
+  //   console.log('postBeer called');
+  //   const data = {
+  //     name: controller.query
+  //   }
+  //
+  // console.log(controller.query, 'post')
+  //   $http({
+  //     method: 'POST',
+  //     url: '/beers',
+  //     data: data
+  //
+  //   }).then(
+  //     function(response){
+  //       console.log(response, ' this is response from postBeer');
+  //       controller.message = response.data.beer + " is " + response.data.name
+  //     },
+  //     function(err){
+  //       console.log(err);
+  //       console.log('err in postBeer');
+  //     }
+  //   );
+  // }
 
   this.createBeerPost = function(){
       $http({
@@ -622,17 +621,17 @@ app.controller('BeersController', ['$http', '$scope', function($http, $scope){
   }
 
   // AJAX/get request for (beer post) index
-  this.getBeerPosts = function(){
-    $http({
-      method:'GET',
-      url: '/beers',
-    }).then(function(response){
-      controller.allBeerPosts = response.data //value of a successful ajax request
-      console.log(response);
-    }, function(){
-      console.log('error in getBeerPosts');
-    });
-  }
+  // this.getBeerPosts = function(){
+  //   $http({
+  //     method:'GET',
+  //     url: '/beers',
+  //   }).then(function(response){
+  //     controller.allBeerPosts = response.data //value of a successful ajax request
+  //     console.log(response);
+  //   }, function(){
+  //     console.log('error in getBeerPosts');
+  //   });
+  // }
 
   this.setCurrentBeerPost = function(id){ //so we can edit it in the next function
     $http({
@@ -682,8 +681,8 @@ app.controller('BeersController', ['$http', '$scope', function($http, $scope){
   );
   }
 
-  this.getBeerPosts(); //call immediately once controller is instantiated
-
+  // this.postBeer(); //call immediately once controller is instantiated
+this.getBeers();
 }]); //end of BeersController
 
 

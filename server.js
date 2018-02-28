@@ -35,7 +35,8 @@ app.use('/flabbie', flabbieController);
 
 //add FlabController... for nav.html?
 
-
+// Fixes mongoose promise deprecation warning
+mongoose.Promise = global.Promise;
 
 
 

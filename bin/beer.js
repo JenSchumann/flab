@@ -1,6 +1,8 @@
 const request = require('request');
 
-const apiKey = process.env.API_KEY
+const apiKey = process.env.API_KEY;
+
+
 
 //this line throws an error:
 // const client = breweryDB.client(apiKey);
@@ -10,6 +12,7 @@ const getBreweryDBResponse = (res, name, body) => {
   let breweryDBResponse = [];
 
   client.search({
+  
     name: name
   }).then(response => {
     for(let i = 0; i < (response.jsonBody.beers).length; i++) {
