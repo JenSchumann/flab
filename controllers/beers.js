@@ -7,7 +7,7 @@ const getBreweryDBResponse = require('../bin/beer.js');
 
 //index route to 3rd party API (BreweryDB)
 router.get('/', (req, res) =>{
-  getBeer(res, 'fat tire')
+  getBreweryDBResponse(res, 'fat tire')
 })
 
 //
