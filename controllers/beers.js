@@ -7,14 +7,15 @@ const getBreweryDBResponse = require('../bin/beer.js');
 
 //index route to 3rd party API (BreweryDB)
 router.get('/', (req, res) =>{
-  getBreweryDBResponse(res, 'fat tire')
+  getBreweryDBResponse(res, req.body)
 })
 
 //
 router.post('/', (req, res) =>{
   console.log(req.body.name, 'req.body')
 
-  getBeer(res, req.body.name)
+// see if this is a solution:
+  getBreweryDBResponse(res, req.body.name)
 })
 
 //check to see if this is working
