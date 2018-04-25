@@ -49,6 +49,7 @@ app.controller('UserController', ['$http', '$scope', function($http, $scope){
     this.registerForm = !this.registerForm;
     this.loginForm = !this.loginForm;
   };
+  //shouldn't the params be updated to username & password?
   this.register = function(email, username){
     $http({
       method: 'POST',
