@@ -3,7 +3,7 @@
   background-color: #39487f; */
 }
 
-#aboutModal {
+ #aboutModal {
   padding-top: 8%;
 }
 
@@ -16,11 +16,10 @@
   padding-bottom: 3%;
 }
 
-#beer-jumbotron, #football-jumbotron, #smack-jumbotron, #user-jumbotron, #flabbie-jumbotron {
+/* #beer-jumbotron, #football-jumbotron, #smack-jumbotron, #user-jumbotron, #flabbie-jumbotron {
   text-align: center;
   justify-content: center;
-  /* background-color: white; */
-}
+} */
 
 #smackDizzy {
   width: 8em;
@@ -45,7 +44,7 @@
 
 li {
 	list-style: none;
-  top: 0;
+  /* top: 0; */
 }
 
 .postButton {
@@ -75,3 +74,34 @@ li {
   margin: 0 auto;
   position: sticky;
 }
+
+
+/* *********************** FOR PARALLAX */
+
+.section{
+  min-height: 1000px;
+  overflow:hidden;
+  position:relative;
+  padding:90px 10px 0px;
+  background-size:cover;
+}
+.section:nth-child(even){
+  background-color: #ccc;
+}
+#home {
+  background: url(pexels-photo-69040.png) no-repeat center center fixed;
+}
+#about {
+  background: url(pexels-photo-220783.jpeg) no-repeat center center fixed;
+}
+#home > div,#about > div {
+  background-color: rgba(255, 0, 0,0.75);
+  border-radius:10px;
+}
+#contact > div {
+  background-color: #6E8387;
+  border-radius:15px;
+  padding:20px;
+}
+
+/* *********************** */
