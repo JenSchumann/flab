@@ -4,13 +4,12 @@
     <form ng-submit="user.login();">
 
         <input type="username" ng-model="user.loginUsername" placeholder="Username">
-        <!-- <br>
-        <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small><br> -->
+
 
 
         <input type="password" ng-model="user.loginPassword" placeholder="Password"><br><br>
 
-      <button type="submit" class="btn btn-warning" >Login</button><br>
+      <button type="submit" class="btn btn-danger" >Login</button><br>
     </form>
     <h5>{{user.message}}</h5><br>
     Don't have an account?
@@ -23,7 +22,7 @@
     <form ng-submit="user.register();">
 
         <input type="username" ng-model="user.registeredUsername" placeholder="Username"><br><br>
-        <!-- <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small><br> -->
+
 
         <input type="password" ng-model="user.registeredPassword" placeholder="Password"><br><br>
 

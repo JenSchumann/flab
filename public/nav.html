@@ -1,83 +1,61 @@
 <!--   Navbar Section -->
 <div ng-controller="FlabController as flab">
-  <nav class="navbar navbar-default navbar-inverse  navbar-fixed-top">
-  <div class="container-fluid">
-    <div class="navbar-header">
-      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
-        <span class="sr-only">Toggle navigation</span>
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-      </button>
+  <!-- <nav class="navbar navbar-default navbar-inverse  navbar-fixed-top"> -->
+  <nav class="navbar navbar-light bg-primary fixed-top navbar-expand-sm">
+    <!-- navbar-expand-sm -->
+  <div class="container">
+    <button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#topnav"><span class="navbar-toggler-icon"></span></button>
 
-      <a class="navbar-brand" ng-hide=user.loggedIn href="#aboutModal" ng-click="flab.toggleModal()"  style="color: #f2a41f;">
-      { FLAB }</a>
+    <a class="navbar-brand pt-4 text-left ml-auto" ng-hide=user.loggedIn href="#aboutModal" ng-click="flab.toggleModal()"  style="color: #f2a41f">
+    { FLAB }</a>
 
-    </div>
+        <div class="collapse navbar-collapse" id="topnav">
+          <ul class="nav navbar-nav">
+<!-- ml-auto -->
 
+            <li class="nav-item dropdown">
+              <a href="#" ng-if=user.loggedIn class="nav-link dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false" style="color: #f2a41f;"><i class="fa fa-user-o" aria-hidden="true">  </i>      {{user.loginUsername}}
+              </a>
 
+              <div class="dropdown-menu">
+                <a class="dropdown-item" href="#flabbie" style="color: #f2a41f;">Create Profile</a>
 
+                <a class="dropdown-item" href="#flabbie" style="color: #f2a41f;">Update Profile</a>
 
+                <a class="dropdown-item" href="#flabbie" style="color: #f2a41f;">Delete Profile</a>
+              </div>
+            </li>
 
+            <li class="nav-item dropdown">
 
-      <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-        <ul class="nav navbar-nav navbar-left">
+                <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false" style="color: #f2a41f;">Menu</a>
 
-          <li class="dropdown">
-          <span><a href="#" ng-if=user.loggedIn class="navbar-brand dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="color: #f2a41f;"><i class="fa fa-user-o" aria-hidden="true">  </i>      {{user.loginUsername}} <span class="caret"></span></a>
-          <ul class="dropdown-menu">
-            <li role="separator" class="divider"></li>
-            <li><a href="#flabbie" style="color: #f2a41f;">Create Profile</a></li>
-            <li role="separator" class="divider"></li>
-            <li><a href="#flabbie" style="color: #f2a41f;">Update Profile</a></li>
-            <li role="separator" class="divider"></li>
-            <li><a href="#flabbie" style="color: #f2a41f;">Delete  Profile</a></li>
-          </ul>
-        </li>
-        </ul>
-
-
-
-    <!-- add search filter here in future NEED TO UPDATE HTML WITH ANGULARJS FILTER CODE -->
-    <!-- need to be added in jumbotron of each section to access respective controllers? yas? -->
-    <!-- <form class="navbar-form navbar-left">
-        <div class="form-group">
-          <input type="text" class="form-control" placeholder="Search" ng-model="searchBox">
-        </div>
-        <button type="submit" class="btn btn-default">Submit</button>
-    </form> -->
+                <div class="dropdown-menu">
+                  <a class="dropdown-item" href="#football" style="color: #f2a41f;">FOOTBALL</a>
+                  <a class="dropdown-item" href="#beer" style="color: #f2a41f;">BEER</a>
+                  <a class="dropdown-item" href="#smack" style="color: #f2a41f;">SMACK</a>
+                  <a class="dropdown-item" href="#flabbie" style="color: #f2a41f;">FLABbies</a>
+                  <a class="dropdown-item" href="#contact" style="color: #f2a41f;">Contact FLAB HQ</a>
+                  <div class="dropdown-divider"></div>
+                  <a class="dropdown-item" href="#about" style="color: #f2a41f;">About</a>
+                </div>
+              </li>
+          <!-- <ul class="dropdown-menu nav"> -->
 
 
-        <ul class="nav navbar-nav navbar-right">
+            <li ng-if=!user.loggedIn ng-click="user.goToLogin()" ng-click="user.addForm.reset()" class="nav-item text-right mr-auto"><a href="#" class="nav-link">LOGIN</a></li>
 
-          <li class="dropdown">
-          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false" style="color: #f2a41f;">FOOTBALL <span class="caret"></span></a>
-          <ul class="dropdown-menu">
-            <li role="separator" class="divider"></li>
-            <li><a href="#football" style="color: #f2a41f;">FOOTBALL</a></li>
-            <li role="separator" class="divider"></li>
-            <li><a href="#beer" style="color: #f2a41f;">BEER</a></li>
-            <li role="separator" class="divider"></li>
-            <li><a href="#smack" style="color: #f2a41f;">SMACK</a></li>
-            <li role="separator" class="divider"></li>
-            <li><a href="#flabbie" style="color: #f2a41f;">FLABbies</a></li>
-            <li role="separator" class="divider"></li>
-            <li><a href="#" style="color: #f2a41f;">Contact FLAB HQ</a></li>
-            <li role="separator" class="divider"></li>
-            <li><a href="#about" style="color: #f2a41f;">About</a></li>
-          </ul>
-        </li>
+            <li ng-if=user.loggedIn ng-click="user.logOut()" class="nav-item text-right mr-auto"><a href="#" style="color:#f2a41f;" class="nav-link">LOGOUT</a></li>
 
-            <li ng-if=!user.loggedIn ng-click="user.goToLogin()" ng-click="user.addForm.reset()"><a href="#">LOGIN</a></li>
-            <li ng-if=user.loggedIn ng-click="user.logOut()"><a href="#" style="color:#f2a41f;">LOGOUT</a></li>
-            <li ng-if=!user.loggedIn ng-click="user.goToRegister()"><a href="#" style="color:#f2a41f;">REGISTER</a></li>
+            <li ng-if=!user.loggedIn ng-click="user.goToRegister()" class="nav-item text-right mr-auto"><a href="#" style="color:#f2a41f;" class="nav-link">REGISTER</a></li>
 
          </ul>   <!-- nav navbar-nav navbar-right -->
       </div><!-- /.navbar-collapse -->
-
   </div><!-- /.container-fluid -->
 </nav>
 
+
+<!-- about modal -->
 <div ng-if="flab.aboutModal" id="aboutModal">
   <div class="modal-dialog modal-lg" role="document">
     <div class="modal-content">

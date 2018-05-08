@@ -4,6 +4,7 @@ const mongoose = require('mongoose');
 const bodyParser = require('body-parser');
 const app = express();
 const session = require('express-session');
+const methodOverride = require('method-override');
 const env = require('dotenv').config();
 
 //middleware
@@ -14,7 +15,8 @@ app.use(session({
 	secret: process.env.SECRET,
 	resave: false,
 	saveUninitialized: false
-}))
+}));
+app.use(methodOverride('_method'));
 
 
 //controllers

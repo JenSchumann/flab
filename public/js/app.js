@@ -1,5 +1,7 @@
 const app = angular.module('FlabApp', []);
 
+
+
 ////////////////////////////////////////////////////////////
 
 //FLAB controller
@@ -17,6 +19,16 @@ app.controller('FlabController', ['$http', function($http){
     console.log('cuz everyone wants to know what FLAB is about');
   }
 
+  $('.nav li a').on('click',function(event){
+          // console.log(event);
+          event.preventDefault();
+          var target = $(this).attr('href');
+          // console.log(target);
+          var offsetTop = $(target).offset().top;
+          $('html, body').animate({
+            scrollTop: offsetTop
+          },1000);
+          })
 
 }]); //end of FlabController
 
@@ -269,7 +281,7 @@ app.controller('FlabbieController', ['$http', '$scope', function($http, $scope){
       url: '/flabbie',
     }).then(function(response){
       controller.allFlabbieProfiles = response.data;
-      console.log(response);
+      // console.log(response);
     }, function(error){
       console.log('error in getFlabbieProfiles');
       console.log(err);
@@ -488,13 +500,13 @@ app.controller('BeersController', ['$http', '$scope', function($http, $scope){
     }).then(
       function(response){
         console.log('getBreweryDBResponse talking');
-        for(let i = 0; i < (response.data).length; i++){
+        for(let i = 0; i < response.length; i++){
           response.data[i].name,
-          response.data[i].description,
-          response.data[i].foodPairings,
-          response.data[i].styleId,
-          response.data[i].labels,
-          response.data[i].year
+          response.data[i].description
+          // response.data[i].foodPairings,
+          // response.data[i].styleId,
+          // response.data[i].labels,
+          // response.data[i].year
         }
         controller.breweryDBBeers = response.data;
 
@@ -505,20 +517,20 @@ app.controller('BeersController', ['$http', '$scope', function($http, $scope){
     )
   }
 
-  this.getBeers = function(){
-    // console.log('getBeer called');
-      $http({
-        method: 'GET',
-        url: '/beers',
-      }).then(
-        function(response){
-                controller.beers=response.data
-              },
-              function(error){
-
-              }
-  )
-}
+//   this.getBeers = function(){
+//     // console.log('getBeer called');
+//       $http({
+//         method: 'GET',
+//         url: '/beers',
+//       }).then(
+//         function(response){
+//                 controller.beers=response.data
+//               },
+//               function(error){
+//
+//               }
+//   )
+// }
 
   //         for(let i = 0; i < (response.data).length; i++){
   //         console.log(response, " this is response");
@@ -683,7 +695,7 @@ app.controller('BeersController', ['$http', '$scope', function($http, $scope){
   }
 
   // this.postBeer(); //call immediately once controller is instantiated
-this.getBeers();
+// this.getBeers();
 }]); //end of BeersController
 
 
