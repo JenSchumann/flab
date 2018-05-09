@@ -21,9 +21,9 @@ app.controller('FlabController', ['$http', function($http){
   $('.nav li a').on('click',function(event){
           // console.log(event);
           event.preventDefault();
-          var target = $(this).attr('href');
+          const target = $(this).attr('href');
           // console.log(target);
-          var offsetTop = $(target).offset().top;
+          const offsetTop = $(target).offset().top;
           $('html, body').animate({
             scrollTop: offsetTop
           },1000);
