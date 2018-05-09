@@ -1,7 +1,5 @@
 const app = angular.module('FlabApp', []);
 
-
-
 ////////////////////////////////////////////////////////////
 
 //FLAB controller
@@ -12,7 +10,8 @@ app.controller('FlabController', ['$http', function($http){
   const controller = this;
   this.flabbiness = '{ Football Loving A**hole Beerdrinkers }';
   this.modal = false;
-  this.aboutModal = false;
+  this.aboutModal = false
+  this.showBeerPage = false;
   this.toggleModal = function(){
     this.modal = !this.modal;
     this.aboutModal = !this.aboutModal;
@@ -28,9 +27,234 @@ app.controller('FlabController', ['$http', function($http){
           $('html, body').animate({
             scrollTop: offsetTop
           },1000);
-          })
+        });
+
+      this.openBeerSearch = function(){
+      this.showBeerPage = true;
+      console.log('currentUser in app.js: ', currentUser);  // testing purpose
+   };
 
 }]); //end of FlabController
+
+////////////////////////////////////////////////////////////
+
+//BeerDBController controller
+
+////////////////////////////////////////////////////////////
+
+app.controller('BeerDBController', ['$http', '$scope', function($http, $scope){
+
+  const controller = this;
+  this.beers = [];
+  this.selectedBeer = "";
+  this.foundNoBeers = false;
+  this.searchForBeer = "";
+  this.searchByBrewery = "";
+
+  // Clears the text boxes and sets the beer list to an empty array
+  this.clearSearchForm = function() {
+    controller.searchForBeer = "";
+    controller.beers = [];
+    this.searchByBrewery = "";
+    this.foundNoBeers = false;
+  }
+
+  this.capWords = function(breweryName) {
+    if (breweryName === "") {
+      return breweryName;
+    }
+
+    var words = breweryName.split(" ");
+    for (var i = 0; i < words.length; i++) {
+      var curWord = words[i];
+      var firstLetter = curWord.charAt(0).toUpperCase();
+      curWord = firstLetter + curWord.slice(1);
+      words[i] = curWord;
+    }
+    return words.join(" ");
+  }
+
+  // Takes the results of a search and puts the data into objects that match
+  // the mongo model. Adds the beers to the beer list.
+  this.addFoundBeersToList = function(data) {
+    for (var i = 0; i < data.length; i++ ) {
+      var newBeer = {
+        name: data[i].name,
+        description: data[i].description,
+        style: data[i].style.shortName,
+        abv: data[i].abv,
+        ibu: data[i].ibu,
+        brewery: this.capWords( this.searchByBrewery)
+      }
+      controller.beers.push(newBeer);
+    }
+  }
+
+  // Called when beer search form is submitted
+  // Search by name has priority over search by brewery
+  this.findBeer = function() {
+    if (this.searchForBeer !== "") {
+      this.searchByBrewery = ""
+      this.getBeerByName();
+    } else if (this.searchByBrewery !== "") {
+      this.getBeersByBrewery();
+    }
+  }
+
+  // Gets beer by name from brewerydb. Gets brewery that makes the beer.
+  this.getBeerByName = function() {
+    var urlStr = '/breweries/proxy/v2/beers?name=' + controller.searchForBeer;
+
+    $http({
+      method: 'GET',
+      url: urlStr
+    }).then( function(response) {
+      controller.beers = [];
+
+      // check if beer was found
+      if (response.data.hasOwnProperty('data')) {
+        controller.foundNoBeers = false;
+      }
+      else {
+        controller.foundNoBeers = true;
+        return;
+      }
+
+      controller.addFoundBeersToList(response.data.data);
+      controller.getBreweryByBeerID(response.data.data[0].id);
+      console.log(controller.beers);
+    }, function(response) {
+      console.log("Get beer by name failed", response);
+      controller.beers = [];
+    }
+  )};
+
+  this.goToThisBeer = function(breweryId, main){
+      main.showBrewerySearch = false;
+      main.showLoginForm = false;
+      main.showHomePage = false;
+      main.showBeerPage = false;
+      main.showBreweryPage = false;
+      main.showBreweries = false;
+      BeerDisplayController.showDetailsForm = true;
+   //   this.getBeerByName(breweryId);
+   var urlStr = '/breweries/proxy/v2/beers?name=' + controller.searchForBeer;
+
+   $http({
+     method: 'GET',
+     url: urlStr
+   }).then( function(response) {
+     controller.beers = [];
+     // check if beer was found
+     if (response.data.hasOwnProperty('data')) {
+       controller.foundNoBeers = false;
+       this.thisOneBeer = response;
+       console.log(response);
+     }
+     else {
+       controller.foundNoBeers = true;
+       return;
+     }
+  });
+ };
+
+  // Get the brewery that makes the beer using the brewerydb beer id
+  this.getBreweryByBeerID = function(beerID) {
+    var urlStr = "/breweries/proxy/v2/beer/" + beerID + "/breweries";
+
+    $http({
+      method: 'GET',
+      url: urlStr
+    }).then( function(response) {
+      if (response.data.hasOwnProperty('data') === true) {
+        controller.beers[0].brewery = response.data.data[0].name;
+      }
+    }, function(response) {
+      console.log("getBreweryByBeerID failed:", response);
+    }
+  )};
+
+
+  // Get all of the beers that a brewery makes. Search by brewery name
+  this.getBeersByBrewery = function() {
+    controller.beers = [];
+    var urlStr = "/breweries/proxy/v2/breweries?name=" + controller.searchByBrewery;
+
+    $http({
+      method: 'GET',
+      url: urlStr
+    }).then( function(response) {
+      if (response.data.hasOwnProperty('data')) {
+        controller.getBreweryBeers(response.data.data[0].id);
+      }
+    }, function(response) {
+      console.log("getBeersByBrewery failed", response);
+    })
+  }
+
+  // Get the beers a brewery makes. Search for brewery by breweryDB brewery id
+  this.getBreweryBeers = function(breweryID) {
+    var urlStr = "/breweries/proxy/v2/brewery/" + breweryID + "/beers";
+
+    $http({
+      method: 'GET',
+      url: urlStr
+    }).then(function(response) {
+      if (response.data.hasOwnProperty('data')) {
+        controller.foundNoBeers = false;
+      } else {
+        controller.foundNoBeers = true;
+        return;
+      }
+      controller.addFoundBeersToList(response.data.data);
+    }, function(response) {
+      console.log("getBreweryBeers failed:", response);
+    })
+  }
+
+  // save beer as a favorite
+  this.saveFavoriteBeer = function() {
+    var urlStr = '/users/beers/' + currentUser._id;
+
+    $http({
+      method: 'PUT',
+      url: urlStr,
+      data: {beers:  this.selectedBeer }
+    }).then(function(response) {
+      console.log("beer saved as favorite");
+    }, function(response) {
+      console.log("saveFavoriteBeer failed: ", response);
+    })
+    window.location.reload();
+  }
+
+}]); //end of BeerDBController
+
+////////////////////////////////////////////////////////////
+
+//User controller
+
+////////////////////////////////////////////////////////////
+
+app.controller('BeerDisplayController', ['$http', '$scope', function($http, $scope){
+  this.showSearchForm = true;
+  this.showDetailsForm = false;
+  this.showAddFavButton = false;
+
+
+  this.showDetails = function(ctrl, curBeer) {
+    this.showSearchForm = false;
+    this.showDetailsForm = true;
+    ctrl.selectedBeer = curBeer;
+    // need to create conditional to show add beer button if user is logged in
+
+  };
+
+  this.backToSearchForm = function(){
+    this.showDetailsForm = false;
+    this.showSearchForm = true;
+  };
+}]);
 
 ////////////////////////////////////////////////////////////
 
@@ -476,9 +700,6 @@ app.controller('FootballController', ['$http', '$scope', function($http, $scope)
 
 //Beer controller
 
-//will add 3rd party API functionality in near future from:
-// http://www.brewerydb.com/developers/docs-endpoint/beer_index
-
 ////////////////////////////////////////////////////////////
 
 app.controller('BeersController', ['$http', '$scope', function($http, $scope){
@@ -489,116 +710,6 @@ app.controller('BeersController', ['$http', '$scope', function($http, $scope){
   this.modal = false;
   this.commentedBeer = {};
   this.dbBeer = [];
-
-  this.getBreweryDBResponse = function(){
-    $http({
-      method: 'POST',
-      url: '/beers/getBreweryDBResponse',
-      data: {
-        name: this.name
-      }
-    }).then(
-      function(response){
-        console.log('getBreweryDBResponse talking');
-        for(let i = 0; i < response.length; i++){
-          response.data[i].name,
-          response.data[i].description
-          // response.data[i].foodPairings,
-          // response.data[i].styleId,
-          // response.data[i].labels,
-          // response.data[i].year
-        }
-        controller.breweryDBBeers = response.data;
-
-      },
-      function(error){
-        console.log(error);
-      }
-    )
-  }
-
-//   this.getBeers = function(){
-//     // console.log('getBeer called');
-//       $http({
-//         method: 'GET',
-//         url: '/beers',
-//       }).then(
-//         function(response){
-//                 controller.beers=response.data
-//               },
-//               function(error){
-//
-//               }
-//   )
-// }
-
-  //         for(let i = 0; i < (response.data).length; i++){
-  //         console.log(response, " this is response");
-  //         response.data[i].name,
-  //         response.data[i].styleId,
-  //         response.data[i].description,
-  //         response.data[i].year,
-  //         response.data[i].withBreweries,
-  //         response.data[i].foodPairings
-  //       }
-  //
-  //       controller.dbBeer = response.data;
-  //     },
-  //       function(err) {
-  //         console.log(err);
-  //         console.log('err in getBeer');
-  //       }
-  //     )
-  // }
-
-
-  // this.postBeer = function() {
-  //   console.log('postBeer called');
-  //   const data = {
-  //     name: controller.query
-  //   }
-  //
-  // console.log(controller.query, 'post')
-  //   $http({
-  //     method: 'POST',
-  //     url: '/beers',
-  //     data: data
-  //
-  //   }).then(
-  //     function(response){
-  //       console.log(response, ' this is response from postBeer');
-  //       controller.message = response.data.beer + " is " + response.data.name
-  //     },
-  //     function(err){
-  //       console.log(err);
-  //       console.log('err in postBeer');
-  //     }
-  //   );
-  // }
-
-  this.createBeerPost = function(){
-      $http({
-        method: 'POST',
-        url: '/beers',
-        data: {
-          name: this.name,
-          type: this.type,
-          ingredients: this.ingredients,
-          abv: this.abv,
-          ibu: this.ibu,
-          brewery: this.brewery,
-          purchaseLocation: this.purchaseLocation,
-          userRating: this.userRating,
-          author: this.author
-        }
-      }).then(function(response){
-        controller.newDisplay = false;
-        controller.getBeerPosts();  //render all beerPosts when new one is added
-        // console.log(response);
-      }, function(){
-        console.log('error');
-      });
-  }
 
   this.toggleNew = function(){
     this.newDisplay = !this.newDisplay;
@@ -617,85 +728,22 @@ app.controller('BeersController', ['$http', '$scope', function($http, $scope){
   this.toggleComment = function(){
     this.commentDisplay = !this.commentDisplay;
   }
-  this.addComment = function(id){
-    $http({
-      method: 'PUT',
-      url: '/beers/comment/' + id,
-      data: this.commentedBeer
-    }).then(function(response){
-      controller.commentDisplay = false;
-      controller.commentedBeer = {};
-      //add custom directive to show who the author of the comment is?
-      controller.getBeerPosts();
-    }, function(err){
-      console.log(err);
-      console.log('err in addComment');
-    })
-  }
-
-  // AJAX/get request for (beer post) index
-  // this.getBeerPosts = function(){
+  // this.addComment = function(id){
   //   $http({
-  //     method:'GET',
-  //     url: '/beers',
+  //     method: 'PUT',
+  //     url: '/beers/comment/' + id,
+  //     data: this.commentedBeer
   //   }).then(function(response){
-  //     controller.allBeerPosts = response.data //value of a successful ajax request
-  //     console.log(response);
-  //   }, function(){
-  //     console.log('error in getBeerPosts');
-  //   });
+  //     controller.commentDisplay = false;
+  //     controller.commentedBeer = {};
+  //     //add custom directive to show who the author of the comment is?
+  //     controller.getBeerPosts();
+  //   }, function(err){
+  //     console.log(err);
+  //     console.log('err in addComment');
+  //   })
   // }
 
-  this.setCurrentBeerPost = function(id){ //so we can edit it in the next function
-    $http({
-      method: 'GET',
-      url: '/beers/' + id
-    }).then(function(response){
-      controller.currentBeerPost = response.data[0];
-      console.log(controller.currentBeerPost);
-      $scope.input = '';
-      if($scope.verifyFlab.username !== controller.currentBeerPost.author)
-      {
-        document.getElementById("beerItem").style.visibility = "hidden";
-      }
-    }, function(error){
-      console.log('error in setCurrentBeerPost');
-    })
-  }
-
-  //ajax call to update beerPost
-  this.updateBeerPost = function(id){
-    $http({
-      method:'PUT',
-      url: '/beers/' + id,
-      data: this.editedBeerPost
-    }).then(function(response){
-      controller.getBeerPosts();
-      //is this really necessary?:
-      controller.editDisplay = false;
-      controller.currentBeerPost = {};
-      controller.beer = {};
-      controller.editedBeerPost = {};
-    }, function(){
-      console.log('error in updateBeerPost');
-    });
-  }
-
-  this.deleteBeerPost = function(beer){
-    $http({
-      method: 'DELETE',
-      url: '/beers/' + beer,
-    }).then(function(response){
-      controller.getBeerPosts();
-      controller.modal = false;
-    }, function(err) {
-      console.log('error in deleteBeerPost');
-    }
-  );
-  }
-
-  // this.postBeer(); //call immediately once controller is instantiated
-// this.getBeers();
 }]); //end of BeersController
 
 
