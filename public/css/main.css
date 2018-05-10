@@ -17,13 +17,63 @@
 }
 
 #heading {
-  padding-top: 85px;
+  padding-top: 65px;
 }
 
-/* #beer-jumbotron, #football-jumbotron, #smack-jumbotron, #user-jumbotron, #flabbie-jumbotron {
-  text-align: center;
-  justify-content: center;
-} */
+#legacy{
+  background: url(../assets/pitcher.jpeg) no-repeat center center fixed;
+  max-width: 100%;
+  /* public/assets/pitcher.jpeg */
+/* public/assets/pexels-photo-669213.jpeg */
+  /* public/assets/sparkly.jpeg */
+}
+
+#flabbie{
+  background: url(../assets/pig.jpeg) no-repeat center center fixed;
+  max-width: 100%;
+  margin: 0 auto;
+}
+/* public/assets/pexels-photo-301664.jpeg */
+
+#football{
+  background: url(../assets/football-american-football-college-alabama-39002.jpeg) no-repeat center center fixed;
+  /* max-width: 100%;
+  margin: 0 auto; */
+}
+/* public/assets/football-american-football-college-alabama-39002.jpeg */
+
+#beer{
+  background: url(../assets/pexels-photo-434311.jpeg) no-repeat center center fixed;
+  /* max-width: 100%;
+  margin: 0 auto; */
+}
+/* public/assets/pexels-photo-434311.jpeg */
+
+#smack{
+  background: url(../assets/flames.jpg) no-repeat center center fixed;
+  /* max-width: 100%;
+  margin: 0 auto; */
+}
+
+#football-jumbotron{
+  background-color: RGBA(71,68,72,0.85);
+  border-radius:10px;
+  /* #474448 */
+}
+
+#legacy2{
+  background-color: RGBA(242,164,31,0.55);
+  border-radius:10px;
+  border: 1px solid #A60A32;
+}
+/* RGBA(242,164,31,0.55) */
+
+#flabbie-jumbotron{
+  background-color: RGBA(224,221,207,0.61);
+  border-radius:10px;
+}
+/* #e0ddcf */
+/* RGBA(224,221,207,0.51) */
 
 #smackDizzy {
   width: 8em;
@@ -69,16 +119,6 @@ li {
   padding-top: .25%;
 }
 
-#footer {
-  height: 60px;
-  background-color: black;
-  color: #f2a41f;
-  text-align: center;
-  bottom: 0;
-  margin: 0 auto;
-  position: sticky;
-}
-
 
 /* *********************** FOR PARALLAX */
 
@@ -109,3 +149,45 @@ li {
 }
 
 /* *********************** */
+
+/* a few fonts to make decisions about::after */
+#fontA { font-family: 'Indie Flower', cursive; }
+#fontB { font-family: 'Bitter', serif; }
+#fontC { font-family: 'Acme', sans-serif; }
+#fontD { font-family: 'Passion One', cursive; }
+#fontE { font-family: 'Luckiest Guy', cursive; }
+#fontF { font-family: 'Bangers', cursive; }
+#fontG { font-family: 'Kalam', cursive; }
+#fontH { font-family: 'Hammersmith One', sans-serif; }
+#fontI { font-family: 'Prosto One', cursive; }
+#fontJ { font-family: 'Boogaloo', cursive; }
+#fontK { font-family: 'Architects Daughter', cursive; }
+#fontL { font-family: 'Amaranth', sans-serif; }
+#fontM { font-family: 'Patrick Hand', cursive; }
+#fontN { font-family: 'Neucha', cursive; }
+#fontO { font-family: 'Kirang Haerang', cursive; }
+#fontP { font-family: 'Special Elite', cursive; }
+#fontQ { font-family: 'Yeon Sung', cursive; }
+#fontR { font-family: 'Dokdo', cursive; }
+#fontS { font-family: 'Caveat Brush', cursive; }
+#fontT { font-family: 'Paytone One', sans-serif; }
+#fontU { font-family: 'Love Ya Like A Sister', cursive; }
+#fontV { font-family: 'Contrail One', cursive; }
+#fontW { font-family: 'Carter One', cursive; }
+#fontX { font-family: 'Annie Use Your Telescope', cursive; }
+#fontY { font-family: 'Bubblegum Sans', cursive; }
+#fontZ { font-family: 'Londrina Solid', cursive; }
+#fontAA { font-family: 'Faster One', cursive; }
+#fontBB { font-family: 'Schoolbell', cursive; }
+#fontCC { font-family: 'Chelsea Market', cursive; }
+#fontDD { font-family: 'Bowlby One SC', cursive; }
+#fontEE { font-family: 'Fontdiner Swanky', cursive; }
+#fontFF { font-family: 'Walter Turncoat', cursive; }
+#fontGG { font-family: 'Rammetto One', cursive; }
+#fontHH { font-family: 'Ranchers', cursive; }
+#fontII { font-family: 'Bungee Shade', cursive; }
+#fontJJ { font-family: 'Cherry Cream Soda', cursive; }
+#fontKK { font-family: 'Vollkorn SC', serif; }
+#fontLL { font-family: 'Englebert', sans-serif; }
+#fontMM { font-family: 'Slackey', cursive; }
+#fontNN { font-family: 'Dekko', cursive; }

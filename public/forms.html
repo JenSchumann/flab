@@ -1,6 +1,6 @@
 <!--  Login Form -->
   <div id="login" class="text-center" ng-if=user.loginForm>
-    <h1>Login</h1>
+    <h1 id="fontJ">Login</h1>
     <form ng-submit="user.login();">
 
         <input type="username" ng-model="user.loginUsername" placeholder="Username">
@@ -9,16 +9,17 @@
 
         <input type="password" ng-model="user.loginPassword" placeholder="Password"><br><br>
 
-      <button type="submit" class="btn btn-danger" >Login</button><br>
+      <button type="submit" class="btn btn-danger" id="fontJ">Login</button><br>
     </form>
-    <h5>{{user.message}}</h5><br>
-    Don't have an account?
-    <button class="btn btn-warning" ng-click="user.toggleForms()">Register!</button><br>
+    <h5 id="fontJ">{{user.message}}</h5><br>
+    <h5 id="fontJ">Don't have an account?</h5>
+
+    <button class="btn btn-warning" id="fontJ" ng-click="user.toggleForms()">Register!</button><br>
   </div>
 
 <!-- Register Form -->
   <div id="register" class="text-center" ng-if=user.registerForm>
-    <h1>Register Here</h1>
+    <h1 id="fontJ">Register Here</h1>
     <form ng-submit="user.register();">
 
         <input type="username" ng-model="user.registeredUsername" placeholder="Username"><br><br>
@@ -26,9 +27,10 @@
 
         <input type="password" ng-model="user.registeredPassword" placeholder="Password"><br><br>
 
-      <button type="submit" class="btn btn-warning" >Register</button><br>
+      <button type="submit" class="btn btn-warning" id="fontJ">Register</button><br>
     </form>
     <br>
-    Already Registered?
-    <button class="btn btn-warning" ng-click="user.toggleForms()">Login</button><br>
+    <h5 id="fontJ">Already Registered?</h5>
+
+    <button class="btn btn-danger" id="fontJ" ng-click="user.toggleForms()">Login</button><br>
   </div>
