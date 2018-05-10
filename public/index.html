@@ -11,6 +11,9 @@
     <!-- Fontawesome  -->
     <!-- <script src="https://use.fontawesome.com/8795c8a7ae.js"></script> -->
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.10/css/all.css" integrity="sha384-+d0P83n9kaQMCwj8F4RJB66tzIwOKmrdb46+porD/OvrJ+37WqIM7UoBtwHO6Nlg" crossorigin="anonymous">
+
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css?family=Acme|Amaranth|Annie+Use+Your+Telescope|Architects+Daughter|Bangers|Bitter|Boogaloo|Bowlby+One+SC|Bubblegum+Sans|Bungee+Shade|Carter+One|Caveat+Brush|Chelsea+Market|Cherry+Cream+Soda|Contrail+One|Dekko|Dokdo|Englebert|Faster+One|Fontdiner+Swanky|Hammersmith+One|Indie+Flower|Kalam|Kirang+Haerang|Londrina+Solid|Love+Ya+Like+A+Sister|Luckiest+Guy|Neucha|Passion+One|Patrick+Hand|Paytone+One|Prosto+One|Rammetto+One|Ranchers|Schoolbell|Slackey|Special+Elite|Vollkorn+SC|Walter+Turncoat|Yeon+Sung" rel="stylesheet">
     <!-- Scripts -->
 
 
@@ -20,6 +23,7 @@
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <!-- <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script> -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.0/umd/popper.min.js" integrity="sha384-cs/chFZiN24E4KMATLdqdvsezGxaGsi4hLGOzlXwp5UZB1LY//20VyM2taTB4QvJ" crossorigin="anonymous"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js" integrity="sha384-uefMccjFJAIv6A+rW+L4AHf99KvxDjWSu1z9VI8SKNVmz4sk7buKt/6v9KI65qnm" crossorigin="anonymous"></script>
 
@@ -50,11 +54,11 @@
 
 
     <section ng-controller="FlabController as flab">
-      <header>
+      <header id="fontMM">
         <div class="jumbotron text-center" id="heading" style="background-color:#e0ddcf">
           <div class="container intro-text">
             <h1 id="title">{ F L A B }</h1>
-            <h2 id="tagline">Football Loving A**hole Beerdrinkers</h2>
+            <h2 id="tagline pb-4">Football Loving A**hole Beerdrinkers</h2>
             <!-- <img src="../assets/1345789_JPG_by_ClipartOfcom.jpg" alt="" class="img-fluid"> -->
             <img src="../assets/1345789_JPG_by_ClipartOfcom.jpg" alt="" style="height:80%;width:65%;" class="img-fluid">
             <!-- <h1>{{ flab.flabbiness }}</h1> -->
@@ -66,7 +70,8 @@
 
 
       <div class="container">
-                    <h1 class="text-md-left">The FLAB Legacy</h1>
+        <!-- J,CC,HH -->
+                    <h1 class="pt-3" id="fontJ">The FLAB Legacy</h1>
                     <div class="row">
                       <div class="col-md-7">
                           <div id="car" class="carousel slide" data-ride="carousel">
@@ -77,13 +82,13 @@
                             </ol>
                               <div class="carousel-inner">
                                 <div class="carousel-item active">
-                                  <img src="http://placehold.it/1200x600/aa00f2/440000" class="w-100 d-block">
+                                  <img src="http://placehold.it/1200x800/aa00f2/440000" class="rounded w-100 d-block">
                                 </div>
                                 <div class="carousel-item">
-                                  <img src="http://placehold.it/1200x600/fff000/440500" class="w-100 d-block">
+                                  <img src="http://placehold.it/1200x800/fff000/440500" class=" rounded w-100 d-block">
                                 </div>
                                 <div class="carousel-item">
-                                  <img src="http://placehold.it/1200x600/fa2004/340050" class="w-100 d-block">
+                                  <img src="http://placehold.it/1200x800/fa2004/340050" class="rounded w-100 d-block">
                                 </div>
                               </div>
                           </div>
@@ -91,10 +96,10 @@
 
                       </div>
                       <!-- 2nd column -->
-                      <div class="col-md-5">
-                        <div class="h2">How It All Started</div>
+                      <div class="col-md-5" id="legacy2">
+                        <div class="h2 pt-3" id="fontJ">How It All Started</div>
                         <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
-                        <a href="#" class="btn btn-outline-danger">Request Newsletter</a>
+                        <a href="#" class="btn btn-outline-danger" id="fontJ">Request Newsletter</a>
                       </div>
                     </div>
 
@@ -102,22 +107,22 @@
                     <div class="row mt-2">
                       <div class="col-md-4 pt-3 pb-3" style="background-color:#474448">
                           <div class="card">
-                            <div class="card-header">Football</div>
+                            <div class="card-header h3" id="fontJ">Football</div>
                             <div class="card-body">
                               <div class="card-title">Essential Oil Family: ;asldkjf</div>
                               <div class="card-text">
-                                Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+                                Make the buttons expandable.. where more content is seen (button collapse)
                               </div>
                             </div>
                             <div class="card-footer">
-                              <a href="#" class="btn btn-danger">Learn More</a>
+                              <a href="#" class="btn btn-danger" id="fontJ">Learn More</a>
                             </div>
                           </div>
                       </div>
 
                       <div class="col-md-4 pt-3 pb-3" style="background-color:#e0ddcf">
                         <div class="card">
-                          <div class="card-header">Beer</div>
+                          <div class="card-header h3" id="fontJ">Beer</div>
                           <div class="card-body">
                             <div class="card-title">Essential Oil Family: ;asldkjf</div>
                             <div class="card-text">
@@ -125,7 +130,7 @@
                             </div>
                           </div>
                           <div class="card-footer">
-                            <a href="#" class="btn btn-danger">Learn More</a>
+                            <a href="#" class="btn btn-danger" id="fontJ">Learn More</a>
                           </div>
                         </div>
                       </div>
@@ -133,7 +138,7 @@
 
                       <div class="col-md-4 pt-3 pb-3" style="background-color:#2d232e">
                         <div class="card">
-                          <div class="card-header">Smack</div>
+                          <div class="card-header h3" id="fontJ">Smack</div>
                           <div class="card-body">
                             <div class="card-title">Essential Oil Family: ;asldkjf</div>
                             <div class="card-text">
@@ -141,7 +146,7 @@
                             </div>
                           </div>
                           <div class="card-footer">
-                            <a href="#" class="btn btn-danger">Learn More</a>
+                            <a href="#" class="btn btn-danger" id="fontJ">Learn More</a>
                           </div>
                         </div>
                       </div>
@@ -175,17 +180,36 @@
 
 
 
-      <div id="footer">
-        <nav class="navbar navbar-default navbar-fixed-bottom" style="background-color:#A60A32">
-          <div class="container">
-            <p class text-muted credit>
-              <hr>Site Creator: Jen Schumann
-              <!-- fix the mug! -->
-              <img src="../assets/beer-mug-silhouette-32-278747.png" style="color:#f2a41f;" alt="|"> 2018
-            </p>
-          </nav>
-        </div>
+
+
+      <!-- Footer -->
+    <footer class="navbar container-fluid text-light mt-3 fixed-bottom sticky-bottom" style="background-color:#A60A32; color:#2d232e;" id="fontJ">
+      <button type="button" class="navbar-toggler mx-auto" data-toggle="collapse" data-target="#footer"><img src="../assets/beer-mug-silhouette-32-278747.png" alt="" data-toggle="tooltip" data-placement="top" title="Check out our Privacy Policy, Terms of Use, Legal Statement, and Social Media Accounts"></button>
+      <div class="collapse navbar-collapse" id="footer">
+
+      <div class="row">
+          <div class="col pt-4">
+                <p class="text-center" style="color:#474448">&copy; 2018 FLAB</p>
+          </div>
+          <div class="col pt-3">
+            <div class="text-center">
+              <ul class="list-inline">
+                  <li class="list-inline-item"><a href="" target="_blank" style="color:#f4ece2"><i class="fab fa-youtube-square fa-2x"></i></a></li>
+                  <li class="list-inline-item"><a href="" target="_blank" style="color:#2d232e"><i class="fab fa-facebook-square fa-2x"></i></a></li>
+                  <li class="list-inline-item"><a href="" target="_blank" style="color:#e0ddcf"><i class="fab fa-twitter-square fa-2x"></i></a></li>
+              </ul>
+            </div>
+          </div>
+          <div class="col pt-4">
+            <ul class="list-inline">
+                <li class="list-inline-item"><a href="" target="_blank" style="color:#f4ece2">Terms of Use</a></li>
+                <li class="list-inline-item"><a href="" target="_blank" style="color:#2d232e">Privacy Policy</a></li>
+                <li class="list-inline-item"><a href="" target="_blank" style="color:#e0ddcf">Legal</a></li>
+            </ul>
+          </div>
       </div>
+      </div>
+    </footer>
 
       <!-- about modal -->
       <div id="aboutModal" class="modal fade">
@@ -207,7 +231,12 @@
      </section> <!-- end section tag for FlabController -->
 </section> <!-- end section tag for UserController -->
 
-
+<script>
+      $(function() {
+        $('[data-toggle="tooltip"]').tooltip()
+        $('[data-toggle="popover"]').popover()
+      })
+    </script>
 
   </body>
 </html>
