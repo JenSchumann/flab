@@ -6,40 +6,41 @@
   <div class="container">
     <button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#topnav"><span class="navbar-toggler-icon"></span></button>
 
-
-    <h5 class="nav-item text-right"><a class="navbar-brand pt-2 text-left ml-auto" href="#" data-toggle="modal" data-target="#aboutModal" class="nav-link">
-    { FLAB }</a></h5>
-
+    <a href="index.html" class="navbar-brand"><img src="../assets/beer-mug-silhouette-32-278747.png" alt="" data-toggle="modal" data-target="#aboutModal" class="nav-link"></a>
+    <!-- <h5 class="nav-item text-right"><a class="navbar-brand pt-2 text-left ml-auto" href="#" data-toggle="modal" data-target="#aboutModal" class="nav-link">
+    { FLAB }</a></h5> -->
+<!-- public/assets/beer-mug-silhouette-48-278747.png -->
 
         <div class="collapse navbar-collapse" id="topnav">
-          <ul class="nav navbar-nav">
+          <ul class="nav navbar-nav ml-auto">
 <!-- ml-auto -->
 
             <li class="nav-item dropdown">
-              <a href="#" ng-if=user.loggedIn class="nav-link dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false" style="color: #f2a41f;"><i class="far fa-user"></i>   {{user.loginUsername}}
+              <a href="#" ng-if=user.loggedIn class="nav-link dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false" style="color: #f4ece2;"><i class="far fa-user"></i>   {{user.loginUsername}}
               </a>
 
               <div class="dropdown-menu">
                 <a class="dropdown-item" href="#flabbie" style="color: #f2a41f;">Create Profile</a>
 
-                <a class="dropdown-item" href="#flabbie" style="color: #f2a41f;">Update Profile</a>
+                <a class="dropdown-item" href="#flabbie" style="color: #474448;">Update Profile</a>
 
                 <a class="dropdown-item" href="#flabbie" style="color: #f2a41f;">Delete Profile</a>
               </div>
             </li>
-          </ul>
+          <!-- </ul>
 
-          <ul class="nav navbar-nav">
+          <ul class="nav navbar-nav ml-auto"> -->
             <li class="nav-item dropdown">
 
                 <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false" style="color: #f2a41f;">Menu</a>
 
                 <div class="dropdown-menu">
-                  <a class="dropdown-item" href="#football" style="color: #f2a41f;">FOOTBALL</a>
+                  <a class="dropdown-item" href="#legacy" style="color: #f2a41f;">THE Legacy</a>
+                  <a class="dropdown-item" href="#football" style="color: #474448;">FOOTBALL</a>
                   <a class="dropdown-item" href="#beer" style="color: #f2a41f;">BEER</a>
-                  <a class="dropdown-item" href="#smack" style="color: #f2a41f;">SMACK</a>
+                  <a class="dropdown-item" href="#smack" style="color: #474448;">SMACK</a>
                   <a class="dropdown-item" href="#flabbie" style="color: #f2a41f;">FLABbies</a>
-                  <a class="dropdown-item" href="#contact" style="color: #f2a41f;">Contact FLAB HQ</a>
+                  <a class="dropdown-item" href="#contact" style="color: #474448;">Contact FLAB HQ</a>
                   <div class="dropdown-divider"></div>
                   <a class="dropdown-item" href="#about" style="color: #f2a41f;">About</a>
                 </div>
@@ -49,7 +50,7 @@
 
             <li ng-if=!user.loggedIn ng-click="user.goToLogin()" ng-click="user.addForm.reset()" class="nav-item text-right mr-auto"><a href="#" class="nav-link">LOGIN</a></li>
 
-            <li ng-if=user.loggedIn ng-click="user.logOut()" class="nav-item text-right mr-auto"><a href="#" style="color:#f2a41f;" class="nav-link">LOGOUT</a></li>
+            <li ng-if=user.loggedIn ng-click="user.logOut()" class="nav-item text-right mr-auto"><a href="#" style="color:#e0ddcf;" class="nav-link">LOGOUT</a></li>
 
             <li ng-if=!user.loggedIn ng-click="user.goToRegister()" class="nav-item text-right mr-auto"><a href="#" style="color:#f2a41f;" class="nav-link">REGISTER</a></li>
 
