@@ -12,12 +12,12 @@
 }
 
 #login, #register {
-  padding-top: 5%;
+  padding-top: 85px;
   padding-bottom: 3%;
 }
 
 #heading {
-  padding-top: 100px;
+  padding-top: 85px;
 }
 
 /* #beer-jumbotron, #football-jumbotron, #smack-jumbotron, #user-jumbotron, #flabbie-jumbotron {
