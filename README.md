@@ -12,8 +12,8 @@ The original members of this group have enjoyed years of talking smack with one 
 #### **Design Inspiration:**
 The design of this application is inspired by Girl Gang, which I contributed to in a collaborative project while attending General Assembly's WDI Immersive Boot Camp.  Girl Gang live site: http://girl-gang.herokuapp.com/
 
-Coolors color scheme for redesign: https://coolors.co/export/png/a60a32-474448-f4ece2-2d232e-e0ddcf
-
+Coolors color scheme for redesign: https://coolors.co/export/png/9e1b32-828a8f-54494b-333232-ffc145
+close to the crimson:#670404
 ### **Future Plans:**
  - [ ] Integrate 3rd Party API from                  http://www.brewerydb.com/developers/docs-endpoint/beer_index
 

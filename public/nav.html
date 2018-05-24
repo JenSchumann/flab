@@ -1,7 +1,7 @@
 <!--   Navbar Section -->
 <div ng-controller="FlabController as flab">
   <!-- <nav class="navbar navbar-default navbar-inverse  navbar-fixed-top"> -->
-  <nav class="navbar navbar-light fixed-top navbar-expand-sm" style="background-color:#A60A32" id="fontMM">
+  <nav class="navbar navbar-light fixed-top navbar-expand-sm" style="background-color:#9E1B32" id="fontB">
     <!-- I like these for the nav: fontB,H,J,P,U,V,CC,HH,LL,MM -->
     <!-- font AA is the one w/trailing lines -->
     <!-- navbar-expand-sm -->
@@ -9,7 +9,7 @@
     <button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#topnav"><span class="navbar-toggler-icon"></span></button>
 
 <h4 class="d-inline pt-2">
-    <a href="index.html" class="navbar-brand d-inline nav-link">{ FLAB }  <img src="../assets/beer-mug-silhouette-32-278747.png" alt="" data-toggle="modal" data-target="#aboutModal"></a></h4>
+    <a href="index.html" class="navbar-brand d-inline nav-link text-white">{ FLAB }       <img src="../assets/beer-mug-silhouette-32-278747.png" class="pl-3" alt="" data-toggle="modal" data-target="#aboutModal"></a></h4>
     <!-- <h5 class="nav-item text-right"><a class="navbar-brand pt-2 text-left ml-auto" href="#" data-toggle="modal" data-target="#aboutModal" class="nav-link">
     { FLAB }</a></h5> -->
 <!-- public/assets/beer-mug-silhouette-48-278747.png -->
@@ -35,27 +35,27 @@
           <ul class="nav navbar-nav ml-auto"> -->
             <li class="nav-item dropdown">
 
-                <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false" style="color: #f2a41f;">Menu</a>
+                <a href="#" class="nav-link dropdown-toggle text-white" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Menu</a>
 
                 <div class="dropdown-menu">
-                  <a class="dropdown-item" href="#legacy" style="color: #f2a41f;">THE Legacy</a>
-                  <a class="dropdown-item" href="#football" style="color: #474448;">FOOTBALL</a>
-                  <a class="dropdown-item" href="#beer" style="color: #f2a41f;">BEER</a>
-                  <a class="dropdown-item" href="#smack" style="color: #474448;">SMACK</a>
-                  <a class="dropdown-item" href="#flabbie" style="color: #f2a41f;">FLABbies</a>
-                  <a class="dropdown-item" href="#contact" style="color: #474448;">Contact FLAB HQ</a>
+                  <a class="dropdown-item" href="#legacy" style="color: #9E1B32;">THE Legacy</a>
+                  <a class="dropdown-item" href="#football" style="color: #828A8F">FOOTBALL</a>
+                  <a class="dropdown-item" href="#beer" style="color: #FFC145">BEER</a>
+                  <a class="dropdown-item" href="#smack" style="color: #333232">SMACK</a>
+                  <a class="dropdown-item" href="#flabbie" style="color: #9E1B32;">FLABbies</a>
+                  <a class="dropdown-item" href="#contact" style="color: #828A8F">Contact FLAB HQ</a>
                   <div class="dropdown-divider"></div>
-                  <a class="dropdown-item" href="#about" style="color: #f2a41f;">About</a>
+                  <a class="dropdown-item" href="#about" style="color: #FFC145">About</a>
                 </div>
               </li>
           <!-- <ul class="dropdown-menu nav"> -->
 
 
-            <li ng-if=!user.loggedIn ng-click="user.goToLogin()" ng-click="user.addForm.reset()" class="nav-item text-right mr-auto"><a href="#" class="nav-link">LOGIN</a></li>
+            <li ng-if=!user.loggedIn ng-click="user.goToLogin()" ng-click="user.addForm.reset()" class="nav-item text-right mr-auto"><a href="#" class="nav-link" style="color: #828A8F">LOGIN</a></li>
 
             <li ng-if=user.loggedIn ng-click="user.logOut()" class="nav-item text-right mr-auto"><a href="#" style="color:#e0ddcf;" class="nav-link">LOGOUT</a></li>
 
-            <li ng-if=!user.loggedIn ng-click="user.goToRegister()" class="nav-item text-right mr-auto"><a href="#" style="color:#f2a41f;" class="nav-link">REGISTER</a></li>
+            <li ng-if=!user.loggedIn ng-click="user.goToRegister()" class="nav-item text-right mr-auto"><a href="#" style="color:#FFC145" class="nav-link">REGISTER</a></li>
 
          </ul>   <!-- nav navbar-nav navbar-right -->
       </div><!-- /.navbar-collapse -->
