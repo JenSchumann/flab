@@ -22,7 +22,6 @@
 
 #legacy{
   background: url(../assets/pitcher.jpeg) no-repeat center center fixed;
-  max-width: 100%;
   /* public/assets/pitcher.jpeg */
 /* public/assets/pexels-photo-669213.jpeg */
   /* public/assets/sparkly.jpeg */
@@ -62,9 +61,10 @@
 }
 
 #legacy2{
-  background-color: RGBA(242,164,31,0.55);
+  /* background-color: RGBA(242,164,31,0.55); */
+  background-color:#FFC145;
   border-radius:10px;
-  border: 1px solid #A60A32;
+  /* border: 1px solid #A60A32; */
 }
 /* RGBA(242,164,31,0.55) */
 
