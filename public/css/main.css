@@ -34,6 +34,12 @@
 }
 /* public/assets/pexels-photo-301664.jpeg */
 
+#newFlabbieProfile{
+  border-radius:15px;
+  padding:20px;
+  background-color:rgba(85, 74, 76, 0.85)
+}
+
 #football{
   background: url(../assets/football-american-football-college-alabama-39002.jpeg) no-repeat center center fixed;
   /* max-width: 100%;

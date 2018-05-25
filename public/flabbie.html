@@ -1,53 +1,90 @@
 <section ng-controller="FlabbieController as flabbie">
 
-  <div class="container" id="flabbie-container">
+  <div class="container mt-3 pt-3" id="flabbie-container">
     <!-- <div class="row"> -->
 
-      <div class="jumbotron" id="flabbie-jumbotron">
+      <div class="jumbotron mt-3 pt-3 text-center" id="flabbie-jumbotron">
 
-        <!-- need a flabbieProfile image -->
-        <!-- perhaps bootstrap carousel of FLAB get together pics -->
+        <h1 id="fontB">FLABies</h1>
 
-
-        <h1>FLABies</h1>
-
-        <h2>The Ultimate Tribe in Humanity</h2>
-        <br><br>
-
+        <h2 id="fontB">The Ultimate Tribe of Humanity</h2>
+        <br>
         <!-- {{flabbie.hasBestPicks}} -->
-        <br><br>
+
 
         <!-- Create User Profile Button -->
         <div id="newitem-form" class="col-lg-12">
-          <button class="btn btn-warning" type="submit" ng-click="flabbie.toggleNew(); flabbie.addForm.reset()">Create FLABie Profile</button>
+          <button class="btn btn-warning" type="submit" ng-click="flabbie.toggleNew(); flabbie.addForm.reset()" id="fontB">Create FLABie Profile</button>
         </div>
 
 <br><br>
         <!-- Create User Profile Form -->
         <div ng-if="flabbie.newDisplay">
+            <div class="container text-center" id="fontB">
+              <h2 class="text-center">Created a User Login? Great!<br> You're Ready to Create a FLABbie Profile!</h2>
+                  <div class="row">
+                    <div class="col jumbotron" id="newFlabbieProfile">
+                          <form ng-submit="flabbie.createFlabbieProfile()">
+                            <small id="emailHelp" class="form-text text-white mx-auto">We'll never share your email with anyone else.
+                            </small>
+                            <div class="form-group row pt-3">
+                                <label for="email" class="col-sm-2 col-form-label text-white">Email</label>
+                                <div class="col-sm-10">
+                                  <input type="email" ng-model="flabbie.email" class="form-control" id="email" placeholder="FLABie Email">
+                                </div>
+                            </div>
+<hr>
+                            <div class="form-group row">
+                                <label for="image" class="col-sm-2 col-form-label text-white">Image</label>
+                                <div class="col-sm-10">
+                                  <input type="text" ng-model="flabbie.image" class="form-control" id="image" placeholder="FLABie Profile Picture">
+                                </div>
+                            </div>
+<hr>
+                            <div class="form-group row">
+                                <label for="team" class="col-sm-2 col-form-label text-white">Fave Team(s)</label>
+                                <div class="col-sm-10">
+                                  <input type="text" ng-model="flabbie.favoriteTeams" class="form-control" id="team" placeholder="Favorite Team(s)">
+                                </div>
+                            </div>
+<hr>
+                            <div class="form-group row">
+                                <label for="fbeer" class="col-sm-2 col-form-label text-white">Fave Beer(s)</label>
+                                <div class="col-sm-10">
+                                  <input type="text" ng-model="flabbie.favoriteBeers" class="form-control" id="fbeer" placeholder="Favorite Beer(s)">
+                                </div>
+                            </div>
+<hr>
+                            <div class="form-group row">
+                                <label for="message" class="col-sm-2 col-form-label text-white">Bio</label>
+                                <div class="col-sm-10">
+                                  <textarea ng-model="flabbie.bio" id="message" rows="5" class="form-control"></textarea>
+                                </div>
+                            </div>
+<hr>
 
-            <form ng-submit="flabbie.createFlabbieProfile()">
+                            <!-- <h5>FLABie Email:</h5><input type="text" ng-model="flabbie.email" placeholder="FLABie Email"/><br>
 
-              <h5>FLABie Email:</h5><input type="text" ng-model="flabbie.email" placeholder="FLABie Email"/><br>
+                            <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small><br> -->
 
-              <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small><br>
+                            <!-- <h5>FLABie Profile Picture:</h5><input type="text" ng-model="flabbie.image" placeholder="FLABie Profile Picture"/><br> -->
 
-              <h5>FLABie Profile Picture:</h5><input type="text" ng-model="flabbie.image" placeholder="FLABie Profile Picture"/><br>
+                            <!-- <h5>FLABie Bio:</h5><input type="textarea"
+                            ng-model="flabbie.bio" placeholder="About Me"/><br> -->
 
-              <h5>FLABie Bio:</h5><input type="textarea"
-              ng-model="flabbie.bio" placeholder="About Me"/><br>
+                            <!-- <h5>Fave Team(s):</h5><input type="text"
+                            ng-model="flabbie.favoriteTeams" placeholder="Favorite Team(s)"/><br> -->
 
-              <h5>Fave Team(s):</h5><input type="text"
-              ng-model="flabbie.favoriteTeams" placeholder="Favorite Team(s)"/><br>
+                            <!-- <h5>Fave Beer(s):</h5><input type="text"
+                            ng-model="flabbie.favoriteBeers" placeholder="Favorite Beer(s)"/><br> -->
 
-              <h5>Fave Beer(s):</h5><input type="text"
-              ng-model="flabbie.favoriteBeers" placeholder="Favorite Beer(s)"/><br>
+                            <br>
+                            <input class="btn btn-warning" type="submit" value="Create">
 
-              <br>
-              <input class="btn btn-warning" type="submit" value="Post">
-
-            </form>
-
+                          </form>
+                  </div> <!-- col-lg-8 jumbotron -->
+              </div> <!-- row -->
+          </div> <!-- container -->
         </div> <!-- end new display -->
 
       </div>  <!-- end flabbie-jumbotron -->
@@ -94,7 +131,7 @@
 
               <ul>
 
-                <li><img class="img-responsive" ng-src="{{flabbie.currentFlabbieProfile.image}}"><br></li>
+                <li><img class="img-fluid" ng-src="{{flabbie.currentFlabbieProfile.image}}"><br></li>
 
                 <li> <strong>FLABie Bio: </strong>  {{flabbie.currentFlabbieProfile.bio}}<br></li>
 
