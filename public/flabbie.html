@@ -1,30 +1,29 @@
 <section ng-controller="FlabbieController as flabbie">
-
-  <div class="container mt-3 pt-3" id="flabbie-container">
+<body data-spy="scroll" data-target="#navbar-example">
+  <div class="container mt-3 mb-3 pb-3 pt-3" id="flabbie-container">
     <!-- <div class="row"> -->
 
       <div class="jumbotron mt-3 pt-3 text-center" id="flabbie-jumbotron">
 
-        <h1 id="fontB">FLABies</h1>
+        <h1 id="fontB" class="pt-3">FLABies</h1>
 
-        <h2 id="fontB">The Ultimate Tribe of Humanity</h2>
-        <br>
+        <h2 id="fontB" class="pb-3">The Ultimate Tribe of Humanity</h2>
         <!-- {{flabbie.hasBestPicks}} -->
-
 
         <!-- Create User Profile Button -->
         <div id="newitem-form" class="col-lg-12">
-          <button class="btn btn-warning" type="submit" ng-click="flabbie.toggleNew(); flabbie.addForm.reset()" id="fontB">Create FLABie Profile</button>
+          <button class="btn mb-3" style="background-color:#FFC145" type="submit" ng-click="flabbie.toggleNew(); flabbie.addForm.reset()" id="fontB">Create FLABie Profile</button>
+
+          <button class="btn mb-3" data-toggle="collapse" href="#seeFlabies" style="background-color:#FFC145" id="fontB">See FLABie Tribe</button>
         </div>
 
-<br><br>
         <!-- Create User Profile Form -->
         <div ng-if="flabbie.newDisplay">
             <div class="container text-center" id="fontB">
-              <h2 class="text-center">Created a User Login? Great!<br> You're Ready to Create a FLABbie Profile!</h2>
+              <h2 class="text-center">Already have a User Login? Great!<br> You're Ready to Create a FLABbie Profile!</h2>
                   <div class="row">
                     <div class="col jumbotron" id="newFlabbieProfile">
-                          <form ng-submit="flabbie.createFlabbieProfile()">
+                          <form ng-submit="flabbie.createFlabbieProfile()" class="pb-3">
                             <small id="emailHelp" class="form-text text-white mx-auto">We'll never share your email with anyone else.
                             </small>
                             <div class="form-group row pt-3">
@@ -62,35 +61,128 @@
                                 </div>
                             </div>
 <hr>
-
-                            <!-- <h5>FLABie Email:</h5><input type="text" ng-model="flabbie.email" placeholder="FLABie Email"/><br>
-
-                            <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small><br> -->
-
-                            <!-- <h5>FLABie Profile Picture:</h5><input type="text" ng-model="flabbie.image" placeholder="FLABie Profile Picture"/><br> -->
-
-                            <!-- <h5>FLABie Bio:</h5><input type="textarea"
-                            ng-model="flabbie.bio" placeholder="About Me"/><br> -->
-
-                            <!-- <h5>Fave Team(s):</h5><input type="text"
-                            ng-model="flabbie.favoriteTeams" placeholder="Favorite Team(s)"/><br> -->
-
-                            <!-- <h5>Fave Beer(s):</h5><input type="text"
-                            ng-model="flabbie.favoriteBeers" placeholder="Favorite Beer(s)"/><br> -->
-
-                            <br>
-                            <input class="btn btn-warning" type="submit" value="Create">
-
+                            <input class="btn" style="background-color:#FFC145" type="submit" value="Create Profile">
                           </form>
+<!-- <hr> -->
+<!-- add small quote div where random quotes on a specific topic (like domination or something snarky like that) are displayed w/animation/transition -->
+
                   </div> <!-- col-lg-8 jumbotron -->
               </div> <!-- row -->
           </div> <!-- container -->
         </div> <!-- end new display -->
 
-      </div>  <!-- end flabbie-jumbotron -->
+        <!-- make this a jumbotron which shows cards w/limited profile info of all Flabbies which can expand for each Flabie when they are clicked on -->
+        <div class="collapse" id="seeFlabies">
+          <div id="fontB">
+                <div class="row">
+                  <div class="col jumbotron" id="allFlabies">
+                    <h2 class="navbar sticky-top text-white" >The FLABie Tribe
+                    <form class="form-inline my-2 my-lg-0">
+                        <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+                        <button class="btn btn-outline-warning my-2 my-sm-0" type="submit">Search</button>
+                    </form></h2>
+                    <hr>
+                    <h5 class="text-white">
+                      Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+                    </h5>
+<hr>
+          <!-- All Flabbie Profiles -->
+          <!-- <div class="row bg-light mr-2 ml-2 mt-3 pr-2 pl-2 pt-4 " id="display"> -->
+          <div class="row bg-light pt-4 mr-2 ml-2" id="display">
+            <div id="navbar-example">
+              <div class="container">
+<!-- <ul id="flabbie-list"> -->
 
-    <!-- </div>   -->
-    <!-- end row -->
+                <div class="col">
+
+                  <!-- <div class=" "> -->
+
+                  <ul id="flabieCard">
+
+
+                                <!-- <div class="col-lg-3 col-md-6 col-sm-12"> -->
+
+                                <li ng-repeat="flabbieProfile in flabbie.allFlabbieProfiles | filter:searchBox" ng-init="limit = 10" ng-click="flabbie.setCurrentFlabbieProfile(flabbieProfile._id)">
+                                  <div class="card w-100 p-2">
+<!-- id="flabbie-item" -->
+                    <h4 class="card-header text-center text-white" style="background-color:#9E1B32;">{{flabbieProfile.author}}</h4>
+                    <img class="card-img-top" ng-src="{{flabbieProfile.image}}">
+                    <div class="card-body">
+                      <div class="card-title"><strong>FLABie's Fave Team(s): </strong>  {{flabbieProfile.favoriteTeams}}<br></div>
+                        <p class="card-text"><strong>FLABie Bio:</strong>  {{flabbieProfile.bio}}</p>
+                    </div>
+
+                    <div class="card-footer text-muted">
+                      <button ng-click="flabbie.toggleModal()" class="btn btn-warning">
+                        Learn More</button>
+                    </div>
+                    </div>
+                  </li><br>
+
+                  </ul>
+
+              </div>
+
+            </div>
+              </div>
+
+
+              </div>
+
+
+
+            <!-- <div class="col-lg-4 col-md-6 col-sm-12">
+                <div class="card">
+                    <h4 class="card-header text-center" style="background-color:#533747;">Varaison Vineyards & Winery</h4>
+                    <img class="card-img-top" src="http://via.placeholder.com/350x150" alt="">
+                    <div class="card-body">
+                      <div class="card-title">New Product #2</div>
+                        <p class="card-text">best product eve!!! Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. </p>
+                    </div>
+                </div>
+            </div> -->
+
+            <!-- <div class="col-lg-4 col-md-6 col-sm-12">
+                <div class="card">
+                    <h4 class="card-header text-center" style="background-color:#533747;">Carlson Vineyards Winery</h4>
+                    <img class="card-img-top" src="http://via.placeholder.com/350x150" alt="">
+                    <div class="card-body">
+                      <div class="card-title">New Product #3</div>
+                        <p class="card-text">best product eve!!! Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. </p>
+                    </div>
+                </div> -->
+            <!-- </div> -->
+        <!-- </div>  -->
+        <!-- end row -->
+</div></div>
+
+
+
+
+
+
+              <!-- this searchbox filter probably should go in the jumbotron area -->
+              <!-- <li ng-repeat="flabbieProfile in flabbie.allFlabbieProfiles | filter:searchBox" ng-init="limit = 10" ng-click="flabbie.setCurrentFlabbieProfile(flabbieProfile._id)">
+                <div class="col-md-4" id="flabbie-item">
+                  <button ng-click="flabbie.toggleModal()" class="btn btn-warning postButton" id="flabbie-button" >
+                    <! perhaps have very small profile pic? -->
+                  <!-- <img src="./assets/football-24-102853.png"
+                  alt="FLAB"><br>  {{flabbieProfile.author}}</button>
+                </div>
+              </li><br>
+            </ul> -->
+
+          </div>
+          </div><!-- end row -->
+          <br><br>
+        </div>
+
+      </div>  <!-- end flabbie-jumbotron -->
+    </div>
+    </div>
+
+
+
 
     <!-- Flabbie Modal -->
 
@@ -206,31 +298,10 @@
 
 
 
-        <!-- All Flabbie Profiles -->
-        <div class="row" id="display">
-          <ul id="flabbie-list">
-            <!-- this searchbox filter probably should go in the jumbotron area -->
 
-            <li ng-repeat="flabbieProfile in flabbie.allFlabbieProfiles | filter:searchBox" ng-init="limit = 28" ng-click="flabbie.setCurrentFlabbieProfile(flabbieProfile._id)">
-              <div class="col-md-4" id="flabbie-item">
-                <button ng-click="flabbie.toggleModal()" class="btn btn-warning postButton" id="flabbie-button" >
-                  <!-- perhaps have very small profile pic? -->
-                <img src="./assets/football-24-102853.png"
-                alt="FLAB"><br>  {{flabbieProfile.author}}</button>
-
-
-              </div>
-
-            </li><br>
-
-          </ul>
-        <br>
-        </div>
-
-        <br><br>
 
 
 
   </div>  <!-- end flabbie-container -->
-
+</body>
 </section>  <!-- end FlabbieController -->

@@ -30,6 +30,7 @@
 #flabbie{
   background: url(../assets/pig.jpeg) no-repeat center center fixed;
   max-width: 100%;
+  min-height: 850px;
   margin: 0 auto;
 }
 /* public/assets/pexels-photo-301664.jpeg */
@@ -39,6 +40,21 @@
   padding:20px;
   background-color:rgba(85, 74, 76, 0.85)
 }
+
+#allFlabies{
+  border-radius:15px;
+  padding:20px;
+  background-color:rgba(85, 74, 76, 0.60)
+}
+#display,#navbar-example{
+  overflow-y:scroll;
+  position: relative;
+  height:650px;
+}
+/* may use this at a smaller screen size  */
+/* h2.navbar.sticky-top.text-white,form.form-inline.my-2.my-lg-0.mx-auto.ng-pristine.ng-valid{
+  justify-content: center;
+} */
 
 #football{
   background: url(../assets/football-american-football-college-alabama-39002.jpeg) no-repeat center center fixed;
@@ -80,6 +96,11 @@
 }
 /* #e0ddcf */
 /* RGBA(224,221,207,0.51) */
+
+#flabieCard{
+  display: flex;
+  margin-right: 3.5%;
+}
 
 #smackDizzy {
   width: 8em;
