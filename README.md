@@ -14,6 +14,7 @@ The design of this application is inspired by Girl Gang, which I contributed to 
 
 Coolors color scheme for redesign: https://coolors.co/export/png/9e1b32-828a8f-54494b-333232-ffc145
 close to the crimson:#670404
+
 ### **Future Plans:**
  - [ ] Integrate 3rd Party API from                  http://www.brewerydb.com/developers/docs-endpoint/beer_index
 
@@ -24,3 +25,9 @@ close to the crimson:#670404
  - [ ] Integrate 3rd Party API from ESPN for college football schedules (to add to landing page prior to the start of each new season)
 
  - [ ] Adjust carousel photos to be the same size
+
+ - [ ] media query for max-height of flabbie background pic (pig), for flabbie cards at small size need to collapse card to 1 per row (col-sm-12 not working... due to ul hacking of getting cards inline), cards left margin at small size is off
+
+ - [ ] Collapse nav at a smaller breakpoint
+
+ - [ ] add animation/transition effect to posts when mouse hovers over them

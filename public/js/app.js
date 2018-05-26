@@ -440,6 +440,7 @@ app.controller('FlabbieController', ['$http', '$scope', function($http, $scope){
   this.newDisplay = false;
   this.currentFlabbieProfile = {};
   this.commentedFlabbie = {};
+  $('body').scrollspy({ target: '#navbar-example' });
 
 
   //create random lines like this w/credit to someecards.com:
