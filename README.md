@@ -31,3 +31,7 @@ close to the crimson:#670404
  - [ ] Collapse nav at a smaller breakpoint
 
  - [ ] add animation/transition effect to posts when mouse hovers over them
+
+ - [ ] Center FLABie profile card row when it is at a smaller screen sizes
+
+ - [ ] Add dismissible alert to each section which activates when user that is not logged in tries to access data

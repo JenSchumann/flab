@@ -101,6 +101,20 @@
   display: flex;
   margin-right: 3.5%;
 }
+@media only screen and (max-width: 375px) {
+  #flabieCard{
+    display: flex;
+    align-content: center;
+    padding-left: 0;
+  }
+}
+@media only screen and (max-width: 793px) {
+  div#fix.container{
+    display: flex;
+    margin-right: 30.5%;
+
+  }
+}
 
 #smackDizzy {
   width: 8em;
