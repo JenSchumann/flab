@@ -1,8 +1,6 @@
 <section ng-controller="FlabbieController as flabbie">
 <body data-spy="scroll" data-target="#navbar-example">
   <div class="container mt-3 mb-3 pb-3 pt-3" id="flabbie-container">
-    <!-- <div class="row"> -->
-
       <div class="jumbotron mt-3 pt-3 text-center" id="flabbie-jumbotron">
 
         <h1 id="fontB" class="pt-3">FLABies</h1>
@@ -73,8 +71,8 @@
 
         <!-- make this a jumbotron which shows cards w/limited profile info of all Flabbies which can expand for each Flabie when they are clicked on -->
         <div class="collapse" id="seeFlabies">
-          <div id="fontB">
-                <div class="row">
+          <!-- <div id="fontB"> -->
+                <div class="row" id="fontB">
                   <div class="col jumbotron" id="allFlabies">
                     <h2 class="navbar sticky-top text-white" >The FLABie Tribe
                     <form class="form-inline my-2 my-lg-0">
@@ -86,110 +84,48 @@
                       Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
                     </h5>
 <hr>
-          <!-- All Flabbie Profiles -->
-          <!-- <div class="row bg-light mr-2 ml-2 mt-3 pr-2 pl-2 pt-4 " id="display"> -->
-          <div class="row bg-light pt-4 mr-2 ml-2" id="display">
-            <div id="navbar-example">
-              <div class="container">
-<!-- <ul id="flabbie-list"> -->
+                        <!-- All FLABie Profiles -->
+                        <div class="row bg-light pt-4 mr-2 ml-2 mb-3" id="display">
+                          <div id="navbar-example">
+                            <div class="container" id="fix">
+                              <div class="col">
+                                <ul id="flabieCard">
+                                    <li ng-repeat="flabbieProfile in flabbie.allFlabbieProfiles | filter:searchBox" ng-init="limit = 10" ng-click="flabbie.setCurrentFlabbieProfile(flabbieProfile._id)">
+                                      <div class="card w-100">
+                                        <h4 class="card-header text-center text-white" style="background-color:#9E1B32;">{{flabbieProfile.author}}</h4>
+                                        <img class="card-img-top" ng-src="{{flabbieProfile.image}}">
+                                        <div class="card-body">
+                                        <div class="card-title"><strong>FLABie's Fave Team(s): </strong>  {{flabbieProfile.favoriteTeams}}<br></div>
+                                        <p class="card-text"><strong>FLABie Bio:</strong>  {{flabbieProfile.bio}}</p>
+                                        </div> <!-- card-body -->
+                                        <div class="card-footer" style="background-color:#9E1B32">
+                                          <!-- <button ng-click="flabbie.toggleModal()" class="btn btn-warning">
+                                            More About This FLABie</button> -->
+                                            <!-- Experimenting w/user design of collapsible profile instead of modal -->
+                                            <button class="btn mb-3" data-toggle="collapse" href="#seeAllOfFlabieProfile" style="background-color:#FFC145" id="fontB">
+                                              More About This FLABie</button>
 
-                <div class="col">
-
-                  <!-- <div class=" "> -->
-
-                  <ul id="flabieCard">
-
-
-                                <!-- <div class="col-lg-3 col-md-6 col-sm-12"> -->
-
-                                <li ng-repeat="flabbieProfile in flabbie.allFlabbieProfiles | filter:searchBox" ng-init="limit = 10" ng-click="flabbie.setCurrentFlabbieProfile(flabbieProfile._id)">
-                                  <div class="card w-100 p-2">
-<!-- id="flabbie-item" -->
-                    <h4 class="card-header text-center text-white" style="background-color:#9E1B32;">{{flabbieProfile.author}}</h4>
-                    <img class="card-img-top" ng-src="{{flabbieProfile.image}}">
-                    <div class="card-body">
-                      <div class="card-title"><strong>FLABie's Fave Team(s): </strong>  {{flabbieProfile.favoriteTeams}}<br></div>
-                        <p class="card-text"><strong>FLABie Bio:</strong>  {{flabbieProfile.bio}}</p>
-                    </div>
-
-                    <div class="card-footer text-muted">
-                      <button ng-click="flabbie.toggleModal()" class="btn btn-warning">
-                        Learn More</button>
-                    </div>
-                    </div>
-                  </li><br>
-
-                  </ul>
-
-              </div>
-
-            </div>
-              </div>
-
-
-              </div>
-
-
-
-            <!-- <div class="col-lg-4 col-md-6 col-sm-12">
-                <div class="card">
-                    <h4 class="card-header text-center" style="background-color:#533747;">Varaison Vineyards & Winery</h4>
-                    <img class="card-img-top" src="http://via.placeholder.com/350x150" alt="">
-                    <div class="card-body">
-                      <div class="card-title">New Product #2</div>
-                        <p class="card-text">best product eve!!! Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. </p>
-                    </div>
-                </div>
-            </div> -->
-
-            <!-- <div class="col-lg-4 col-md-6 col-sm-12">
-                <div class="card">
-                    <h4 class="card-header text-center" style="background-color:#533747;">Carlson Vineyards Winery</h4>
-                    <img class="card-img-top" src="http://via.placeholder.com/350x150" alt="">
-                    <div class="card-body">
-                      <div class="card-title">New Product #3</div>
-                        <p class="card-text">best product eve!!! Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. </p>
-                    </div>
-                </div> -->
-            <!-- </div> -->
-        <!-- </div>  -->
-        <!-- end row -->
-</div></div>
-
-
-
-
-
-
-              <!-- this searchbox filter probably should go in the jumbotron area -->
-              <!-- <li ng-repeat="flabbieProfile in flabbie.allFlabbieProfiles | filter:searchBox" ng-init="limit = 10" ng-click="flabbie.setCurrentFlabbieProfile(flabbieProfile._id)">
-                <div class="col-md-4" id="flabbie-item">
-                  <button ng-click="flabbie.toggleModal()" class="btn btn-warning postButton" id="flabbie-button" >
-                    <! perhaps have very small profile pic? -->
-                  <!-- <img src="./assets/football-24-102853.png"
-                  alt="FLAB"><br>  {{flabbieProfile.author}}</button>
-                </div>
-              </li><br>
-            </ul> -->
-
-          </div>
-          </div><!-- end row -->
-          <br><br>
-        </div>
-
-      </div>  <!-- end flabbie-jumbotron -->
-    </div>
-    </div>
-
-
-
+                                        </div> <!-- card-footer -->
+                                      </div> <!-- card w-100 -->
+                                    </li><br>
+                                </ul>
+                              </div> <!-- col -->
+                            </div> <!-- container -->
+                          </div> <!-- navbar-example -->
+                        </div> <!-- row bg-light -->
+                  </div> <!-- col jumbotron -->
+                </div> <!-- row fontB -->
+        </div><!-- collapse -->
+      <br><br>
 
     <!-- Flabbie Modal -->
+    <div class="collapse" id="seeAllOfFlabieProfile">
 
-    <div ng-if="flabbie.modal" id"flabbieModal">
+
+    <!-- <div ng-if="flabbie.modal" id"flabbieModal">
       <div class="modal-dialog" role="document">
         <div class="modal-content">
-          <div class="modal-header">
+          <div class="modal-header"> -->
 
             <button type="button" ng-click="flabbie.toggleModal()" class="close" data-dismiss="modal" aria-label="Close">
               <span aria-hidden="true">&times;</span>
@@ -290,18 +226,24 @@
               </div>  <!-- end tab two -->
             </div>  <!-- end tab content -->
 
-          </div>  <!-- end modal body -->
-        </div>  <!-- end modal content -->
-      </div>  <!-- end modal dialog -->
-    </div>   <!-- end flabbieModal -->
+          <!-- </div>   -->
+          <!-- end modal body -->
+        <!-- </div>   -->
+        <!-- end modal content -->
+      <!-- </div>   -->
+      <!-- end modal dialog -->
+    <!-- </div>    -->
+    <!-- end flabbieModal -->
+
+</div>  <!-- end collapse seeAllOfFlabieProfile -->
+
+  </div> <!-- flabbie-jumbotron -->
+</div>  <!-- flabbie-container -->
 
 
 
 
-
-
-
-
-  </div>  <!-- end flabbie-container -->
+  <!-- </div>   -->
+  <!-- end flabbie-container -->
 </body>
 </section>  <!-- end FlabbieController -->
