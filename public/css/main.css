@@ -102,7 +102,7 @@
   margin-right: 3.5%;
 }
 @media only screen and (max-width: 375px) {
-  #flabieCard{
+  ul#flabieCard{
     display: flex;
     align-content: center;
     padding-left: 0;
@@ -114,8 +114,16 @@
     margin-right: 30.5%;
 
   }
+  ul#flabieCard{
+    margin-left: 50%;
+    align-content: center;
+    padding-left: 0;
+  }
 }
-
+span#x{
+  float: right;
+  justify-content: flex-end;
+}
 #smackDizzy {
   width: 8em;
   height: 10em;

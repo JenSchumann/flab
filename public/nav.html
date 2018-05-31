@@ -38,20 +38,20 @@
                 <a href="#" class="nav-link dropdown-toggle text-white" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Menu</a>
 
                 <div class="dropdown-menu">
-                  <a class="dropdown-item" href="#legacy" style="color: #9E1B32;">THE Legacy</a>
-                  <a class="dropdown-item" href="#football" style="color: #828A8F">FOOTBALL</a>
-                  <a class="dropdown-item" href="#beer" style="color: #FFC145">BEER</a>
-                  <a class="dropdown-item" href="#smack" style="color: #333232">SMACK</a>
-                  <a class="dropdown-item" href="#flabbie" style="color: #9E1B32;">FLABbies</a>
-                  <a class="dropdown-item" href="#contact" style="color: #828A8F">Contact FLAB HQ</a>
+                  <a class="dropdown-item" id="parallax" href="#legacy" style="color: #9E1B32;">THE Legacy</a>
+                  <a class="dropdown-item" id="parallax" href="#football" style="color: #828A8F">FOOTBALL</a>
+                  <a class="dropdown-item" id="parallax" href="#beer" style="color: #FFC145">BEER</a>
+                  <a class="dropdown-item" id="parallax" href="#smack" style="color: #333232">SMACK</a>
+                  <a class="dropdown-item" id="parallax" href="#flabbie" style="color: #9E1B32;">FLABbies</a>
+                  <a class="dropdown-item" id="parallax" href="#contact" style="color: #828A8F">Contact FLAB HQ</a>
                   <div class="dropdown-divider"></div>
-                  <a class="dropdown-item" href="#about" style="color: #FFC145">About</a>
+                  <a class="dropdown-item" id="parallax" href="#about" style="color: #FFC145">About</a>
                 </div>
               </li>
           <!-- <ul class="dropdown-menu nav"> -->
 
 
-            <li ng-if=!user.loggedIn ng-click="user.goToLogin()" ng-click="user.addForm.reset()" class="nav-item text-right mr-auto"><a href="#" class="nav-link" style="color: #828A8F">LOGIN</a></li>
+            <li ng-if=!user.loggedIn ng-click="user.goToLogin()" ng-click="user.addForm.reset()" class="nav-item text-right mr-auto"><a href="#login" id="parallax" class="nav-link" style="color: #828A8F">LOGIN</a></li>
 
             <li ng-if=user.loggedIn ng-click="user.logOut()" class="nav-item text-right mr-auto"><a href="#" style="color:#e0ddcf;" class="nav-link">LOGOUT</a></li>
 
