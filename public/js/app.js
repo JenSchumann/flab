@@ -18,7 +18,7 @@ app.controller('FlabController', ['$http', function($http){
     console.log('cuz everyone wants to know what FLAB is about');
   }
 
-  $('.nav li a').on('click',function(event){
+  $('.nav li a#parallax').on('click',function(event){
           // console.log(event);
           event.preventDefault();
           const target = $(this).attr('href');
