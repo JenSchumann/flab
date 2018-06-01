@@ -103,25 +103,22 @@
                                   </ul>
                                 </div> <!-- col -->
                                 <div class="modal fade" id="seeAllOfFlabieProfile" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle" aria-hidden="true">
-                              <div class="modal-dialog" role="document">
+                              <div class="modal-dialog modal-lg" role="document">
                                 <div class="modal-content">
                                   <div class="modal-header pb-0">
                                     <h5 class="modal-title" id="exampleModalLongTitle">
                                       <ul class="nav nav-tabs nav-fill" id="myTab" role="tablist">
                                           <li class="nav-item"><a class="nav-link active" id="flabieProfile-home-tab" data-toggle="tab" href="#flabieProfileTabHome" role="tab" aria-controls="flabieProfileTabHome" aria-selected="true">Profile</a></li>
 
-                                          <li class="nav-item"><a  class="nav-link" id="flabieProfile-comment-tab" data-toggle="tab" href="#flabieComment" role="tab" aria-controls="flabieComment">Comment(s)</a></li>
-                                          <li class="nav-item" id="flabItem"><a href="#flabbieEdit" class="nav-link active">Update Profile</a></li>
+                                          <li class="nav-item"><a class="nav-link" id="flabieProfile-comment-tab" data-toggle="tab" href="#flabieComment" role="tab" aria-controls="flabieComment">Comment(s)</a></li>
+
+                                          <li id="flabItem" class="nav-item"><a class="nav-link" id="flabieProfile-update-tab" data-toggle="tab" href="#flabbieEdit" role="tab" aria-controls="flabbieEdit">Update Profile</a></li>
                                       </ul></h5>
                                   </div>
 
                                   <div class="tab-content" id="myTabContent">
-
                                     <div class="tab-pane fade show active" id="flabieProfileTabHome" role="tabpanel" aria-labelledby="flabieProfile-home-tab">
-
                                     <h5 class="modal-title pt-3">FLABie: {{flabbie.currentFlabbieProfile.author}}</h5>
-
-
                                     <div class="modal-body">
                                       <ul>
                                         <li> <strong>FLABie Bio: </strong>  {{flabbie.currentFlabbieProfile.bio}}<br></li>
@@ -136,150 +133,112 @@
 
                                 <div class="tab-pane fade" id="flabieComment" role="tabpanel" aria-labelledby="flabieProfile-comment-tab">
                                     <h5 class="modal-title pt-3">FLABie: {{flabbie.currentFlabbieProfile.author}}</h5>
-                                    <hr>
                                     <div class="modal-body">
-                                  <ul id="comment-list">
-                                    <li ng-repeat="comments in flabbie.currentFlabbieProfile.comments track by $index">
-                                      <div id="comment-item">
-                                        <p>{{comments}}</p>
-                                          <!-- add who authored the comment: -->
-                                          <!-- ...need to troubleshoot this:
-                                          <p>Comment from: {{flabbie.comments.author}}</p> -->
-                                      </div>  <!-- comment-item -->
+                                      <ul id="comment-list">
+                                        <li ng-repeat="comments in flabbie.currentFlabbieProfile.comments track by $index">
+                                          <div id="comment-item">
+                                            <p>{{comments}}</p>
+                                            <!-- interesting... lots of data returns - maybe look at this when addressing adding author to comment... trying to remember how to render new data to page immediately...
+                                            <p>{{flabbie.allFlabbieComments}}</p> -->
 
-                                    </li><br>
-                                  </ul>
+                                              <!-- add who authored the comment: -->
+                                              <!-- ...need to troubleshoot this:-->
+                                              <!-- <p>Comment from: {{flabbie.author.comments}}</p>  -->
+                                          </div>  <!-- comment-item -->
+                                        </li>
+                                      </ul>
 
-                                  <!-- New Comment Form RE Flabie posts -->
-                                  <h2>Post a Comment</h2>
-                                  <form id="commentForm" ng-submit="flabbie.addComment(flabbie.currentFlabbieProfile._id)">
-                                    <div class="form-group">
-                                      <textarea class="form-control" rows="5" type="text" id="comments" ng-model="flabbie.commentedFlabbie.comments"></textarea><br>
-
-
-                                      <div class="modal-footer" id="fontB">
-                                        <button class="btn btn-warning" type="submit">Post</button>
-                                        <button type="button" class="btn text-white" style="background-color: #9E1B32" data-dismiss="modal">Close</button>
+                                      <!-- New Comment Form RE Flabie posts -->
+                                      <h2>Post a Comment</h2>
+                                        <form id="commentForm" ng-submit="flabbie.addComment(flabbie.currentFlabbieProfile._id);flabbie.getFlabbieComments(comments)">
+                                          <div class="form-group">
+                                            <textarea class="form-control" rows="5" type="text" id="comments" ng-model="flabbie.commentedFlabbie.comments"></textarea><br>
+                                            <div class="modal-footer" id="fontB">
+                                              <button class="btn btn-warning" type="submit">Post</button>
+                                              <button type="button" class="btn text-white" style="background-color: #9E1B32" data-dismiss="modal">Close</button>
+                                            </div>
+                                          </div>
+                                        </form>
                                       </div>
+                                  </div> <!-- tab-pane fade -->
+
+                                  <div class="tab-pane fade" id="flabbieEdit" role="tabpanel" aria-labelledby="flabieProfile-update-tab">
+                                      <h5 class="modal-title pt-3">FLABie: {{flabbie.currentFlabbieProfile.author}}</h5>
+                                      <div class="modal-body">
+                                        <!-- Edit Form -->
+                                        <h5>Do You Need To Edit Your Profile?</h5>
+                                        <div class="row">
+                                          <div class="col">
+                                          <form id="flabbieForm" ng-submit="flabbie.updateFlabbieProfile(flabbie.currentFlabbieProfile._id)" ng-click="flabbie.addForm.reset()">
+                                            <div class="form-group row pt-3">
+                                                <label for="email" class="col-sm-2 col-form-label">Email</label>
+                                                <div class="col-sm-10">
+                                                  <input type="email" placeholder="{{flabbie.currentFlabbieProfile.email}}" ng-model="flabbie.editedFlabbieProfile.email" class="form-control" id="email">
+                                                </div>
+                                            </div>
+                                      <hr>
+                                            <div class="form-group row">
+                                                <label for="image" class="col-sm-2 col-form-label">Image</label>
+                                                <div class="col-sm-10">
+                                                <input type="text" placeholder="{{flabbie.currentFlabbieProfile.image}}"  ng-model="flabbie.editedFlabbieProfile.image" class="form-control" id="image">
+                                                </div>
+                                            </div>
+                                      <hr>
+                                            <div class="form-group row">
+                                                <label for="team" class="col-sm-2 col-form-label">Fave Team(s)</label>
+                                                <div class="col-sm-10">
+                                                <input type="text" placeholder="{{flabbie.currentFlabbieProfile.favoriteTeams}}" ng-model="flabbie.editedFlabbieProfile.favoriteTeams" class="form-control" id="team">
+                                                </div>
+                                            </div>
+                                      <hr>
+                                            <div class="form-group row">
+                                                <label for="fbeer" class="col-sm-2 col-form-label">Fave Beer(s)</label>
+                                                <div class="col-sm-10">
+                                                  <input type="text" placeholder="{{flabbie.currentFlabbieProfile.favoriteBeers}}" ng-model="flabbie.editedFlabbieProfile.favoriteBeers"
+                                                  class="form-control" id="editedTeam">
+                                                  </div>
+                                              </div>
+                                        <hr>
+                                              <div class="form-group row">
+                                                  <label for="message" class="col-sm-2 col-form-label">Bio</label>
+                                                  <div class="col-sm-10">
+                                                  <textarea placeholder="{{flabbie.currentFlabbieProfile.bio}}" ng-model="flabbie.editedFlabbieProfile.bio" class="form-control" rows="5" id="editedFlabbieBIO">
+                                                  </textarea>
+                                                  </div>
+                                              </div>
+                                        <hr>
+                                      </form>
+
+                                      <div class="collapse" id="deleteAlert">
+                                      <div class="alert alert-warning alert-dismissible fade show" role="alert">
+                                        <strong>Holy guacamole!</strong> Are you sure you want to delete your FLABie profile? Once deleted, this action cannot be reversed. If a FLABie profile is desired after the original one has been deleted, a new one will have to be recreated.<br>
+                                        <button class="btn btn-warning mt-3" type="button" data-toggle="collapse" data-target="#deleteAlert" ng-click="flabbie.deleteFlabbieProfile(flabbie.currentFlabbieProfile._id)"><span data-dismiss="modal">Confirm</span></button>
+                                      </div>
+                                      </div>
+                              </div> <!-- col -->
+                            </div> <!-- row -->
+                                      <div class="modal-footer mt-2">
+
+                                        <button class="btn text-white" style="background-color: #54494b" type="submit" data-dismiss="modal" ng-click="flabbie.updateFlabbieProfile(flabbie.currentFlabbieProfile._id); flabbie.toggleModal()">Update</button>
+                                        <button class="btn text-white" style="background-color: #333232" type="button" data-toggle="collapse" data-target="#deleteAlert">Remove Profile</button>
+                                        <button type="button" class="btn text-white" style="background-color: #9E1B32" data-dismiss="modal">Close</button>
+
+                                      </div> <!-- modal-footer -->
+                                </div> <!-- modal body -->
+                              </div> <!-- tab-pane fade -->
+                            </div>  <!-- tab-content -->
+                          </div> <!-- modal-content -->
+                        </div>  <!-- modal-dialog modal-lg -->
 
 
-
-                                    </div>
-                                  </form>
-                                    </div>
-                                </div>
-
-                              </div>  <!-- tab-content -->
-
-                            </div>
-
-</div>
-    <!-- Flabie tabs -->
-    <!-- <div class="collapse" id="seeAllOfFlabieProfile"> -->
-            <!-- <ul class="nav justify-content-end nav-tabs nav-fill">
-                <li class="nav-item"><a href="#flabieComment" class="nav-link active">Comments</a></li>
-                <li class="nav-item" id="flabItem"><a href="#flabbieEdit" class="nav-link active">Update</a></li>
-                <li class="nav-item"><a href="#" class="nav-link active">Dunno</a></li>
-            </ul> -->
-
-            <!-- Tab 1 Content -->
-            <!-- <div class="tab-pane fade" id="flabieComment" role="tabpanel">
-              <!  All Comments -->
-              <!-- <ul id="comment-list">
-                <li ng-repeat="comments in flabbie.currentFlabbieProfile.comments track by $index">
-                  <div id="comment-item">
-                    <p>{{comments}}</p> -->
-                      <!-- add who authored the comment: -->
-                  <!-- </div>  -->
-                  <!-- comment-item -->
-                <!-- </li>
-              </ul>
-              <hr> -->
-              <!-- New Comment Form RE Flabie posts -->
-              <!-- <h2>Post a Comment</h2>
-              <form id="commentForm" ng-submit="flabbie.addComment(flabbie.currentFlabbieProfile._id)">
-                <div class="form-group">
-                  <textarea class="form-control" rows="5" type="text" id="comments" ng-model="flabbie.commentedFlabbie.comments"></textarea><br>
-                  <button class="btn btn-warning" type="submit">Confirm</button>
-                </div>
-              </form> -->
-            <!-- </div>  -->
-            <!-- tab-pane fade -->
-
-            <!-- Tab 2 Content -->
-            <!-- <div class="tab-pane fade" id="flabbieEdit" role="tabpanel"> -->
-            <!-- Edit Form -->
-            <!-- <h2>Do You Need To Edit Your Profile?</h2> -->
-
-            <!-- <form id="flabbieForm" ng-submit="flabbie.updateFlabbieProfile(flabbie.currentFlabbieProfile._id)" ng-click="flabbie.addForm.reset()">
-
-              <h5>FLABie Email: </h5><input type="text" placeholder="{{flabbie.currentFlabbieProfile.email}}" ng-model="flabbie.editedFlabbieProfile.email">
-
-              <h5>FLABie Profile Picture: </h5><input type="text" placeholder="{{flabbie.currentFlabbieProfile.image}}"  ng-model="flabbie.editedFlabbieProfile.image">
-
-              <h5>FLABie Bio: </h5><input type="text" placeholder="{{flabbie.currentFlabbieProfile.bio}}" ng-model="flabbie.editedFlabbieProfile.bio">
-
-              <h5>Fave Team(s): </h5><input type="text" placeholder="{{flabbie.currentFlabbieProfile.favoriteTeams}}" ng-model="flabbie.editedFlabbieProfile.favoriteTeams">
-
-              <h5>Fave Beer(s): </h5><input type="text" placeholder="{{flabbie.currentFlabbieProfile.favoriteBeers}}" ng-model="flabbie.editedFlabbieProfile.favoriteBeers">
-
-            </form> -->
-
-            <!-- <button class="btn btn-warning" type="submit" ng-click="flabbie.updateFlabbieProfile(flabbie.currentFlabbieProfile._id); flabbie.toggleModal()">Update</button>
-            <button class="btn btn-warning" ng-click="flabbie.deleteFlabbieProfile(flabbie.currentFlabbieProfile._id)">Remove Profile</button>
-</div> -->
-<!-- tab-pane fade -->
-              <!-- </div>   -->
-              <!-- end tab two -->
-            <!-- </div>   -->
-            <!-- end tab content -->
-
-
-<!-- </div>
-collapse" id="seeAllOfFlabieProfile -->
-
-
-
-
-</div> <!-- container -->
-</div> <!-- navbar-example -->
-</div> <!-- row bg-light -->
-</div> <!-- col jumbotron -->
-</div> <!-- row fontB -->
-
-</div> <!-- collapse -->
-
-
-
-
-
-
-
-
-
-
-
-
-
-          <!-- </div>   -->
-          <!-- end modal body -->
-        <!-- </div>   -->
-        <!-- end modal content -->
-      <!-- </div>   -->
-      <!-- end modal dialog -->
-    <!-- </div>    -->
-    <!-- end flabbieModal -->
-
-<!-- </div>   -->
-<!-- end collapse seeAllOfFlabieProfile -->
-
-  </div> <!-- flabbie-jumbotron -->
-</div>  <!-- flabbie-container -->
-
-
-
-
-  <!-- </div>   -->
-  <!-- end flabbie-container -->
-</body>
+                    </div> <!-- modal fade -->
+                  </div> <!-- container -->
+                </div> <!-- navbar-example -->
+              </div> <!-- row bg-light -->
+            </div> <!-- col jumbotron -->
+          </div> <!-- row fontB -->
+        </div> <!-- collapse -->
+      </div>  <!-- flabbie-jumbotron -->
+    </div>  <!-- end flabbie-container -->
+  </body>
 </section>  <!-- end FlabbieController -->
