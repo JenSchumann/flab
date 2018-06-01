@@ -59,7 +59,7 @@ router.put('/:id', function(req, res){
 router.delete('/:id', function(req, res){
   Flabbie.findByIdAndRemove(req.params.id, (err, deletedFlabbie)=>{
     User.findOne({ username: req.session.username}, (err, foundUser)=> {
-      foundUser.Flabbie.id(req.params.id).remove();
+      foundUser.flabbie.id(req.params.id).remove();
       foundUser.save((err, data)=> {
         res.json(deletedFlabbie);
       })

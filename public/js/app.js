@@ -457,7 +457,8 @@ app.controller('FlabbieController', ['$http', '$scope', function($http, $scope){
         image: this.image,
         bio: this.bio,
         favoriteTeams: this.favoriteTeams,
-        favoriteBeers: this.favoriteBeers
+        favoriteBeers: this.favoriteBeers,
+        comments: this.comments
       }
     }).then(function(response){
       controller.newDisplay = false;
@@ -490,14 +491,28 @@ app.controller('FlabbieController', ['$http', '$scope', function($http, $scope){
       url: '/flabbie/comment/' + id,
       data: this.commentedFlabbie
     }).then(function(response){
-      controller.commentDisplay = false;
       controller.commentedFlabbie = {};
       controller.getFlabbieProfiles();
+      controller.getFlabbieComments();
     }, function(err){
       console.log(err);
       console.log('err in flabbie addComment');
     })
   }
+
+  // AJAX/get request for Flabbie Comments (index)
+  this.getFlabbieComments = function(){
+    $http({
+      method:'GET',
+      url: '/flabbie',
+    }).then(function(response){
+      controller.allFlabbieComments = response.data;
+      controller.commentDisplay = true;
+    }, function(error){
+      console.log('error in getFlabbieComments');
+    });
+  }
+
   //ajax call to show all the user profiles
   this.getFlabbieProfiles = function(){
     console.log('getting FlabbieProfiles');
@@ -524,6 +539,10 @@ app.controller('FlabbieController', ['$http', '$scope', function($http, $scope){
         $scope.input = '';
         if($scope.verifyFlab.username !== controller.currentFlabbieProfile.author) {
           document.getElementById("flabItem").style.visibility = "hidden";
+        } else if
+          ($scope.verifyFlab.username === controller.currentFlabbieProfile.author)
+        {
+          document.getElementById("flabItem").style.visibility = "visible";
         }
     }, function(error){
       console.log(error);
