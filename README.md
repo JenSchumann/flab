@@ -41,3 +41,8 @@ close to the crimson:#670404
  - [ ] Comments are rendered to page when post button is clicked (all models)
 
  - [ ] Clean up unnecessary code present which became obsolete when BS4 redesign occurred.
+
+
+
+
+ 

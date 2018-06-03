@@ -18,7 +18,7 @@
         <!-- Create User Profile Form -->
         <div ng-if="flabbie.newDisplay">
             <div class="container text-center" id="fontB">
-              <h2 class="text-center">Already have a User Login? Great!<br> You're Ready to Create a FLABbie Profile!</h2>
+              <h2 class="text-center">Already have a User Login? Great!<br> You're Ready to Create a FLABie Profile!</h2>
                   <div class="row">
                     <div class="col jumbotron" id="newFlabbieProfile">
                           <form ng-submit="flabbie.createFlabbieProfile()" class="pb-3">
@@ -76,7 +76,7 @@
                   <div class="col jumbotron" id="allFlabies">
                     <h2 class="navbar sticky-top text-white" >The FLABie Tribe
                     <form class="form-inline my-2 my-lg-0">
-                        <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+                        <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search" ng-model="searchBox">
                         <button class="btn btn-outline-warning my-2 my-sm-0" type="submit">Search</button>
                     </form></h2>
                     <hr>
@@ -108,11 +108,11 @@
                                   <div class="modal-header pb-0">
                                     <h5 class="modal-title" id="exampleModalLongTitle">
                                       <ul class="nav nav-tabs nav-fill" id="myTab" role="tablist">
-                                          <li class="nav-item"><a class="nav-link active" id="flabieProfile-home-tab" data-toggle="tab" href="#flabieProfileTabHome" role="tab" aria-controls="flabieProfileTabHome" aria-selected="true">Profile</a></li>
+                                          <li class="nav-item"><a class="nav-link active text-dark" id="flabieProfile-home-tab" data-toggle="tab" href="#flabieProfileTabHome" role="tab" aria-controls="flabieProfileTabHome" aria-selected="true">Profile</a></li>
 
-                                          <li class="nav-item"><a class="nav-link" id="flabieProfile-comment-tab" data-toggle="tab" href="#flabieComment" role="tab" aria-controls="flabieComment">Comment(s)</a></li>
+                                          <li class="nav-item"><a class="nav-link text-danger" id="flabieProfile-comment-tab" data-toggle="tab" href="#flabieComment" role="tab" aria-controls="flabieComment">Comment(s)</a></li>
 
-                                          <li id="flabItem" class="nav-item"><a class="nav-link" id="flabieProfile-update-tab" data-toggle="tab" href="#flabbieEdit" role="tab" aria-controls="flabbieEdit">Update Profile</a></li>
+                                          <li id="flabItem" class="nav-item"><a class="nav-link text-danger" id="flabieProfile-update-tab" data-toggle="tab" href="#flabbieEdit" role="tab" aria-controls="flabbieEdit">Update Profile</a></li>
                                       </ul></h5>
                                   </div>
 
