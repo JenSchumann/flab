@@ -61,7 +61,7 @@
                           </div>
                       </div>
             <hr>
-                      <input class="btn text-light" style="background-color:#FFC145" type="submit" value="Post">
+                      <input class="btn text-light" ng-click="football.toggleNew;flabbie.addForm.reset()" style="background-color:#FFC145" type="submit" value="Post">
                     </form>
 
         </div> <!-- newFootballPost -->
@@ -69,8 +69,71 @@
     </div>  <!-- container text-center -->
   </div>  <!-- football.newDisplay -->
 
-
     <!-- Football Modal -->
+
+    <div class="collapse" id="seeFootballPosts">
+            <div class="row" id="fontB">
+              <div class="col jumbotron" id="allFootballPosts">
+                <h2 class="navbar sticky-top text-white">Football Posts
+
+                  <form class="form-inline my-2 my-lg-0">
+                      <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search" ng-model="searchBox">
+                      <button class="btn btn-outline-warning my-2 my-sm-0" type="submit">Search</button>
+                  </form></h2>
+                  <hr>
+                  <h5 class="text-white">
+                    Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+                  </h5>
+<hr>
+
+        <!-- All Football Posts -->
+        <div class="row bg-light mx-auto pt-3" id="display">
+          <div id="football-example">
+            <div class="container" id="fix">
+              <div class="col">
+                <ul id="ftBallPostCard">
+                  <div class="card-group">
+          <!-- <ul id="football-list"> -->
+            <!-- this searchbox filter probably should go in the jumbotron area -->
+            <li ng-repeat="footballPost in football.allFootballPosts | filter:searchBox" ng-init="limit = 10" ng-click="football.setCurrentFootballPost(footballPost._id)">
+
+              <div class="card w-100">
+                <h4 class="card-header text-center text-white" style="background-color:#9E1B32;">{{footballPost.postTitle}}</h4>
+                <p class="card-text"><strong>Tag(s):</strong> {{footballPost.tag}}</p>
+                <a href="{{footballPost.url}}" target="_blank" class="btn btn-outline-warning btn-sm">Linked Resource</a>
+                <p class="card-text"><strong>Posted by:</strong> {{footballPost.author}}</p>
+                <div class="card-footer" style="background-color:#9E1B32">
+                      <button type="button" class="btn mt-3 mb-3 text-white" data-toggle="modal" data-target="#seeAllOfFootballPost" style="background-color:#FFC145" id="fontB">
+                        See Post</button>
+              <!-- <div class="col-md-4" id="football-item">
+                <button class="btn btn-warning postButton" id="football-button" ng-click="football.toggleModal()">
+                <img src="./assets/football-24-102853.png"
+                alt="FLAB"><br>  {{footballPost.postTitle}}</button> -->
+
+                <!-- target="_blank" -->
+                    </div>
+                  </div>
+              </li><br>
+              </div>
+          </ul>
+
+        </div>
+      </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
     <div ng-if="football.modal" id="footballModal">
       <div class="modal-dialog" role="document">
@@ -184,24 +247,6 @@
       </div>  <!-- end modal dialog -->
     </div>  <!-- end footballModal -->
 
-    <!-- All Football Posts -->
-    <div class="row" id="display">
-      <ul id="football-list">
-        <!-- this searchbox filter probably should go in the jumbotron area -->
-        <li ng-repeat="footballPost in football.allFootballPosts | filter:searchBox" ng-init="limit = 28" ng-click="football.setCurrentFootballPost(footballPost._id)">
-          <div class="col-md-4" id="football-item">
-            <button class="btn btn-warning postButton" id="football-button" ng-click="football.toggleModal()">
-            <img src="./assets/football-24-102853.png"
-            alt="FLAB"><br>  {{footballPost.postTitle}}</button>
-
-            <!-- add comment glyphicon when functionality is fleshed out -->
-          </div>
-
-        </li><br>
-
-      </ul>
-<br>
-    </div>
 
 <br><br>
 
