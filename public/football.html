@@ -1,18 +1,26 @@
 <section ng-controller="FootballController as football">
-
-  <div class="container" id="football-container">
-    <!-- <div class="row"> -->
-
-      <div class="jumbotron"  id="football-jumbotron">
-        <img id="footballSpinner" src="./assets/football-152-102853.png" alt="FLAB"><br>
-        <h1 id="fontJ" class="text-light text-center">Pigskin Slapstick</h1>
+<body data-spy="scroll" data-target="#football-example">
+  <div class="container mt-3 mb-3 pb-3 pt-3" id="football-container">
+      <div class="jumbotron mt-3 pt-3 text-center"  id="football-jumbotron">
+        <img id="footballSpinner" class="pt-3 mt-3" src="./assets/football-152-102853.png" alt="FLAB-football"><br>
+        <h1 id="fontB" class="pt-2 text-light">Pigskin Slapstick</h1>
         <!-- use the brain cells.. come up w/a better tagline -->
-        <h2 id="fontJ" class="text-light text-center">Who's the Best?</h2><br>
-
+        <h2 id="fontB" class="pb-2 text-light">Who's the Best?</h2><br>
         <!-- {{football.obsession}} -->
 
-        <!-- Add Football Post Button -->
-        <div id="newitem-form" class="text-center">
+        <div class="alert alert-dismissible fade show"  role="alert" ng-if=!user.loggedIn id="football-alert">
+          <div class="alert-heading">
+            <h4 class="alert-title text-white pt-2 text-left" id="fontB">Guard the Yard!
+            <button type="button" class="close d-inline" data-dismiss="alert" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button></h4>
+          </div>
+          <hr>
+            <p id="fontB" class="text-white">Log in to see what FLABies are saying about the latest in college football!</p>
+        </div>
+
+        <!-- Create Football Post Button -->
+        <div id="newitem-form" class="col-lg-12" ng-if=user.loggedIn>
           <button class="btn text-light" id="fontJ" style="background-color:#A60A32" type="submit" ng-click="football.toggleNew(); football.addForm.reset()">Add Football Post</button>
         </div>
 
@@ -180,5 +188,5 @@
 
 
 </div>  <!-- end football-container -->
-
+  </body>
 </section>  <!-- end footballController -->

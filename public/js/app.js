@@ -601,6 +601,7 @@ app.controller('FootballController', ['$http', '$scope', function($http, $scope)
   this.modal = false;
   this.currentFootballPost = {};
   this.commentedFootball = {};
+  $('body').scrollspy({ target: '#football-example' });
 
   this.createFootballPost = function(){
       $http({

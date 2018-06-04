@@ -124,6 +124,10 @@ span#x{
   float: right;
   justify-content: flex-end;
 }
+#football-alert{
+  background-color: RGBA(158,27,50,0.56);
+
+}
 #smackDizzy {
   width: 8em;
   height: 10em;
