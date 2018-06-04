@@ -7,7 +7,7 @@
   padding-top: 8%;
 } */
 
-#title {
+#siteTitle {
   padding-top: 5%;
 }
 
@@ -38,7 +38,12 @@
 #newFlabbieProfile{
   border-radius:15px;
   padding:20px;
-  background-color:rgba(85, 74, 76, 0.85)
+  background-color:rgba(85, 74, 76, 0.85);
+}
+#newFootballPost{
+  border-radius:15px;
+  padding:20px;
+  background-color:RGBA(158,27,50,0.68);
 }
 
 #allFlabies{
@@ -46,7 +51,7 @@
   padding:20px;
   background-color:rgba(85, 74, 76, 0.60)
 }
-#display,#navbar-example{
+#display,#navbar-example,#football-example{
   overflow-y:scroll;
   position: relative;
   height:650px;

@@ -21,35 +21,54 @@
 
         <!-- Create Football Post Button -->
         <div id="newitem-form" class="col-lg-12" ng-if=user.loggedIn>
-          <button class="btn text-light" id="fontJ" style="background-color:#A60A32" type="submit" ng-click="football.toggleNew(); football.addForm.reset()">Add Football Post</button>
+          <button class="btn text-light mb-3" id="fontB" style="background-color:#A60A32" type="submit" ng-click="football.toggleNew(); football.addForm.reset()">Add Football Post</button>
+
+          <button class="btn text-light mb-3" data-toggle="collapse" href="#seeFootballPosts" style="background-color:#A60A32" id="fontB">See Football Posts</button>
         </div>
 
-<br><br>
       <!-- Add New Football Post Form -->
         <div ng-if="football.newDisplay">
+          <div class="container text-center" id="fontB">
+            <h3 class="text-white">Ready to stake a claim about your fave team, player, &/or coach?<br>Share your take on how football doesn’t build character, it eliminates the weak ones!</h3>
+                <div class="row">
+                  <div class="col jumbotron" id="newFootballPost">
+                    <form ng-submit="football.createFootballPost()" class="pb-3">
+                      <div class="form-group row">
+                          <label for="title" class="col-sm-2 col-form-label text-white">Title</label>
+                          <div class="col-sm-10">
+                            <input type="text" ng-model="football.postTitle" class="form-control" id="title" placeholder="Post Title">
+                          </div>
+                      </div>
+            <hr>
+                      <div class="form-group row">
+                          <label for="football-tag" class="col-sm-2 col-form-label text-white">Tag(s)</label>
+                          <div class="col-sm-10">
+                            <input type="text" ng-model="football.tag" class="form-control" id="football-tag" placeholder="Tag(s)">
+                          </div>
+                      </div>
+            <hr>
+                      <div class="form-group row">
+                          <label for="football-url" class="col-sm-2 col-form-label text-white">URL</label>
+                          <div class="col-sm-10">
+                            <input type="text" ng-model="football.url" class="form-control" id="football-url" placeholder="If applicable, share URL">
+                          </div>
+                      </div>
+            <hr>
+                      <div class="form-group row">
+                          <label for="post" class="col-sm-2 col-form-label text-white">Post</label>
+                          <div class="col-sm-10">
+                            <textarea ng-model="football.fbPost" id="message" rows="5" class="form-control"></textarea>
+                          </div>
+                      </div>
+            <hr>
+                      <input class="btn text-light" style="background-color:#FFC145" type="submit" value="Post">
+                    </form>
 
-          <form ng-submit="football.createFootballPost()">
+        </div> <!-- newFootballPost -->
+      </div>  <!-- row -->
+    </div>  <!-- container text-center -->
+  </div>  <!-- football.newDisplay -->
 
-              <h5>Post Title:</h5><input type="text" ng-model="football.postTitle" placeholder="Post Title"/><br>
-
-              <h5>Football Podium Chatter:</h5><input type="textarea" ng-model="football.fbPost" placeholder="Football Post"/><br>
-
-              <h5>Football Tag(s):</h5><input type="text"
-              ng-model="football.tag" placeholder="Tag(s)"/><br>
-
-                <!-- create "link" text for a tag -->
-              <h5>If applicable, share URL:</h5><input type="text" ng.model="football.url" placeholder="URL"/><br>
-              <br>
-              <input class="btn btn-warning" type="submit" value="Post">
-
-          </form>
-
-        </div> <!-- end new display -->
-
-      </div>  <!-- end football-jumbotron -->
-
-    <!-- </div>  -->
-    <!-- end row -->
 
     <!-- Football Modal -->
 
