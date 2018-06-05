@@ -99,26 +99,53 @@
 
               <div class="card w-100">
                 <h4 class="card-header text-center text-white" style="background-color:#9E1B32;">{{footballPost.postTitle}}</h4>
-                <p class="card-text"><strong>Tag(s):</strong> {{footballPost.tag}}</p>
-                <a href="{{footballPost.url}}" target="_blank" class="btn btn-outline-warning btn-sm">Linked Resource</a>
-                <p class="card-text"><strong>Posted by:</strong> {{footballPost.author}}</p>
+                <p class="card-text pt-2"><strong>Tag(s):</strong> {{footballPost.tag}}</p>
+                <a href="{{footballPost.url}}" type="button" target="_blank" class="btn btn-outline-warning btn-sm">Linked Resource</a>
+                <p class="card-text pt-2"><strong>Posted by:</strong> {{footballPost.author}}</p>
                 <div class="card-footer" style="background-color:#9E1B32">
-                      <button type="button" class="btn mt-3 mb-3 text-white" data-toggle="modal" data-target="#seeAllOfFootballPost" style="background-color:#FFC145" id="fontB">
+                      <button type="button" class="btn text-white" data-toggle="modal" data-target="#seeAllOfFootballPost" style="background-color:#FFC145" id="fontB">
                         See Post</button>
-              <!-- <div class="col-md-4" id="football-item">
-                <button class="btn btn-warning postButton" id="football-button" ng-click="football.toggleModal()">
-                <img src="./assets/football-24-102853.png"
-                alt="FLAB"><br>  {{footballPost.postTitle}}</button> -->
-
-                <!-- target="_blank" -->
                     </div>
                   </div>
-              </li><br>
+                </li><br>
               </div>
-          </ul>
+            </ul>
+          </div> <!-- col -->
 
-        </div>
-      </div>
+          <div class="modal fade" id="seeAllOfFootballPost" tabindex="-1" role="dialog" aria-labelledby="footballPostLongTitle" aria-hidden="true">
+          <div class="modal-dialog modal-lg" role="document">
+            <div class="modal-content">
+              <div class="modal-header pb-0">
+                <h5 class="modal-title" id="footballPostLongTitle">
+                  <ul class="nav nav-tabs nav-fill" id="myTab" role="tablist">
+                      <li class="nav-item"><a class="nav-link active text-dark" id="footballPost-home-tab" data-toggle="tab" href="#footballPostTabHome" role="tab" aria-controls="footballPostTabHome" aria-selected="true">Post</a></li>
+
+                      <li class="nav-item"><a class="nav-link text-danger" id="footballPost-comment-tab" data-toggle="tab" href="#footballPostComment" role="tab" aria-controls="footballPostComment">Comment(s)</a></li>
+
+                      <li id="footballItem" class="nav-item"><a class="nav-link text-danger" id="flabieProfile-update-tab" data-toggle="tab" href="#flabbieEdit" role="tab" aria-controls="flabbieEdit">Update Profile</a></li>
+                  </ul></h5>
+              </div>
+
+              <div class="tab-content" id="myTabContent">
+                <div class="tab-pane fade show active" id="footballPostTabHome" role="tabpanel" aria-labelledby="footballPost-home-tab">
+                  <h5 class="modal-title pt-3">Post Title: {{football.currentFootballPost.postTitle}}</h5>
+                  <div class="modal-body">
+                    <ul>
+                      <li><strong>Posted by FLABie:</strong> {{football.currentFootballPost.author}}</li>
+                      <li><strong>Football Tag(s):</strong> {{football.currentFootballPost.tag}}</li>
+                      <li><span><strong>Read More Here:</strong>
+                        <a href="{{football.currentFootballPost.url}}" target="_blank"> {{football.currentFootballPost.url}}</a></span></li>
+                      <li><strong>Football Podium Chatter:</strong> {{football.currentFootballPost.fbPost}}</li>
+                    </ul>
+                  </div>
+                  <div class="modal-footer">
+                    <button type="button" class="btn text-white" style="background-color: #9E1B32" id="fontB" data-dismiss="modal">Close</button>
+                  </div>
+                </div>  <!-- tab-pane fade show active -->
+              </div>  <!-- tab-content -->
+
+
+        </div>  <!-- modal-content -->
 
 
 
@@ -170,12 +197,14 @@
 
                 <li> <strong>Posted by FLABie: </strong> {{football.currentFootballPost.author}}</li>
 
-                <li> <strong>Football Podium Chatter:</strong> {{football.currentFootballPost.fbPost}}</li>
+
 
                 <li> <strong>Football Tag(s):</strong> {{football.currentFootballPost.tag}}</li>
 
                 <li> <span> <strong>Read More Here:</strong>
                   <a href="{{football.currentFootballPost.url}}" target="_blank"> {{football.currentFootballPost.url}}</a></span></li>
+
+                <li> <strong>Football Podium Chatter:</strong> {{football.currentFootballPost.fbPost}}</li>
 
               </ul>
             </div>
