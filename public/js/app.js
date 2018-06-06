@@ -642,16 +642,30 @@ app.controller('FootballController', ['$http', '$scope', function($http, $scope)
       url: '/football/comment/' + id,
       data: this.commentedFootball
     }).then(function(response){
-      controller.commentDisplay = false;
-      controller.commentedFootball = {};
+      // controller.commentDisplay = false;
+      controller.commentedFootballPost = {};
+
       //also get the author of the Comments
       controller.getFootballPosts();
+      controller.getFootballPostComments();
     }, function(err){
       console.log(err);
       console.log('err in addComment in football');
     })
   }
 
+  // AJAX/get request for Flabbie Comments (index)
+  this.getFootballPostComments = function(){
+    $http({
+      method:'GET',
+      url: '/football',
+    }).then(function(response){
+      controller.allFootballPostComments = response.data;
+      controller.commentDisplay = true;
+    }, function(error){
+      console.log('error in getFootballPostComments');
+    });
+  }
 
   // AJAX/get request for Football Post index
   this.getFootballPosts = function(){

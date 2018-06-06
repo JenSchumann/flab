@@ -78,6 +78,7 @@
 
         <!-- make this a jumbotron which shows cards w/limited profile info of all Flabbies which can expand for each Flabie when they are clicked on -->
         <div class="collapse" id="seeFlabies">
+
                 <div class="row" id="fontB">
                   <div class="col jumbotron" id="allFlabies">
                     <h2 class="navbar sticky-top text-white" >The FLABie Tribe
@@ -154,19 +155,19 @@
                                         </li>
                                       </ul>
 
-                                      <!-- New Comment Form RE Flabie posts -->
-                                      <h2>Post a Comment</h2>
-                                        <form id="commentForm" ng-submit="flabbie.addComment(flabbie.currentFlabbieProfile._id);flabbie.getFlabbieComments(comments)">
-                                          <div class="form-group">
-                                            <textarea class="form-control" rows="5" type="text" id="comments" ng-model="flabbie.commentedFlabbie.comments"></textarea><br>
-                                            <div class="modal-footer" id="fontB">
-                                              <button class="btn btn-warning" type="submit">Post</button>
-                                              <button type="button" class="btn text-white" style="background-color: #9E1B32" data-dismiss="modal">Close</button>
-                                            </div>
-                                          </div>
-                                        </form>
-                                      </div>
-                                  </div> <!-- tab-pane fade -->
+                  <!-- New Comment Form RE Flabie posts -->
+                  <h2>Post a Comment</h2>
+                    <form id="commentForm" ng-submit="flabbie.addComment(flabbie.currentFlabbieProfile._id);flabbie.getFlabbieComments(comments)">
+                      <div class="form-group">
+                        <textarea class="form-control" rows="5" type="text" id="comments" ng-model="flabbie.commentedFlabbie.comments"></textarea><br>
+                        <div class="modal-footer" id="fontB">
+                          <button class="btn btn-warning" type="submit">Post</button>
+                          <button type="button" class="btn text-white" style="background-color: #9E1B32" data-dismiss="modal">Close</button>
+                        </div>
+                      </div>
+                    </form>
+                  </div>
+              </div> <!-- tab-pane fade -->
 
                                   <div class="tab-pane fade" id="flabbieEdit" role="tabpanel" aria-labelledby="flabieProfile-update-tab">
                                       <h5 class="modal-title pt-3">FLABie: {{flabbie.currentFlabbieProfile.author}}</h5>
