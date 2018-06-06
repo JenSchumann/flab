@@ -150,6 +150,8 @@
                   <div class="modal-body">
                     <ul id="comment-list">
                       <li ng-repeat="comments in football.currentFootballPost.comments track by $index">
+                        <!-- this function need to be written in app.js & then added to the li above to get comments rendering in html w/post is clicked?
+                        ng-click="football.setCurrentFootballPost(footballPost._id) -->
                         <div id="comment-item">
                           <p>{{comments}}</p>
                           <!-- <p>{{football.commentedFootball.comments}}</p> -->
@@ -223,7 +225,7 @@
                 </div> <!-- row -->
                       <div class="modal-footer mt-2">
 
-                        <button class="btn text-white" style="background-color: #54494b" type="submit" data-dismiss="modal" ng-click="flabbie.updateFootballPost(flabbie.currentFootballPost._id); football.toggleModal()">Update</button>
+                        <button class="btn text-white" style="background-color: #54494b" type="submit" data-dismiss="modal" ng-click="football.updateFootballPost(football.currentFootballPost._id); football.toggleModal()">Update</button>
                         <button class="btn text-white" style="background-color: #333232" type="button" data-toggle="collapse" data-target="#deleteAlert">Remove Profile</button>
                         <button type="button" class="btn text-white" style="background-color: #9E1B32" data-dismiss="modal">Close</button>
 

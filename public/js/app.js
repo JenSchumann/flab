@@ -692,8 +692,11 @@ controller.commentedFootball = {};
       if($scope.verifyFlab.username !== controller.currentFootballPost.author)
       {
         document.getElementById("footballItem").style.visibility = "hidden";
+      } else if
+        ($scope.verifyFlab.username === controller.currentFootballPost.author)
+      {
+        document.getElementById("footballItem").style.visibility = "visible";
       }
-
     }, function(error){
       console.log('error in setCurrentFootballPost');
     })
@@ -711,7 +714,8 @@ controller.commentedFootball = {};
       controller.currentFootballPost = {};
       controller.football = {};
       controller.editedFootballPost = {};
-    }, function(){
+    }, function(err){
+      console.log(err);
       console.log('error in updateBeerPost');
     });
   }

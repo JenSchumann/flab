@@ -169,73 +169,73 @@
                   </div>
               </div> <!-- tab-pane fade -->
 
-                                  <div class="tab-pane fade" id="flabbieEdit" role="tabpanel" aria-labelledby="flabieProfile-update-tab">
-                                      <h5 class="modal-title pt-3">FLABie: {{flabbie.currentFlabbieProfile.author}}</h5>
-                                      <div class="modal-body">
-                                        <!-- Edit Form -->
-                                        <h5>Do You Need To Edit Your Profile?</h5>
-                                        <div class="row">
-                                          <div class="col">
-                                          <form id="flabbieForm" ng-submit="flabbie.updateFlabbieProfile(flabbie.currentFlabbieProfile._id)" ng-click="flabbie.addForm.reset()">
-                                            <div class="form-group row pt-3">
-                                                <label for="email" class="col-sm-2 col-form-label">Email</label>
-                                                <div class="col-sm-10">
-                                                  <input type="email" placeholder="{{flabbie.currentFlabbieProfile.email}}" ng-model="flabbie.editedFlabbieProfile.email" class="form-control" id="email">
-                                                </div>
-                                            </div>
-                                      <hr>
-                                            <div class="form-group row">
-                                                <label for="image" class="col-sm-2 col-form-label">Image</label>
-                                                <div class="col-sm-10">
-                                                <input type="text" placeholder="{{flabbie.currentFlabbieProfile.image}}"  ng-model="flabbie.editedFlabbieProfile.image" class="form-control" id="image">
-                                                </div>
-                                            </div>
-                                      <hr>
-                                            <div class="form-group row">
-                                                <label for="team" class="col-sm-2 col-form-label">Fave Team(s)</label>
-                                                <div class="col-sm-10">
-                                                <input type="text" placeholder="{{flabbie.currentFlabbieProfile.favoriteTeams}}" ng-model="flabbie.editedFlabbieProfile.favoriteTeams" class="form-control" id="team">
-                                                </div>
-                                            </div>
-                                      <hr>
-                                            <div class="form-group row">
-                                                <label for="fbeer" class="col-sm-2 col-form-label">Fave Beer(s)</label>
-                                                <div class="col-sm-10">
-                                                  <input type="text" placeholder="{{flabbie.currentFlabbieProfile.favoriteBeers}}" ng-model="flabbie.editedFlabbieProfile.favoriteBeers"
-                                                  class="form-control" id="editedTeam">
-                                                  </div>
-                                              </div>
-                                        <hr>
-                                              <div class="form-group row">
-                                                  <label for="message" class="col-sm-2 col-form-label">Bio</label>
-                                                  <div class="col-sm-10">
-                                                  <textarea placeholder="{{flabbie.currentFlabbieProfile.bio}}" ng-model="flabbie.editedFlabbieProfile.bio" class="form-control" rows="5" id="editedFlabbieBIO">
-                                                  </textarea>
-                                                  </div>
-                                              </div>
-                                        <hr>
-                                      </form>
-
-                                      <div class="collapse" id="deleteAlert">
-                                      <div class="alert alert-warning alert-dismissible fade show" role="alert">
-                                        <strong>Holy guacamole!</strong> Are you sure you want to delete your FLABie profile? Once deleted, this action cannot be reversed. If a FLABie profile is desired after the original one has been deleted, a new one will have to be recreated.<br>
-                                        <button class="btn btn-warning mt-3" type="button" data-toggle="collapse" data-target="#deleteAlert" ng-click="flabbie.deleteFlabbieProfile(flabbie.currentFlabbieProfile._id)"><span data-dismiss="modal">Confirm</span></button>
+                        <div class="tab-pane fade" id="flabbieEdit" role="tabpanel" aria-labelledby="flabieProfile-update-tab">
+                            <h5 class="modal-title pt-3">FLABie: {{flabbie.currentFlabbieProfile.author}}</h5>
+                            <div class="modal-body">
+                              <!-- Edit Form -->
+                              <h5>Do You Need To Edit Your Profile?</h5>
+                              <div class="row">
+                                <div class="col">
+                                <form id="flabbieForm" ng-submit="flabbie.updateFlabbieProfile(flabbie.currentFlabbieProfile._id)" ng-click="flabbie.addForm.reset()">
+                                  <div class="form-group row pt-3">
+                                      <label for="email" class="col-sm-2 col-form-label">Email</label>
+                                      <div class="col-sm-10">
+                                        <input type="email" placeholder="{{flabbie.currentFlabbieProfile.email}}" ng-model="flabbie.editedFlabbieProfile.email" class="form-control" id="email">
                                       </div>
+                                  </div>
+                            <hr>
+                                  <div class="form-group row">
+                                      <label for="image" class="col-sm-2 col-form-label">Image</label>
+                                      <div class="col-sm-10">
+                                      <input type="text" placeholder="{{flabbie.currentFlabbieProfile.image}}"  ng-model="flabbie.editedFlabbieProfile.image" class="form-control" id="image">
                                       </div>
-                              </div> <!-- col -->
-                            </div> <!-- row -->
-                                      <div class="modal-footer mt-2">
+                                  </div>
+                            <hr>
+                                  <div class="form-group row">
+                                      <label for="team" class="col-sm-2 col-form-label">Fave Team(s)</label>
+                                      <div class="col-sm-10">
+                                      <input type="text" placeholder="{{flabbie.currentFlabbieProfile.favoriteTeams}}" ng-model="flabbie.editedFlabbieProfile.favoriteTeams" class="form-control" id="team">
+                                      </div>
+                                  </div>
+                            <hr>
+                                  <div class="form-group row">
+                                      <label for="fbeer" class="col-sm-2 col-form-label">Fave Beer(s)</label>
+                                      <div class="col-sm-10">
+                                        <input type="text" placeholder="{{flabbie.currentFlabbieProfile.favoriteBeers}}" ng-model="flabbie.editedFlabbieProfile.favoriteBeers"
+                                        class="form-control" id="editedTeam">
+                                        </div>
+                                    </div>
+                              <hr>
+                                    <div class="form-group row">
+                                        <label for="message" class="col-sm-2 col-form-label">Bio</label>
+                                        <div class="col-sm-10">
+                                        <textarea placeholder="{{flabbie.currentFlabbieProfile.bio}}" ng-model="flabbie.editedFlabbieProfile.bio" class="form-control" rows="5" id="editedFlabbieBIO">
+                                        </textarea>
+                                        </div>
+                                    </div>
+                              <hr>
+                            </form>
 
-                                        <button class="btn text-white" style="background-color: #54494b" type="submit" data-dismiss="modal" ng-click="flabbie.updateFlabbieProfile(flabbie.currentFlabbieProfile._id); flabbie.toggleModal()">Update</button>
-                                        <button class="btn text-white" style="background-color: #333232" type="button" data-toggle="collapse" data-target="#deleteAlert">Remove Profile</button>
-                                        <button type="button" class="btn text-white" style="background-color: #9E1B32" data-dismiss="modal">Close</button>
+                            <div class="collapse" id="deleteAlert">
+                            <div class="alert alert-warning alert-dismissible fade show" role="alert">
+                              <strong>Holy guacamole!</strong> Are you sure you want to delete your FLABie profile? Once deleted, this action cannot be reversed. If a FLABie profile is desired after the original one has been deleted, a new one will have to be recreated.<br>
+                              <button class="btn btn-warning mt-3" type="button" data-toggle="collapse" data-target="#deleteAlert" ng-click="flabbie.deleteFlabbieProfile(flabbie.currentFlabbieProfile._id)"><span data-dismiss="modal">Confirm</span></button>
+                            </div>
+                            </div>
+                    </div> <!-- col -->
+                  </div> <!-- row -->
+                            <div class="modal-footer mt-2">
 
-                                      </div> <!-- modal-footer -->
-                                </div> <!-- modal body -->
-                              </div> <!-- tab-pane fade -->
-                            </div>  <!-- tab-content -->
-                          </div> <!-- modal-content -->
-                        </div>  <!-- modal-dialog modal-lg -->
+                              <button class="btn text-white" style="background-color: #54494b" type="submit" data-dismiss="modal" ng-click="flabbie.updateFlabbieProfile(flabbie.currentFlabbieProfile._id); flabbie.toggleModal()">Update</button>
+                              <button class="btn text-white" style="background-color: #333232" type="button" data-toggle="collapse" data-target="#deleteAlert">Remove Profile</button>
+                              <button type="button" class="btn text-white" style="background-color: #9E1B32" data-dismiss="modal">Close</button>
+
+                            </div> <!-- modal-footer -->
+                      </div> <!-- modal body -->
+                    </div> <!-- tab-pane fade -->
+                  </div>  <!-- tab-content -->
+                </div> <!-- modal-content -->
+              </div>  <!-- modal-dialog modal-lg -->
 
 
                     </div> <!-- modal fade -->
