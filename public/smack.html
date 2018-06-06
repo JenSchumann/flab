@@ -1,49 +1,127 @@
 <section ng-controller="SmackController as smack">
-
-  <div class="container" id="smack-container">
-    <div class="row">
-
-      <div class="jumbotron" id="smack-jumbotron">
+<body data-spy="scroll" data-target="#smack-example">
+  <div class="container mt-3 mb-3 pb-3 pt-3" id="smack-container">
+      <div class="jumbotron mt-3 pt-3 text-center" id="smack-jumbotron">
         <!-- <img id="smackDizzy" src="./assets/FINDANIMAGEFORTHISSECTION" alt="FLAB"><br> -->
-        <img id="smackDizzy" src="./assets/talking_mouth.gif" alt="FLAB"><br>
-        <h1>Cuz.. A**holes Smack.. Right?</h1>
+        <img id="smackDizzy" class="pt-3 mt-3" src="./assets/talking_mouth.gif" alt="FLAB-smack"><br>
+        <h1 id="fontB" class="pt-2" style="color:#333232">Cuz.. A**holes Smack.. Right?</h1>
         <!-- use smack brain & come up with smackalicious tagline -->
-        <h2>Ready for a little Roast??</h2><br>
-
+        <h2 id="fontB" class="pt-2" style="color:#333232">Ready for a little Roast??</h2><br>
         <!-- {{smack.rivalry}} -->
 
-        <!-- Add Smack Post Button -->
-        <div id="newitem-form" class="col-lg-12">
-          <button class="btn btn-warning" type="submit" ng-click="smack.toggleNew(); smack.addForm.reset()">Post Some Smack</button>
+        <!-- visitor alert to prompt user to login to have access to smack section -->
+        <div class="alert alert-dismissible fade show w-75 mx-auto"  role="alert" ng-if=!user.loggedIn id="smack-alert" style="background-color:RGBA(84,73,75,0.70)">
+          <div class="alert-heading">
+            <h4 class="alert-title text-white pt-2 text-left" id="fontB">Watch Your Mouth!
+            <button type="button" class="close d-inline" data-dismiss="alert" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button></h4>
+          </div>
+          <hr>
+            <p id="fontB" class="text-white">Log in to see the smack that is flying and... maybe throw down some of your own (before washing out your mouth with soap)!</p>
         </div>
 
-<br><br>
+
+        <!-- Add Smack Post Button -->
+        <div id="newitem-form" class="col-lg-12" ng-if=user.loggedIn>
+          <button class="btn mb-3 text-light" style="background-color:#54494B" id="fontB" type="submit" ng-click="smack.toggleNew(); smack.addForm.reset()">Post Some Smack</button>
+
+          <button class="btn mb-3 text-light" data-toggle="collapse" href="#seeSmack" style="background-color:#54494B" id="fontB">See the Smack</button>
+        </div>
+
+
       <!-- Add New Smack Post Form -->
       <div ng-if="smack.newDisplay">
+        <div class="container text-center" id="fontB">
+          <h3 class="text-white">Sometimes commentary on the state of affairs on planet earth is done best w/a little levity... in sheep's clothing.<br>A little roasting is good for the soul!</h3>
+              <div class="row">
+                <div class="col jumbotron" id="newSmackPost">
+                  <form ng-submit="smack.createSmackPost()" class="pb-3">
+                    <div class="form-group row">
+                      <label for="title" class="col-sm-2 col-form-label text-white">Title</label>
+                      <div class="col-sm-10">
+                        <input type="text"
+                        ng-model="smack.smackTitle" class="form-control" id="smackTitle" placeholder="Give Your Smack A Name">
+                      </div>
+                  </div>
+        <hr>
+                  <div class="form-group row">
+                      <label for="smack-url" class="col-sm-2 col-form-label text-white">Image</label>
+                      <div class="col-sm-10">
+                        <input type="text" ng-model="smack.img" class="form-control" id="smack-img" placeholder="Sometimes Smack Needs to be Visual">
+                      </div>
+                  </div>
+          <hr>
+                  <div class="form-group row">
+                      <label for="smack-tag" class="col-sm-2 col-form-label text-white">Tag(s)</label>
+                      <div class="col-sm-10">
+                        <input type="text" ng-model="smack.tag" class="form-control" id="smack-tag" placeholder="Tag the Smack">
+                      </div>
+                  </div>
+          <hr>
+                  <div class="form-group row">
+                      <label for="smack-url" class="col-sm-2 col-form-label text-white">URL</label>
+                      <div class="col-sm-10">
+                        <input type="text" ng-model="smack.url" class="form-control" id="smack-url" placeholder="If applicable, share URL">
+                      </div>
+                  </div>
+        <hr>
 
-        <form ng-submit="smack.createSmackPost()">
-
-          <h5>Smack Title:</h5><input type="text"
-          ng-model="smack.smackTitle" placeholder="Give Your Smack A Name"/><br>
-
-          <h5>Smack Image:</h5><input type="text"
-          ng-model="smack.img" placeholder="Sometimes Smack Needs to be Visual" /><br>
-
-          <h5>The Smack:</h5><input type="text"
-          ng-model="smack.smackdown" placeholder="All the Smack" /><br>
-
-          <h5>Tag(s):</h5><input type="text"
-          ng-model="smack.tag" placeholder="Tag the Smack" /><br>
-          <br>
-
-          <input class="btn btn-warning" type="submit" value="Post">
+                  <div class="form-group row">
+                      <label for="post" class="col-sm-2 col-form-label text-white">Post</label>
+                      <div class="col-sm-10">
+                        <textarea ng-model="smack.smackdown" id="message" rows="5" class="form-control"></textarea>
+                      </div>
+                  </div>
+          <hr>
+                <input class="btn text-light" ng-click="smack.toggleNew;smack.addForm.reset()" style="background-color:#FFC145" type="submit" value="Post">
         </form>
-
-      </div> <!-- end new display -->
-    </div>   <!-- end smack-jumbotron -->
-</div> <!-- end row -->
+      </div> <!-- col jumbotron newSmackPost -->
+    </div>   <!-- row -->
+  </div> <!-- container text-center -->
+</div>  <!-- smack.newDisplay -->
 
     <!-- Smack Modal -->
+    <div class="collapse" id="seeSmack">
+      <div class="row" id="fontB">
+        <div class="col jumbotron" id="allSmackPosts">
+          <h2 class="navbar sticky-top text-white">Smack Posts
+            <form class="form-inline my-2 my-lg-0">
+                <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search" ng-model="searchBox">
+                <button class="btn btn-outline-warning my-2 my-sm-0" type="submit">Search</button>
+            </form></h2>
+            <hr>
+            <h5 class="text-white">
+              Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+            </h5>
+<hr>
+
+    <!-- Get ALL the Smack -->
+    <div class="row bg-light mx-auto pt-3" id="display">
+      <div id="smack-example">
+        <div class="container" id="fix">
+          <div class="col">
+            <ul id="smackPostCard">
+              <div class="card-group">
+                <li ng-repeat="smackPost in smack.allSmackPosts | filter:searchBox" ng-init="limit = 10" ng-click="smack.setCurrentSmackPost(smackPost._id)">
+
+
+          <div class="col-md-4" id="smack-item">
+            <button class="btn btn-warning postButton" id="smack-button" ng-click="smack.toggleModal()">
+            <img id="smackMouthButtonPic" src="./assets/talking_mouth.gif" alt="FLAB"><br>{{smackPost.smackTitle}}</button>
+          </div>
+        </li>
+      </ul>
+    </div></div></div></div></div>
+
+
+
+
+
+
+
+
+
 
     <div ng-if="smack.modal" id="smackModal">
       <div class="modal-dialog" role="document">
@@ -145,27 +223,12 @@
   </div>   <!-- end smackModal -->
 
 
-  <!-- Get ALL the Smack -->
-  <div class="row" id="display">
-    <ul id="smack-list">
-      <li ng-repeat="smackPost in smack.allSmackPosts" ng-click="smack.setCurrentSmackPost(smackPost._id)">
-        <div class="col-md-4" id="smack-item">
-          <button class="btn btn-warning postButton" id="smack-button" ng-click="smack.toggleModal()">
-          <img id="smackMouthButtonPic" src="./assets/talking_mouth.gif" alt="FLAB"><br>{{smackPost.smackTitle}}</button>
-
-          <!-- add comment glyphicon when functionality is fleshed out -->
-        </div>
-
-      </li><br>
-
-    </ul>
-<br>
-  </div>
 
 
 
-<br><br>
+
+
 
 </div>  <!-- end smack-container -->
-
+</body>
 </section>  <!-- end smackController -->
