@@ -494,6 +494,7 @@ app.controller('FlabbieController', ['$http', '$scope', function($http, $scope){
       controller.commentedFlabbie = {};
       controller.getFlabbieProfiles();
       controller.getFlabbieComments();
+      controller.commentDisplay = false;
     }, function(err){
       console.log(err);
       console.log('err in flabbie addComment');
@@ -643,11 +644,12 @@ app.controller('FootballController', ['$http', '$scope', function($http, $scope)
       data: this.commentedFootball
     }).then(function(response){
       // controller.commentDisplay = false;
-      controller.commentedFootballPost = {};
-
+      // controller.commentedFootballPost = {};
+controller.commentedFootball = {};
       //also get the author of the Comments
       controller.getFootballPosts();
       controller.getFootballPostComments();
+      controller.commentDisplay = false;
     }, function(err){
       console.log(err);
       console.log('err in addComment in football');

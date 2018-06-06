@@ -149,10 +149,10 @@
                   <h5 class="modal-title pt-3">Post Title: {{football.currentFootballPost.postTitle}}</h5>
                   <div class="modal-body">
                     <ul id="comment-list">
-                      <li ng-repeat="comments in football.allFootballPostComments.comments track by $index">
+                      <li ng-repeat="comments in football.currentFootballPost.comments track by $index">
                         <div id="comment-item">
-                          <p>{{football.comments}}</p>
-
+                          <p>{{comments}}</p>
+                          <!-- <p>{{football.commentedFootball.comments}}</p> -->
                         </div>  <!-- comment-item -->
                       </li>
                     </ul>
@@ -161,12 +161,14 @@
                     <h2>Post a Comment</h2>
                       <form id="commentsForm" ng-submit="football.addComment(football.currentFootballPost._id);football.getFootballPostComments(comments)">
                         <div class="form-group">
-                          <textarea class="form-control" rows="5" type="text" id="ftballComments" ng-model="football.commentedFootballPost.comments"></textarea><br>
+                          <textarea class="form-control" rows="5" type="text" id="ftballComments" ng-model="football.commentedFootball.comments"></textarea><br>
+                        </div>
+
                           <div class="modal-footer" id="fontB">
                             <button class="btn btn-warning" type="submit">Post</button>
                             <button type="button" class="btn text-white" style="background-color: #9E1B32" data-dismiss="modal">Close</button>
                           </div>
-                        </div>
+                        <!-- </div> -->
                       </form>
                     </div>
                 </div> <!-- tab-pane fade -->
