@@ -8,7 +8,7 @@
         <h2 id="fontB" class="pb-2 text-light">Who's the Best?</h2><br>
         <!-- {{football.obsession}} -->
 
-        <div class="alert alert-dismissible fade show"  role="alert" ng-if=!user.loggedIn id="football-alert">
+        <div class="alert alert-dismissible fade show w-75 mx-auto"  role="alert" ng-if=!user.loggedIn id="football-alert">
           <div class="alert-heading">
             <h4 class="alert-title text-white pt-2 text-left" id="fontB">Guard the Yard!
             <button type="button" class="close d-inline" data-dismiss="alert" aria-label="Close">
@@ -70,12 +70,10 @@
   </div>  <!-- football.newDisplay -->
 
     <!-- Football Modal -->
-
     <div class="collapse" id="seeFootballPosts">
             <div class="row" id="fontB">
               <div class="col jumbotron" id="allFootballPosts">
                 <h2 class="navbar sticky-top text-white">Football Posts
-
                   <form class="form-inline my-2 my-lg-0">
                       <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search" ng-model="searchBox">
                       <button class="btn btn-outline-warning my-2 my-sm-0" type="submit">Search</button>
@@ -94,7 +92,7 @@
                 <ul id="ftBallPostCard">
                   <div class="card-group">
           <!-- <ul id="football-list"> -->
-            <!-- this searchbox filter probably should go in the jumbotron area -->
+
             <li ng-repeat="footballPost in football.allFootballPosts | filter:searchBox" ng-init="limit = 10" ng-click="football.setCurrentFootballPost(footballPost._id)">
 
               <div class="card w-100">
@@ -248,121 +246,3 @@
 </div> <!-- football-container -->
 </body>
 </section>  <!-- end FlabbieController -->
-
-        <!-- <button class="btn btn-warning" type="submit" ng-click="football.updateFootballPost(football.currentFootballPost._id); football.toggleModal()">Update</button>
-
-        <button class="btn btn-warning" ng-click="football.deleteFootballPost(football.currentFootballPost._id)">Remove Post</button> -->
-
-
-
-
-
-
-
-
-
-
-
-
-    <!-- <div ng-if="football.modal" id="footballModal">
-      <div class="modal-dialog" role="document">
-        <div class="modal-content">
-          <div class="modal-header">
-
-            <button type="button" ng-click="football.toggleModal()" class="close" data-dismiss="modal" aria-label="Close">
-              <span aria-hidden="true">&times;</span>
-            </button>
-
-            <h3 class="modal-title">{{football.currentFootballPost.postTitle}}</h3>
-          </div> <! end modal-header -->
-
-          <!-- Tabs -->
-          <!-- <ul class="nav nav-tabs">
-            <li class="nav-item">
-              <a class="nav-link-active" href="#originalFootballPost" data-toggle="tab" role="tab">Post</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="#footballComment" data-toggle="tab" role="tab">Comments</a>
-            </li>
-            <li class="nav-item" id="footballItem">
-              <a class="nav-link" href="#footballEdit" data-toggle="tab" role="tab">Edit</a>
-            </li>
-          </ul>
-
-          <div class="modal-body">
-
-            <div class="tab-content"> -->
-
-            <!-- originalFootballPost Tab (1) -->
-            <!-- <div class="tab-pane active" id="originalFootballPost" role="tabpanel">
-              <ul>
-
-                <li> <strong>Posted by FLABie: </strong> {{football.currentFootballPost.author}}</li>
-
-
-
-                <li> <strong>Football Tag(s):</strong> {{football.currentFootballPost.tag}}</li>
-
-                <li> <span> <strong>Read More Here:</strong>
-                  <a href="{{football.currentFootballPost.url}}" target="_blank"> {{football.currentFootballPost.url}}</a></span></li>
-
-                <li> <strong>Football Podium Chatter:</strong> {{football.currentFootballPost.fbPost}}</li>
-
-              </ul>
-            </div> -->
-
-              <!-- Tab 1 Content -->
-              <!-- <div class="tab-pane fade" id="footballComment" role="tabpanel"> -->
-                <!--  All Comments -->
-                <!-- <ul id="comment-list">
-                  <li ng-repeat="comments in football.currentFootballPost.comments track by $index">
-                    <div id="comment-item">
-                      <p>{{comments}}</p> -->
-                        <!-- add who authored the comment: -->
-
-
-                    <!-- </div>
-                  </li>
-                </ul>
-                <hr> -->
-                <!-- New Comment Form RE FootballPosts -->
-                <!-- <h2>Post a Comment</h2>
-                <form id="commentForm" ng-submit="football.addComment(football.currentFootballPost._id); football.toggleModal()">
-
-
-                  <div class="form-group">
-                    <textarea class="form-control" type="text" id="comments" ng-model="football.commentedFootball.comments"></textarea><br>
-                    <button class="btn btn-warning" type="submit">Confirm</button>
-                  </div>
-
-                </form>
-            </div> -->
-
-              <!-- Tab 2 Content -->
-              <!-- <div class="tab-pane fade" id="footballEdit" role="tabpanel"> -->
-              <!-- Edit Form -->
-              <!-- <h2>Wanna Update Your Post?</h2>
-
-              <form id="footballForm"
-              ng-submit="football.updateFootballPost(football.currentFootballPost._id)" ng-click="football.addForm.reset()">
-
-
-
-                <input type="text" placeholder="{{football.currentFootballPost.postTitle}}"
-                ng-model="football.editedFootballPost.postTitle">
-
-                <input type="textarea" placeholder="{{football.currentFootballPost.fbPost}}"
-                ng-model="football.editedFootballPost.fbPost">
-
-                <input type="text"
-                placeholder="{{football.currentFootballPost.tag}}"
-                ng-model="football.editedFootballPost.tag">
-
-                <input type="text" placeholder="{{football.currentFootballPost.url}}"
-                ng-model="football.editedFootballPost.url">
-
-              </form>  -->
-
-              <!-- <button class="btn btn-warning" type="submit" ng-click="football.updateFootballPost(football.currentFootballPost._id); football.toggleModal()">Update</button>
-
-              <button class="btn btn-warning" ng-click="football.deleteFootballPost(football.currentFootballPost._id)">Remove Post</button> -->
