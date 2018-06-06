@@ -563,7 +563,6 @@ app.controller('FlabbieController', ['$http', '$scope', function($http, $scope){
       controller.currentFlabbieProfile = {};
       controller.flabbie = {};
       controller.editedFlabbieProfile = {};
-      // controller.editedFlabbie._id = {};
     }, function(err){
       console.log(err);
       console.log('error in update FlabbieProfile route');
