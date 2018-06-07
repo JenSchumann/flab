@@ -812,6 +812,7 @@ app.controller('SmackController', ['$http', '$scope', function($http, $scope){
           smackTitle: this.smackTitle,
           img: this.img,
           smackdown: this.smackdown,
+          url: this.url,
           tag: this.tag
         }
       }).then(function(response){

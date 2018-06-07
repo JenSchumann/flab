@@ -6,6 +6,7 @@ const smackSchema = mongoose.Schema({
   img: String,
   smackdown: String,
   tag: String,
+  url: String,
   comments: [{ type: String }]
 });
 
