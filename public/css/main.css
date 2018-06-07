@@ -63,7 +63,7 @@
   align-content: center;
   margin: 0 auto;
 }
-#allSmackPosts{
+#allSmack{
   border-radius:15px;
   padding:20px;
   background-color:rgba(85, 74, 76, 0.60);
@@ -76,19 +76,28 @@ div#allFootballPosts.col.jumbotron{
   align-items: center;
   align-self: center;
 }
-div#display,#navbar-example,#football-example,#smack-example{
+/* div#allSmack.col.jumbotron,div#fix.container{
+  justify-content: center;
+  align-content: center;
+  align-items: center;
+  align-self: center;
+} */
+/* div#display, */
+#navbar-example,#football-example,#smack-example{
   overflow-y:scroll;
   /* position: relative; */
   justify-content: center;
   height:650px;
   width:90%;
 }
-div.card-group,div.col{
-  align-items: center;
+/* div.card-group,div.col,ul#smackPostCard,div#allSmack.col.jumbotron{ */
+  /* align-items: center;
   align-content: center;
   margin: 0 auto;
-  justify-content: center;
-}
+  justify-content: center; */
+  /* padding-left: 5%; */
+  /* margin: 0 auto;
+} */
 
 #football{
   background: url(../assets/football-american-football-college-alabama-39002.jpeg) no-repeat center center fixed;
@@ -203,14 +212,14 @@ li {
   height: 6em;
 }
 
-#football-button, #smack-button, #beer-button, #flabbie {
+/* #football-button, #smack-button, #beer-button, #flabbie {
   margin: 2%;
-}
+} */
 
-#smackMouthButtonPic {
+/* #smackMouthButtonPic {
   width: 3em;
   height: 4em;
-}
+} */
 
 #beerComment {
   padding-top: .25%;

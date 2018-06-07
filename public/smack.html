@@ -21,7 +21,6 @@
             <p id="fontB" class="text-white">Log in to see the smack that is flying and... maybe throw down some of your own (before washing out your mouth with soap)!</p>
         </div>
 
-
         <!-- Add Smack Post Button -->
         <div id="newitem-form" class="col-lg-12" ng-if=user.loggedIn>
           <button class="btn mb-3 text-light" style="background-color:#54494B" id="fontB" type="submit" ng-click="smack.toggleNew(); smack.addForm.reset()">Post Some Smack</button>
@@ -46,16 +45,16 @@
                   </div>
         <hr>
                   <div class="form-group row">
-                      <label for="smack-url" class="col-sm-2 col-form-label text-white">Image</label>
-                      <div class="col-sm-10">
-                        <input type="text" ng-model="smack.img" class="form-control" id="smack-img" placeholder="Sometimes Smack Needs to be Visual">
-                      </div>
-                  </div>
-          <hr>
-                  <div class="form-group row">
                       <label for="smack-tag" class="col-sm-2 col-form-label text-white">Tag(s)</label>
                       <div class="col-sm-10">
                         <input type="text" ng-model="smack.tag" class="form-control" id="smack-tag" placeholder="Tag the Smack">
+                      </div>
+                  </div>
+        <hr>
+                  <div class="form-group row">
+                      <label for="smack-url" class="col-sm-2 col-form-label text-white">Image</label>
+                      <div class="col-sm-10">
+                        <input type="text" ng-model="smack.img" class="form-control" id="smack-img" placeholder="Sometimes Smack Needs to be Visual">
                       </div>
                   </div>
           <hr>
@@ -66,7 +65,6 @@
                       </div>
                   </div>
         <hr>
-
                   <div class="form-group row">
                       <label for="post" class="col-sm-2 col-form-label text-white">Post</label>
                       <div class="col-sm-10">
@@ -81,148 +79,80 @@
   </div> <!-- container text-center -->
 </div>  <!-- smack.newDisplay -->
 
-    <!-- Smack Modal -->
+
     <div class="collapse" id="seeSmack">
-      <div class="row" id="fontB">
-        <div class="col jumbotron" id="allSmackPosts">
-          <h2 class="navbar sticky-top text-white">Smack Posts
-            <form class="form-inline my-2 my-lg-0">
-                <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search" ng-model="searchBox">
-                <button class="btn btn-outline-warning my-2 my-sm-0" type="submit">Search</button>
-            </form></h2>
-            <hr>
-            <h5 class="text-white">
-              Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
-            </h5>
-<hr>
+            <div class="row" id="fontB">
+              <div class="col jumbotron" id="allSmack">
+                <h2 class="navbar sticky-top text-white">All THE Smack
+                <form class="form-inline my-2 my-lg-0">
+                    <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search" ng-model="searchBox">
+                    <button class="btn btn-outline-warning my-2 my-sm-0" type="submit">Search</button>
+                </form></h2>
+                <hr>
+                <h5 class="text-white">
+                  Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+                </h5>
+    <hr>
+        <!-- Get ALL the Smack -->
+        <div class="row bg-light mx-auto pt-3" id="display">
+          <div id="smack-example">
+            <div class="container" id="fix">
+              <div class="col">
+                <ul id="smackPostCard">
+                  <div class="card-group">
+                    <li ng-repeat="smackPost in smack.allSmackPosts | filter:searchBox" ng-init="limit = 10" ng-click="smack.setCurrentSmackPost(smackPost._id)">
+                      <div class="card w-100">
+                        <h4 class="card-header text-center text-white" style="background-color:#9E1B32;">{{smackPost.smackTitle}}</h4>
+                        <img class="card-img-top img-fluid" ng-src="{{smackPost.img}}">
 
-    <!-- Get ALL the Smack -->
-    <div class="row bg-light mx-auto pt-3" id="display">
-      <div id="smack-example">
-        <div class="container" id="fix">
-          <div class="col">
-            <ul id="smackPostCard">
-              <div class="card-group">
-                <li ng-repeat="smackPost in smack.allSmackPosts | filter:searchBox" ng-init="limit = 10" ng-click="smack.setCurrentSmackPost(smackPost._id)">
+                        <p class="card-text pt-3"><strong> Smack Tag(s): </strong>{{smackPost.tag}}</p>
+                        <div class="card-footer" style="background-color:#9E1B32">
+                        <button type="button" class="btn mt-3 mb-3" data-toggle="modal" data-target="#seeEntireSmackPost" style="background-color:#FFC145" id="fontB">
+                          See Post</button>
+                        </div> <!-- card-footer -->
+                      </div> <!-- card w-100 -->
+                    </li><br>
+                    </div>
+                  </ul>
+                </div> <!-- col -->
 
+                <div class="modal fade" id="seeEntireSmackPost" tabindex="-1" role="dialog" aria-labelledby="smackPostLongTitle" aria-hidden="true">
+                <div class="modal-dialog modal-lg" role="document">
+                  <div class="modal-content">
+                    <div class="modal-header pb-0">
+                      <h5 class="modal-title" id="smackPostLongTitle">
+                        <ul class="nav nav-tabs nav-fill" id="myTab" role="tablist">
+                          <li class="nav-item"><a class="nav-link active text-dark" id="smackPost-home-tab" data-toggle="tab" href="#smackPostTabHome" role="tab" aria-controls="smackPostTabHome" aria-selected="true">Post</a></li>
 
-          <div class="col-md-4" id="smack-item">
-            <button class="btn btn-warning postButton" id="smack-button" ng-click="smack.toggleModal()">
-            <img id="smackMouthButtonPic" src="./assets/talking_mouth.gif" alt="FLAB"><br>{{smackPost.smackTitle}}</button>
-          </div>
-        </li>
-      </ul>
-    </div></div></div></div></div>
+                          <li class="nav-item"><a class="nav-link text-danger" id="smackPost-comment-tab" data-toggle="tab" href="#smackPostComment" role="tab" aria-controls="smackPostComment">Comment(s)</a></li>
 
+                          <li id="smackItem" class="nav-item"><a class="nav-link text-danger" id="smackPost-update-tab" data-toggle="tab" href="#smackPostEdit" role="tab" aria-controls="smackPostEdit">Update Post</a></li>
+                      </ul></h5>
+                  </div>
 
+                  <div class="tab-content" id="smackTabContent">
+                    <div class="tab-pane fade show active" id="smackPostTabHome" role="tabpanel" aria-labelledby="smackPost-home-tab">
+                      <h5 class="modal-title pt-3"><smack><strong>Post Title:</strong></smack> {{smack.currentSmackPost.smackTitle}}</h5>
+                      <div class="modal-body mr-5">
+                        <ul>
+                          <li><strong>Posted by:</strong> {{smack.currentSmackPost.author}}</li>
 
+                          <li><strong> Smack Tag(s): </strong>{{smack.currentSmackPost.tag}}</li>
 
+                          <li><strong> Smack Related URL: </strong>{{smack.currentSmackPost.url}}</li>
 
-
-
-
-
-
-    <div ng-if="smack.modal" id="smackModal">
-      <div class="modal-dialog" role="document">
-        <div class="modal-content">
-          <div class="modal-header">
-
-            <button type="button" ng-click="smack.toggleModal()" class="close" data-dismiss="modal" aria-label="Close">
-              <span aria-hidden="true">&times;</span>
-            </button>
-
-            <h3 class="modal-title">Post: {{smack.currentSmackPost.smackTitle}}</h3>
-          </div> <!-- end modal-header -->
-
-          <!-- Tabs -->
-          <ul class="nav nav-tabs">
-            <li class="nav-item">
-              <a class="nav-link-active" href="#originalSmackPost" data-toggle="tab" role="tab">Post</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="#smackComment" data-toggle="tab" role="tab">Comments</a>
-            </li>
-            <li class="nav-item" id="smackItem">
-              <a class="nav-link" href="#smackEdit" data-toggle="tab" role="tab">Edit</a>
-            </li>
-          </ul>
-
-          <div class="modal-body">
-
-            <div class="tab-content">
-
-              <!-- originalSmackPost Tab (1) -->
-              <div class="tab-pane active" id="originalSmackPost" role="tabpanel">
-
-              <ul>
-                  <li><img ng-src="{{smack.currentSmackPost.img}}"/><br></li>
-
-                  <li><strong> Posted by FLABie:  </strong> {{smack.currentSmackPost.author}}</li>
-
-                  <li><strong> The Smack: </strong>{{smack.currentSmackPost.smackdown}}</li>
-                  <li><strong> Smack Tag(s): </strong>{{smack.currentSmackPost.tag}}</li>
-
-              </ul>
-            </div>
+                          <li><strong> The Smack: </strong>{{smack.currentSmackPost.smackdown}}</li>
+                        </ul>
+                      </div>
+                      <div class="modal-footer">
+                        <button type="button" class="btn text-white" style="background-color: #9E1B32" id="fontB" data-dismiss="modal">Close</button>
+                      </div>
+                    </div>  <!-- tab-pane fade show active -->
 
 
 
-
-            <!-- Tab 2 Content -->
-            <div class="tab-pane fade" id="smackComment" role="tabpanel">
-              <!--  All Comments -->
-              <ul id="comment-list">
-                <li ng-repeat="comments in smack.currentSmackPost.comments track by $index">
-                  <div id="comment-item">
-                    <p>{{comments}}</p>
-                      <!-- add who authored the comment: -->
 
                   </div>
-                </li>
-              </ul>
-              <hr>
-              <!-- New Comment Form RE SmackPosts -->
-              <h2>Post a Comment</h2>
-              <form id="commentForm" ng-submit="smack.addComment(smack.currentSmackPost._id); smack.toggleModal()">
-
-
-                <div class="form-group">
-                  <textarea class="form-control" type="text" id="comments" ng-model="smack.commentedSmack.comments"></textarea><br>
-                  <button class="btn btn-warning" type="submit">Confirm</button>
-                </div>
-
-              </form>
-            </div>
-
-            <!-- Tab 2 Content -->
-            <div class="tab-pane fade" id="smackEdit" role="tabpanel">
-            <!-- Edit Form -->
-            <h2>Do You Need To Edit Your Smack?</h2>
-
-            <form id="smackForm" ng-submit="smack.updateSmackPost(smack.currentSmackPost._id)" ng-click="smack.addForm.reset()">
-
-              <input type="text" placeholder="{{smack.currentSmackPost.smackTitle}}" ng-model="smack.editedSmackPost.smackTitle">
-
-              <input type="text" placeholder="{{smack.currentSmackPost.img}}"  ng-model="smack.editedSmackPost.img">
-
-              <input type="text" placeholder="{{smack.currentSmackPost.smackdown}}" ng-model="smack.editedSmackPost.smackdown">
-
-              <input type="text" placeholder="{{smack.currentSmackPost.tag}}" ng-model="smack.editedSmackPost.tag">
-
-            </form>
-            <button class="btn btn-warning" type="submit" ng-click="smack.updateSmackPost(smack.currentSmackPost._id); smack.toggleModal()">Update</button>
-            <button class="btn btn-warning" ng-click="smack.deleteSmackPost(smack.currentSmackPost._id)">Remove Smack</button>
-
-            </div>  <!-- end tab two -->
-          </div>  <!-- end tab content -->
-
-        </div>  <!-- end modal body -->
-      </div>  <!-- end modal content -->
-    </div>  <!-- end modal dialog -->
-  </div>   <!-- end smackModal -->
-
-
 
 
 
