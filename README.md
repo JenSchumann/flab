@@ -43,3 +43,5 @@ close to the crimson:#670404
  - [ ] Clean up unnecessary code present which became obsolete when BS4 redesign occurred.
 
  - [ ] Update smack model to include url
+
+ - [ ] create uniform pics in cards of all model sections
