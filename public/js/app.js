@@ -880,6 +880,10 @@ app.controller('SmackController', ['$http', '$scope', function($http, $scope){
       if($scope.verifyFlab.username !== controller.currentSmackPost.author)
       {
         document.getElementById("smackItem").style.visibility = "hidden";
+      } else if
+        ($scope.verifyFlab.username === controller.currentSmackPost.author)
+      {
+        document.getElementById("smackItem").style.visibility = "visible";
       }
     }, function(error){
       console.log('error in setCurrentSmackPost');

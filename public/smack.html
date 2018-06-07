@@ -139,7 +139,7 @@
 
                           <li><strong> Smack Tag(s): </strong>{{smack.currentSmackPost.tag}}</li>
 
-                          <li><strong> Read More Here: </strong><a href="{{smack.currentSmackPost.url}}" target="_blank">{{smack.currentSmackPost.url}}</a></li>
+                          <li><strong> Read More Here: </strong><a href="{{smack.currentSmackPost.url}}" target="_blank" class="w-75">{{smack.currentSmackPost.url}}</a></li>
 
                           <li><strong> The Smack: </strong>{{smack.currentSmackPost.smackdown}}</li>
                         </ul>
@@ -176,15 +176,80 @@
                           </form>
                         </div>  <!-- tab-pane fade show -->
 
+                        <div class="tab-pane fade" id="smackPostEdit" role="tabpanel" aria-labelledby="smackPost-update-tab">
+                            <h5 class="modal-title pt-3">Post: {{smack.currentSmackPost.smackTitle}}</h5>
+                            <div class="modal-body">
+                              <!-- Edit Form -->
+                              <h5>Wanna edit your post?</h5>
+                              <div class="row">
+                                <div class="col">
+                                  <form id="smackPostForm" ng-submit="smack.updateSmackPost(smack.currentSmackPost._id)" ng-click="smack.addForm.reset()">
+                                    <div class="form-group row pt-3">
+                                        <label for="smackTitle" class="col-sm-2 col-form-label">Title</label>
+                                        <div class="col-sm-10">
+                                          <input type="text" placeholder="{{smack.currentSmackPost.smackTitle}}" ng-model="smack.editedSmackPost.smackTitle" class="form-control" id="smackTitle">
+                                        </div>
+                                    </div>
+                              <hr>
+                                  <div class="form-group row pt-3">
+                                      <label for="smackTag" class="col-sm-2 col-form-label">Tag(s)</label>
+                                      <div class="col-sm-10">
+                                        <input type="text" placeholder="{{smack.currentSmackPost.tag}}" ng-model="smack.editedSmackPost.tag" class="form-control" id="smackTag">
+                                      </div>
+                                  </div>
+                            <hr>
+                                  <div class="form-group row pt-3">
+                                      <label for="smackImg" class="col-sm-2 col-form-label">Image</label>
+                                      <div class="col-sm-10">
+                                        <input type="text" placeholder="{{smack.currentSmackPost.img}}" ng-model="smack.editedSmackPost.img" class="form-control" id="smackImg">
+                                      </div>
+                                  </div>
+                            <hr>
+                                  <div class="form-group row pt-3">
+                                      <label for="smackUrl" class="col-sm-2 col-form-label">URL</label>
+                                      <div class="col-sm-10">
+                                        <input type="text" placeholder="{{smack.currentSmackPost.url}}" ng-model="smack.editedSmackPost.url" class="form-control" id="smackUrl">
+                                      </div>
+                                  </div>
+                            <hr>
+                                  <div class="form-group row pt-3">
+                                      <label for="smackdownUpdate" class="col-sm-2 col-form-label">Post</label>
+                                      <div class="col-sm-10">
+                                        <textarea placeholder="{{smack.currentSmackPost.smackdown}}" ng-model="smack.editedSmackPost.smackdown" class="form-control" id="smackdownUpdate" rows="5">
+                                        </textarea>
+                                      </div>
+                                  </div>
+                            <hr>
+                          </form>
 
+                          <div class="collapse" id="deleteSmackAlert">
+                              <div class="alert alert-warning alert-dismissible fade show" role="alert">
+                                <strong>Hold on a sec... It's OK if you disagree w/me.  I can't force you be be right.</strong> Deleting a post is an action that cannot be reversed.  I don't want to seem like I think I'm right, but I am and that's why it comes across that way.<br>
+                                <button class="btn btn-warning mt-3" type="button" data-toggle="collapse" data-target="#deleteSmackAlert" ng-click="smack.deleteSmackPost(smack.currentSmackPost._id)"><span data-dismiss="modal">Confirm</span></button>
+                              </div>
+                          </div>
+                        </div> <!-- col -->
+                      </div> <!-- row -->
+                      <div class="modal-footer mt-2">
 
+                        <button class="btn text-white" style="background-color: #54494b" type="submit" data-dismiss="modal" ng-click="smack.updateSmackPost(smack.currentSmackPost._id); smack.toggleModal()">Update</button>
+                        <button class="btn text-white" style="background-color: #333232" type="button" data-toggle="collapse" data-target="#deleteSmackAlert">Delete Post</button>
+                        <button type="button" class="btn text-white" style="background-color: #9E1B32" data-dismiss="modal">Close</button>
+
+                      </div> <!-- modal-footer -->
+                    </div>  <!-- end modal body -->
                   </div>  <!-- tab-pane fade -->
-
-
-
-
-
-
+                </div> <!-- tab-content myTabContent -->
+              </div>  <!-- modal-content -->
+            </div> <!-- modal-dialog modal-lg -->
+          </div>  <!-- modal fade -->
+        </div> <!-- container -->
+      </div> <!-- smack-example -->
+    </div> <!-- row bg-light mx-auto pt-3 -->
+  </div> <!-- col jumbotron -->
+  </div> <!-- row fontB -->
+  </div> <!-- collapse seeFootballPosts -->
+  </div> <!-- smack-jumbotron -->
 </div>  <!-- end smack-container -->
 </body>
 </section>  <!-- end smackController -->
