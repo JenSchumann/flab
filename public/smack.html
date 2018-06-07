@@ -139,7 +139,7 @@
 
                           <li><strong> Smack Tag(s): </strong>{{smack.currentSmackPost.tag}}</li>
 
-                          <li><strong> Smack Related URL: </strong>{{smack.currentSmackPost.url}}</li>
+                          <li><strong> Read More Here: </strong><a href="{{smack.currentSmackPost.url}}" target="_blank">{{smack.currentSmackPost.url}}</a></li>
 
                           <li><strong> The Smack: </strong>{{smack.currentSmackPost.smackdown}}</li>
                         </ul>
@@ -149,10 +149,36 @@
                       </div>
                     </div>  <!-- tab-pane fade show active -->
 
+                    <div class="tab-pane fade" id="smackPostComment" role="tabpanel" aria-labelledby="smackPost-comment-tab">
+                        <h5 class="modal-title pt-3"><smack><strong>Post Title:</strong></smack> {{smack.currentSmackPost.smackTitle}}</h5>
+                        <div class="modal-body">
+                          <ul id="comment-list">
+                            <li ng-repeat="comments in smack.currentSmackPost.comments track by $index">
+                              <div id="comment-item">
+                                <p>{{comments}}</p>
+                              </div>  <!-- comment-item -->
+                            </li>
+                          </ul>
+                        </div>
+
+                        <!-- New Comment Form RE smack posts -->
+                        <h2>Post a Comment</h2>
+                          <form id="smackCommentsForm" ng-submit="smack.addComment(smack.currentSmackPost._id);smack.getSmackPostComments(comments)">
+                            <div class="form-group">
+                              <textarea class="form-control" rows="5" type="text" id="smackComments" ng-model="smack.commentedSmack.comments"></textarea><br>
+                            </div>
+
+                              <div class="modal-footer" id="fontB">
+                                <button class="btn btn-warning" type="submit">Post</button>
+                                <button type="button" class="btn text-white" style="background-color: #9E1B32" data-dismiss="modal">Close</button>
+                              </div>
+                            <!-- </div> -->
+                          </form>
+                        </div>  <!-- tab-pane fade show -->
 
 
 
-                  </div>
+                  </div>  <!-- tab-pane fade -->
 
 
 
