@@ -750,6 +750,7 @@ app.controller('BeersController', ['$http', '$scope', function($http, $scope){
   this.modal = false;
   this.commentedBeer = {};
   this.dbBeer = [];
+  $('body').scrollspy({ target: '#beer-example' });
 
   this.toggleNew = function(){
     this.newDisplay = !this.newDisplay;

@@ -40,7 +40,7 @@
   padding:20px;
   background-color:rgba(85, 74, 76, 0.85);
 }
-#newFootballPost{
+#newFootballPost,#newBeerPost{
   border-radius:15px;
   padding:20px;
   background-color:RGBA(158,27,50,0.68);
@@ -50,7 +50,6 @@
   padding:20px;
   background-color:rgba(85, 74, 76, 0.85);
 }
-
 #allFlabies{
   border-radius:15px;
   padding:20px;
@@ -104,15 +103,14 @@ div#allFootballPosts.col.jumbotron{
   max-width: 100%;
   min-height: 850px;
   margin: 0 auto;
-  /* max-width: 100%;
-  margin: 0 auto; */
 }
 /* public/assets/football-american-football-college-alabama-39002.jpeg */
 
 #beer{
   background: url(../assets/pexels-photo-434311.jpeg) no-repeat center center fixed;
-  /* max-width: 100%;
-  margin: 0 auto; */
+  max-width: 100%;
+  min-height: 850px;
+  margin: 0 auto;
 }
 /* public/assets/pexels-photo-434311.jpeg */
 
@@ -149,7 +147,10 @@ div#allFootballPosts.col.jumbotron{
   background-color: RGBA(255,193,69,0.65);
   border-radius:10px;
 }
-
+#beer-jumbotron{
+  background-color: RGBA(84,73,75,0.88);
+  border-radius:10px;
+}
 #flabieCard,#ftBallPostCard{
   display: flex;
   margin-right: 3.5%;
@@ -177,7 +178,7 @@ span#x{
   float: right;
   justify-content: flex-end;
 }
-#football-alert{
+#football-alert,#beer-alert{
   background-color: RGBA(158,27,50,0.56);
 
 }
