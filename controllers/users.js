@@ -32,6 +32,7 @@ router.post('/register', (req, res)=>{
   User.create(userDbEntry, (err, user)=> {
     req.session.message = '';
     req.session.username = user.username;
+    // maybe I should take this out?
     req.session.logged = true;
     res.json(req.session.logged);
   });
