@@ -30,7 +30,7 @@
       <!-- Add New Beer Post Form -->
         <div ng-if="beer.newDisplay">
           <div class="container text-center" id="fontB">
-            <h3 class="text-white">Ready to stake a claim about your fave team, player, &/or coach?<br>Share your take on how football doesn’t build character, it eliminates the weak ones!</h3>
+            <h3 class="text-white">Which beer puts the most hair on your chest?<br>Mmmmm... Beer.</h3>
                 <div class="row">
                   <div class="col jumbotron" id="newBeerPost">
 
@@ -83,15 +83,15 @@
       <div class="beer-stats" ng-show="displayCtrl.showDetailsForm">
          <h3>{{beerCtrl.selectedBeer.name}} - {{beerCtrl.selectedBeer.style}}</h3>
          <h4 class="to-brewery" ng-click="beerCtrl.beers = [];breweryCtrl.getBreweryByName(beerCtrl.selectedBeer.brewery, breweryCtrl, main)">  Brewery: {{beerCtrl.selectedBeer.brewery}}</h4><br>
-         ABV: {{beerCtrl.selectedBeer.abv}}<br>
-         IBU: {{beerCtrl.selectedBeer.ibu}}<br>
-         {{beerCtrl.selectedBeer.description}}
-         <button ng-show="displayCtrl.showAddFavButton" ng-click="beerCtrl.saveFavoriteBeer()">Add To Favorites</button>
-         <button ng-click="displayCtrl.backToSearchForm()">Back To Search</button>
+         <p>ABV: {{beerCtrl.selectedBeer.abv}}</p><br>
+         <p>IBU: {{beerCtrl.selectedBeer.ibu}}</p><br>
+         <p class="pb-3">{{beerCtrl.selectedBeer.description}}</p><br>
+         <button class="btn btn-outline-white my-2 my-sm-0" ng-click="beerCtrl.saveFavoriteBeer()">Add To Favorites</button>
+         <button class="btn btn-outline-white my-2 my-sm-0" ng-click="displayCtrl.backToSearchForm()">Back To Search</button><br>
       </div>
     </div>
   </div>  <!-- BeerDisplayController -->
-
+<!-- ng-show="displayCtrl.showAddFavButton" -->
   </div></div></div></div>
 
           </div>  <!-- beer-jumbotron -->

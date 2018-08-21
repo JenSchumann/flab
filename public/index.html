@@ -133,12 +133,13 @@
                         <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
                         <a href="#" class="btn btn-outline-danger mb-3" id="fontB">Get FLABie Newsletter</a>
 
-                        <a href="#myShop" class="btn btn-outline-danger mb-3" id="fontB" data-toggle="collapse">Visit FLABie Store</a>
+                        <a href="#myShop" target="_blank" class="btn btn-outline-danger mb-3" id="fontB" data-toggle="collapse">Visit FLABie Store</a>
 
                       </div>
 
                       <div id="myShop" class="collapse">
-                         <a href="https://shop.spreadshirt.com/flab" class="btn btn-outline-danger mb-3" target="_blank"></a>
+                         <!-- <a target="_blank" href="https://shop.spreadshirt.com/flab" class="btn btn-outline-danger mb-3"></a> -->
+                         <a target="_blank" href="#" class="btn btn-outline-danger mb-3"></a>
                       </div>
                     </div>
 
@@ -193,7 +194,7 @@
                     </div> <!-- end row -->
               </div><!-- end container -->
               <!-- <br><br><br><br><br> -->
-              </section>
+      </section>
 
       <!-- Flabbie Section -->
       <section id="flabbie" ng-include="'./flabbie.html'"></section>
@@ -210,6 +211,8 @@
 
       <!-- Contact Section -->
       <section id="contact" ng-include="'./contact.html'"></section>
+
+      <br><br><br>
 
 
 <!-- after userProfile added, this may need to be taken out? -->
@@ -278,7 +281,7 @@
       })
 </script>
 
-<script>
+<!-- <script>
    var spread_shop_config = {
        shopName: 'flab',
        locale: 'us_US',
@@ -289,7 +292,7 @@
 
 <script type="text/javascript"
        src="https://shop.spreadshirt.com/shopfiles/shopclient/shopclient.nocache.js">
-</script>
+</script> -->
 
 
   </body>

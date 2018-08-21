@@ -34,7 +34,7 @@ close to the crimson:#670404
 
  - [ ] Center FLABie profile card row when it is at a smaller screen sizes
 
- - [ ] Add dismissible alert to each section which activates when user that is not logged in tries to access data
+ - [x] Add dismissible alert to each section which activates when user that is not logged in & tries to access data
 
  - [x] address issue where user looks at another user's profile that when they go back to look at their own they can see the hidden tab that allows them to update their profile (tab doesn't come back after they visit others' profiles) ===>this is fixed in the flabbie controller & can be looked at when updated the other controllers
 
