@@ -22,6 +22,9 @@
 
 #legacy{
   background: url(../assets/pitcher.jpeg) no-repeat center center fixed;
+  min-width: 100%;
+  min-height: 850px;
+  margin: 0 auto;
   /* public/assets/pitcher.jpeg */
 /* public/assets/pexels-photo-669213.jpeg */
   /* public/assets/sparkly.jpeg */
