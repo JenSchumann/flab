@@ -23,8 +23,8 @@ app.use(express.static('public'));
 app.use(bodyParser.json());
 
 //controllers
-// const beersController = require('./controllers/beers.js');
-// app.use('/beers', beersController);
+const beersController = require('./controllers/beers.js');
+app.use('/beers', beersController);
 
 const footballController = require('./controllers/football.js');
 app.use('/football', footballController);

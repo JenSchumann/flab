@@ -214,11 +214,14 @@ app.controller('BeerDBController', ['$http', '$scope', function($http, $scope){
 
   // save beer as a favorite
   this.saveFavoriteBeer = function() {
-    var urlStr = '/users/beers/' + currentUser._id;
+    // const urlStr = '/users/beers/' + currentUser._id;
+    const currentUser = $scope.verifyFlab.username;
 
     $http({
       method: 'PUT',
-      url: urlStr,
+      // url: urlStr,
+      // url: this.urlStr,
+      url: '/beers/' + currentUser.id,
       data: {beers:  this.selectedBeer }
     }).then(function(response) {
       console.log("beer saved as favorite");

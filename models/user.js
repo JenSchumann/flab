@@ -1,6 +1,6 @@
 //dependencies
 const mongoose = require('mongoose');
-// const Beer = require('./beers.js');
+const Beer = require('./beers.js');
 const Football = require('./football.js');
 const Smack = require('./smack.js');
 const Flabbie = require('./flabbie.js');
@@ -12,8 +12,8 @@ const userSchema = mongoose.Schema({
   username: { type: String, required: true, unique: true },
   password: { type: String, required: true },
 
-  // beers: [Beer.schema],
-  beers: [],
+  beers: [Beer.schema],
+  // beers: [ Beer.selectedBeer ],
   football: [Football.schema],
   smack: [Smack.schema],
   flabbie: [Flabbie.schema]
