@@ -22,7 +22,7 @@ close to the crimson:#670404
 
  - [ ] Add Reply functionality for Users to interact w/each other & Comments posted
 
- - [ ] Integrate 3rd Party API from ESPN for college football schedules (to add to landing page prior to the start of each new season)
+ - [ ] Integrate 3rd Party API from https://www.football-data.org/index for college football schedules 
 
  - [ ] Adjust carousel photos to be the same size
 
