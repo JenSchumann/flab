@@ -20,6 +20,7 @@ router.use('/proxy', proxy('api.brewerydb.com' ,{
     var newUrl = require('url').parse(req.url).path;
     var connector = newUrl.includes("?") ? "&" : "?";
     const apiKey = process.env.API_KEY;
+    //made the change to separate key as a param from "=" 8/30/19
     return newUrl + connector + "key="+apiKey
   }
 }))

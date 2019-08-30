@@ -93,6 +93,7 @@ app.controller('BeerDBController', ['$http', '$scope', function($http, $scope){
   // Called when beer search form is submitted
   // Search by name has priority over search by brewery
   this.findBeer = function() {
+    console.log("searching for beer");
     if (this.searchForBeer !== "") {
       this.searchByBrewery = ""
       this.getBeerByName();
@@ -327,7 +328,7 @@ app.controller('UserController', ['$http', '$scope', function($http, $scope){
       controller.loginForm = false;
       controller.loggedIn = response.data;
       controller.verifyLogin();
-      console.log('verified user is logged in');
+      //console.log('verified user is logged in');
 
     } else {
       controller.message = response.data
@@ -519,7 +520,7 @@ app.controller('FlabbieController', ['$http', '$scope', function($http, $scope){
 
   //ajax call to show all the user profiles
   this.getFlabbieProfiles = function(){
-    console.log('getting FlabbieProfiles');
+    //console.log('getting FlabbieProfiles');
     $http({
       method: 'GET',
       url: '/flabbie',
